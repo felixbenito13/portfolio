@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- ============================ BASIC META ============================ -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Page not found · Felix Benito, Design Lead</title>
+  <meta name="description" content="The page you’re looking for doesn’t exist. Head back to Felix Benito’s portfolio: Design Lead building AI products and design systems for global teams." />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#0A0A0A" />
+  <link rel="canonical" href="https://felixbenito.com/404.html" />
+
+  <!-- ============================ FAVICON ============================ -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- ============================ PERFORMANCE ============================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css?v=18" />
+
+  <style>
+    /* 404 layout, reuses site tokens */
+    html, body { min-height: 100%; }
+    body { background: #0A0A0A; }
+    .nf {
+      min-height: calc(100vh - 64px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #0A0A0A;
+      color: #F2F0EC;
+    }
+    .nf-inner { display: flex; flex-direction: column; gap: 28px; padding: 80px 0; }
+    .nf-code {
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .nf-code::before { content: ''; width: 28px; height: 1px; background: var(--accent); display: inline-block; }
+    .nf h1 {
+      font-size: clamp(52px, 8vw, 120px);
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      font-weight: 600;
+      color: #F2F0EC;
+    }
+    .nf h1 em { font-style: normal; color: var(--accent); }
+    .nf p {
+      font-size: 18px;
+      line-height: 1.5;
+      color: rgba(242, 240, 236, 0.7);
+      max-width: 46ch;
+    }
+    .nf-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; }
+    .nf .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      height: 46px; padding: 0 18px;
+      border: 1px solid rgba(255,255,255,0.18); border-radius: 999px;
+      font-size: 14px; font-weight: 500; color: #F2F0EC;
+      transition: all 220ms cubic-bezier(.2,.7,.2,1);
+    }
+    .nf .btn:hover { border-color: var(--accent); color: var(--accent); }
+    .nf .btn.primary { background: var(--accent); border-color: var(--accent); color: #F2F0EC; }
+    .nf .btn.primary:hover { background: #F2F0EC; border-color: #F2F0EC; color: #0A0A0A; }
+  </style>
+</head>
+<body>
+  <!-- Header, matches the site nav (red bar, white logo) -->
+  <nav class="nav">
+    <div class="shell nav-inner">
+      <a href="/" class="nav-brand">
+        <img src="assets/logo-felix-white.svg" alt="Felix Benito" class="nav-logo" />
+      </a>
+      <div class="nav-links">
+        <a href="/#work">Work</a>
+        <a href="/#practice">Leadership &amp; AI</a>
+        <a href="/#cv">CV</a>
+        <a href="/#me">Me</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="nf">
+    <div class="shell nf-inner">
+      <span class="nf-code">Error 404</span>
+      <h1>This page took<br/>a wrong turn<em>.</em></h1>
+      <p>The page you’re looking for doesn’t exist or has moved. Let’s get you back to the work.</p>
+      <div class="nf-cta">
+        <a class="btn primary" href="/">Back to portfolio →</a>
+        <a class="btn" href="/#work">See selected work →</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
