@@ -19,26 +19,68 @@ function useReveal() {
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('in'); });
     }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
-    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
-    return () => io.disconnect();
+
+    const nodes = () => document.querySelectorAll('.reveal:not(.in)');
+    const sweep = () => {
+      nodes().forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight * 0.95 && r.bottom > 0) el.classList.add('in');
+      });
+    };
+    const revealAll = () => {
+      io.disconnect();
+      document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
+      document.querySelectorAll('.page-mount').forEach((el) => { el.style.opacity = '1'; el.style.animation = 'none'; });
+    };
+
+    nodes().forEach((el) => io.observe(el));
+    sweep();
+    const timers = [200, 800, 2000, 4000].map((t) => setTimeout(sweep, t));
+    const failsafe = setTimeout(revealAll, 6000);
+    const onHide = () => { if (document.hidden) revealAll(); };
+
+    window.addEventListener('scroll', sweep, { passive: true });
+    window.addEventListener('resize', sweep, { passive: true });
+    window.addEventListener('load', sweep);
+    document.addEventListener('visibilitychange', onHide);
+
+    return () => {
+      io.disconnect();
+      timers.forEach(clearTimeout);
+      clearTimeout(failsafe);
+      window.removeEventListener('scroll', sweep);
+      window.removeEventListener('resize', sweep);
+      window.removeEventListener('load', sweep);
+      document.removeEventListener('visibilitychange', onHide);
+    };
   }, []);
 }
 
 // ─── Nav ───────────────────────────────────────────────────────────────────
 function Nav() {
+  const [open, setOpen] = React.useState(false);
+  React.useEffect(() => {
+    document.body.classList.toggle('nav-open', open);
+    return () => document.body.classList.remove('nav-open');
+  }, [open]);
   return (
-    <nav className="nav">
+    <nav className={open ? 'nav nav-open' : 'nav'}>
       <div className="shell nav-inner">
         <a href="../index.html" className="nav-brand">
           <img src="../assets/felix-benito-logo.png" alt="Felix Benito, design lead, home" className="nav-logo" />
         </a>
         <div className="nav-links">
-          <a href="../index.html#work" className="active">Cases</a>
-          <a href="../index.html#practice">How I work</a>
-          <a href="../index.html#cv">CV</a>
-          <a href="../index.html#me">Me</a>
-          <a href="../index.html#contact">Contact</a>
+          <a href="../index.html#work" className="active" onClick={() => setOpen(false)}>Cases</a>
+          <a href="../index.html#practice" onClick={() => setOpen(false)}>How I work</a>
+          <a href="../index.html#cv" onClick={() => setOpen(false)}>CV</a>
+          <a href="../index.html#me" onClick={() => setOpen(false)}>Me</a>
+          <a href="../index.html#contact" onClick={() => setOpen(false)}>Contact</a>
         </div>
+        <button className="nav-toggle" type="button" aria-label="Menu" aria-expanded={open} onClick={() => setOpen(v => !v)}>
+          <svg width="26" height="26" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+          </svg>
+        </button>
       </div>
     </nav>
   );

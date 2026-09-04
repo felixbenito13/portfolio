@@ -67,6 +67,9 @@
     h1, h2, h3, h4 { font-weight: 600; letter-spacing: -0.02em; text-wrap: balance; }
     ul { list-style: none; padding: 0; margin: 0; }
     ::selection { background: #8B1A1F; color: #FAFAF7; }
+    *, *::before, *::after { cursor: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2226%22%20height%3D%2226%22%20viewBox%3D%220%200%2026%2026%22%3E%3Cpath%20d%3D%22M4.5%202.6%2019%2013.4h-7.1l-2.6%206.6z%22%20fill%3D%22%23FFFFFF%22%20stroke%3D%22%238B1A1F%22%20stroke-width%3D%221.6%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E") 3 2, default !important; }
+    a, a *, button, button *, [role="button"], [role="button"] *, summary, label, video, [onclick], [onclick] * { cursor: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2226%22%20height%3D%2226%22%20viewBox%3D%220%200%2026%2026%22%3E%3Cpath%20d%3D%22M4.5%202.6%2019%2013.4h-7.1l-2.6%206.6z%22%20fill%3D%22%238B1A1F%22%20stroke%3D%22%238B1A1F%22%20stroke-width%3D%221.6%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E") 3 2, default !important; }
+    input, textarea, select, [contenteditable="true"] { cursor: auto !important; }
 
     #intro { position: fixed; inset: 0; z-index: 9999; pointer-events: none; }
     #intro .bg { position: absolute; inset: 0; background: #FFFFFF; transition: opacity .5s ease; }
@@ -138,7 +141,7 @@
       [data-r="stats"] { grid-template-columns: 1fr !important; }
       [data-r="three"] { grid-template-columns: 1fr !important; gap: 32px !important; }
       [data-r="edu3"] { grid-template-columns: 1fr !important; }
-      [data-r="clients"] { grid-template-columns: repeat(2, 1fr) !important; }
+      [data-r="clients"] { grid-template-columns: 1fr !important; }
       [data-r="footer"] { grid-template-columns: 1fr !important; }
       [data-r="process"] { grid-template-columns: 1fr !important; }
       [data-r="process-content"] { grid-template-columns: 1fr !important; }
@@ -164,6 +167,15 @@
       [data-r="process-tabs"] button { width: auto !important; flex: 0 0 auto !important; border-left: 0 !important; border-bottom-width: 2px !important; }
     }
 
+    @media (min-width: 800px) and (max-width: 1024px) {
+      [data-r="three"] { grid-template-columns: repeat(2, 1fr) !important; gap: 28px !important; }
+      [data-r="edu3"] { grid-template-columns: repeat(2, 1fr) !important; }
+      [data-r="stats"] { grid-template-columns: repeat(2, 1fr) !important; }
+      [data-r="clients"] { grid-template-columns: repeat(2, 1fr) !important; }
+      [data-r="footer"] { grid-template-columns: repeat(2, 1fr) !important; }
+      [data-r="footer"] > div:first-child { grid-column: 1 / -1; }
+    }
+
     @media (min-width: 800px) and (max-width: 900px) {
       [data-r="split"] { grid-template-columns: 1fr !important; gap: 20px !important; align-items: start !important; }
       [data-r="three"] { gap: 24px !important; }
@@ -187,7 +199,8 @@
       }
       [data-r="nav-links"][data-open="false"] { display: none !important; }
       [data-r="nav-links"] a { padding: 14px 0; min-height: 44px; display: flex; align-items: center; border-bottom: 1px solid rgba(0,0,0,0.08); }
-      [data-r="nav-links"] a span { display: none !important; }
+      [data-r="nav-links"] a [data-nav-bar] { display: none !important; }
+      [data-r="nav-links"] a [data-nav-label] { display: block; }
       [data-r="nav-toggle"] { display: inline-flex !important; }
     }
 
@@ -372,13 +385,12 @@
     </a>
     <div data-r="nav-links" data-open="{{ menuOpenAttr }}" style="display: flex; align-items: center; gap: 28px; font-size: 16px">
       <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="5">
-        <a href="{{ item.href }}" onClick="{{ closeMenu }}" style="position: relative; color: {{ item.color }}; font-weight: {{ item.weight }}" style-hover="color: #0E0E0E">{{ item.label }}
-          <span style="position: absolute; left: 0; right: 0; bottom: -22px; height: 2px; background: {{ item.bar }}"></span>
+        <a href="{{ item.href }}" onClick="{{ closeMenu }}" style="position: relative; color: {{ item.color }}; font-weight: {{ item.weight }}" style-hover="color: #0E0E0E"><span data-nav-label="">{{ item.label }}</span><span data-nav-bar="" style="position: absolute; left: 0; right: 0; bottom: -22px; height: 2px; background: {{ item.bar }}"></span>
         </a>
       </sc-for>
     </div>
     <button data-r="nav-toggle" type="button" onClick="{{ toggleMenu }}" aria-label="Menu" style="display: none; appearance: none; -webkit-appearance: none; cursor: pointer; align-items: center; justify-content: center; width: 44px; height: 44px; margin-right: -10px; background: none; border: 0; color: #0E0E0E">
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
       </svg>
     </button>
@@ -445,7 +457,7 @@
 
 <section id="work" data-screen-label="Cases" data-r="section" style="padding: 96px 0">
   <div data-r="shell" style="max-width: 1440px; margin: 0 auto; padding: 0 28px">
-    <div data-r="split" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 48px; align-items: end">
+    <div style="display: flex; flex-direction: column; gap: 18px; margin-bottom: 48px">
       <div style="display: flex; flex-direction: column; gap: 14px">
         <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6A66; display: inline-flex; align-items: center; gap: 10px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #8B1A1F; display: inline-block"></span>Cases</span>
         <h2 data-r="h2" style="font-size: clamp(48px, 6.6vw, 96px); line-height: 1.06; letter-spacing: -0.03em; font-weight: 600">Five projects that shaped how I lead.</h2>
@@ -491,7 +503,7 @@
 
 <section id="practice" data-screen-label="How I work" data-r="section" style="padding: 96px 0; background: #0A0A0A; color: #F2F0EC; border-bottom: 1px solid rgba(255,255,255,0.10)">
   <div data-r="shell" style="max-width: 1440px; margin: 0 auto; padding: 0 28px">
-    <div data-r="split" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 48px; align-items: end">
+    <div style="display: flex; flex-direction: column; gap: 18px; margin-bottom: 48px">
       <div style="display: flex; flex-direction: column; gap: 14px">
         <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6A66; display: inline-flex; align-items: center; gap: 10px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #8B1A1F; display: inline-block"></span>How I work</span>
         <h2 data-r="h2" style="font-size: clamp(48px, 6.6vw, 96px); line-height: 1.06; letter-spacing: -0.03em; font-weight: 600; color: #F2F0EC">My process,<br />end to end.</h2>
@@ -522,7 +534,7 @@
 
 <section id="cv" data-screen-label="Experience" data-r="section" style="padding: 96px 0">
   <div data-r="shell" style="max-width: 1440px; margin: 0 auto; padding: 0 28px">
-    <div data-r="split" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 48px; align-items: end">
+    <div style="display: flex; flex-direction: column; gap: 18px; margin-bottom: 48px">
       <div style="display: flex; flex-direction: column; gap: 14px">
         <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6A66; display: inline-flex; align-items: center; gap: 10px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #8B1A1F; display: inline-block"></span>Experience</span>
         <h2 data-r="h2" style="font-size: clamp(48px, 6.6vw, 96px); line-height: 1.06; letter-spacing: -0.03em; font-weight: 600">Eighteen years, one through-line.</h2>
@@ -560,7 +572,7 @@
 
 <section data-screen-label="Testimonials" data-r="section" style="padding: 96px 0">
   <div data-r="shell" style="max-width: 1440px; margin: 0 auto; padding: 0 28px">
-    <div data-r="split" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 48px; align-items: end">
+    <div style="display: flex; flex-direction: column; gap: 18px; margin-bottom: 48px">
       <div style="display: flex; flex-direction: column; gap: 14px">
         <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6A66; display: inline-flex; align-items: center; gap: 10px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #8B1A1F; display: inline-block"></span>What people say</span>
         <h2 data-r="h2" style="font-size: clamp(48px, 6.6vw, 96px); line-height: 1.06; letter-spacing: -0.03em; font-weight: 600">From the people I’ve worked alongside.</h2>
@@ -587,7 +599,7 @@
 
 <section id="clients" data-screen-label="Companies" data-r="section" style="padding: 96px 0; background: #0A0A0A; color: #F2F0EC; border-bottom: 1px solid rgba(255,255,255,0.10)">
   <div data-r="shell" style="max-width: 1440px; margin: 0 auto; padding: 0 28px">
-    <div data-r="split" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 48px; align-items: end">
+    <div style="display: flex; flex-direction: column; gap: 18px; margin-bottom: 48px">
       <div style="display: flex; flex-direction: column; gap: 14px">
         <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6A66; display: inline-flex; align-items: center; gap: 10px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #8B1A1F; display: inline-block"></span>Companies</span>
         <h2 data-r="h2" style="font-size: clamp(48px, 6.6vw, 96px); line-height: 1.06; letter-spacing: -0.03em; font-weight: 600; color: #F2F0EC">Worked with.</h2>
@@ -606,7 +618,7 @@
 
 <section id="me" data-screen-label="Me" data-r="section" style="padding: 96px 0; border-top: 1px solid rgba(0,0,0,0.12)">
   <div data-r="shell" style="max-width: 1440px; margin: 0 auto; padding: 0 28px">
-    <div data-r="split" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 48px; align-items: end">
+    <div style="display: flex; flex-direction: column; gap: 18px; margin-bottom: 48px">
       <div style="display: flex; flex-direction: column; gap: 14px">
         <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6A66; display: inline-flex; align-items: center; gap: 10px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #8B1A1F; display: inline-block"></span>Me</span>
         <h2 data-r="h2" style="font-size: clamp(48px, 6.6vw, 96px); line-height: 1.06; letter-spacing: -0.03em; font-weight: 600">Where the <em style="font-style: normal; color: #8B1A1F">creativity</em> comes from.</h2>
@@ -846,7 +858,7 @@ class Component extends DCLogic {
 
     const leadershipRaw = [
       { n: '01', tag: 'Research to shipped', title: 'Paper to hi-fi, fast.', body: 'Surveys, discovery interviews, personas and business rules first. Then prototypes, handoff and QA, with AI speeding up the early research without replacing the judgment behind it.', highlight: 'AI drafts the map, I choose the route. On Audi’s Onboarding flow, AI clustered patterns from dozens of interviews in hours. Usability testing then surfaced the gaps. I sketched the prototype by hand, then refined it with ideas from AI.' },
-      { n: '02', tag: 'Mentoring', title: 'Growth tied to the work, not the title.', body: 'Weekly one on ones, portfolio reviews, and growth plans built around what someone is actually shipping, not their seniority.', highlight: 'Ten young designers mentored across the world. Every mentee gets direct feedback and real stakes, not a template.' },
+      { n: '02', tag: 'Leadership', title: 'Leading projects, growing people.', body: 'Beyond running projects end to end, I lead through mentorship, weekly one on ones, portfolio reviews, and growth plans built around what someone is actually shipping, not their seniority.', highlight: 'Ten young designers mentored across the world. Every mentee gets direct feedback and real stakes, not a template.' },
       { n: '03', tag: 'Design systems and ops', title: 'One language that survives turnover.', body: 'Component libraries, tokens and governance, built so a design system keeps teams aligned long after the people who built it move on.', highlight: 'Design systems for Coca-Cola, RHI Magnesita and Kraft Heinz. At PharosGraph I wrote the system as markdown so Claude Code could build from it directly, cutting content production from 18 hours to 75 minutes. The contract between a model’s suggestion and a person’s decision is the design.' },
       { n: '04', tag: 'Cross functional alignment', title: 'Alignment before the file opens.', body: 'Stakeholder reviews, roadmaps and OKRs tied to what the business already measures, so the hard craft happens before a single pixel.', highlight: 'Twenty six stakeholders, five countries, one design. At Coca-Cola, plant visits and stakeholder reviews turned agreement into a formality by the time the screens shipped.' },
       { n: '05', tag: 'Product and go to market', title: 'One voice, every surface.', body: 'Product UI, brand and campaign under the same voice, with data closing the loop on what to fix next.', highlight: 'At PharosGraph I led the landing page, email marketing, social posts and reporting behind our lead generation. One in five leads converted.' },
