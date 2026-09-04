@@ -423,8 +423,8 @@
         </span>
       </a>
       <a href="assets/Felix_Benito_Design_Lead_CV.pdf" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 46px; padding: 0 18px; border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; font-size: 14px; font-weight: 500; white-space: nowrap; color: #F2F0EC" style-hover="border-color: #8B1A1F; color: #8B1A1F">Download CV <span>↓</span></a>
-      <a href="#" class="js-mail" data-mail-b64="Y29udGFjdEBmZWxpeGJlbml0by5jb20=" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 46px; padding: 0 18px; border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; font-size: 14px; font-weight: 500; white-space: nowrap; color: #F2F0EC" style-hover="border-color: #8B1A1F; color: #8B1A1F">
-        <span class="js-mail-text">Get in touch by email</span>
+      <a href="mailto:contact&#64;felixbenito.com" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 46px; padding: 0 18px; border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; font-size: 14px; font-weight: 500; white-space: nowrap; color: #F2F0EC" style-hover="border-color: #8B1A1F; color: #8B1A1F">
+        contact&#64;felixbenito.com
         <span aria-hidden="true" style="display: inline-flex; align-items: center; margin: 0 2px">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="2" y="3.5" width="12" height="9" rx="1.2" stroke="currentColor" stroke-width="1.4"></rect>
@@ -657,8 +657,8 @@
       <div>
         <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(242,240,236,0.55); margin-bottom: 18px; display: inline-block">Contact</span>
         <h2 data-r="h2" style="font-size: clamp(48px, 6.6vw, 96px); line-height: 1.06; letter-spacing: -0.03em; max-width: 14ch; color: #F2F0EC">Hiring a <em style="font-style: normal; color: #8B1A1F">design lead?</em><br />Let’s talk.</h2>
-        <a href="#" class="js-mail" data-mail-b64="Y29udGFjdEBmZWxpeGJlbml0by5jb20=" style="display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 18px; border: 1px solid #8B1A1F; border-radius: 999px; font-size: 14px; font-weight: 500; background: #8B1A1F; color: #F2F0EC; margin-top: 28px" style-hover="background: #F2F0EC; border-color: #F2F0EC; color: #0A0A0A">
-          <span class="js-mail-text">Get in touch by email</span>
+        <a href="mailto:contact&#64;felixbenito.com" style="display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 18px; border: 1px solid #8B1A1F; border-radius: 999px; font-size: 14px; font-weight: 500; background: #8B1A1F; color: #F2F0EC; margin-top: 28px" style-hover="background: #F2F0EC; border-color: #F2F0EC; color: #0A0A0A">
+          contact&#64;felixbenito.com
           <span aria-hidden="true" style="display: inline-flex; align-items: center; margin: 0 2px">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="2" y="3.5" width="12" height="9" rx="1.2" stroke="currentColor" stroke-width="1.4"></rect>
@@ -925,20 +925,6 @@ class Component extends DCLogic {
       toggleMenu: this.toggleMenu, closeMenu: this.closeMenu, testimonials, clients, videoRef: this.videoRef, imgRef: this.imgRef, year: new Date().getFullYear() };
   }
 }
-</script>
-<script>
-(function () {
-  var b64 = document.querySelectorAll('[data-mail-b64]');
-  for (var i = 0; i < b64.length; i++) {
-    var el = b64[i];
-    try {
-      var addr = atob(el.getAttribute('data-mail-b64'));
-      el.setAttribute('href', 'mailto:' + addr);
-      var textEl = el.querySelector('.js-mail-text');
-      if (textEl) textEl.textContent = addr;
-    } catch (e) {}
-  }
-})();
 </script>
 </body>
 </html>
