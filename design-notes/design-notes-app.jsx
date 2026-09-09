@@ -60,9 +60,10 @@ function Nav() {
         </a>
         <div className="nav-links">
           <a href="../index.html#work" onClick={() => setOpen(false)}>Cases</a>
-          <a href="index.html" className="active" onClick={() => setOpen(false)}>Design Notes</a>
           <a href="../index.html#practice" onClick={() => setOpen(false)}>How I work</a>
           <a href="../index.html#cv" onClick={() => setOpen(false)}>CV</a>
+          <a href="../index.html#me" onClick={() => setOpen(false)}>Me</a>
+          <a href="index.html" className="active" onClick={() => setOpen(false)}>Design Notes</a>
           <a href="../index.html#contact" onClick={() => setOpen(false)}>Contact</a>
         </div>
         <button className="nav-toggle" type="button" aria-label="Menu" aria-expanded={open} onClick={() => setOpen(v => !v)}>
@@ -185,7 +186,7 @@ function NotesIndex() {
             </div>
           ) : (
             <div className="notes-empty reveal">
-              <p>More notes on this topic are coming soon.</p>
+              <p>0 results</p>
             </div>
           )}
         </div>

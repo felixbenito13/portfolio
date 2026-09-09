@@ -938,10 +938,11 @@ class Component extends DCLogic {
       { id: 'practice', label: 'How I work' },
       { id: 'cv', label: 'CV' },
       { id: 'me', label: 'Me' },
+      { id: 'notes', label: 'Design Notes', href: 'design-notes/index.html' },
       { id: 'contact', label: 'Contact' },
     ].map((it) => {
       const on = this.state.activeSection === it.id;
-      return { ...it, href: '#' + it.id, color: on ? '#8B1A1F' : '#6B6A66', weight: on ? 600 : 400, bar: on ? '#8B1A1F' : 'transparent' };
+      return { ...it, href: it.href || ('#' + it.id), color: on ? '#8B1A1F' : '#6B6A66', weight: on ? 600 : 400, bar: on ? '#8B1A1F' : 'transparent' };
     });
 
     return { projects, leadership, active, navItems, cv,

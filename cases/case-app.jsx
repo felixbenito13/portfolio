@@ -74,6 +74,7 @@ function Nav() {
           <a href="../index.html#practice" onClick={() => setOpen(false)}>How I work</a>
           <a href="../index.html#cv" onClick={() => setOpen(false)}>CV</a>
           <a href="../index.html#me" onClick={() => setOpen(false)}>Me</a>
+          <a href="../design-notes/index.html" onClick={() => setOpen(false)}>Design Notes</a>
           <a href="../index.html#contact" onClick={() => setOpen(false)}>Contact</a>
         </div>
         <button className="nav-toggle" type="button" aria-label="Menu" aria-expanded={open} onClick={() => setOpen(v => !v)}>
