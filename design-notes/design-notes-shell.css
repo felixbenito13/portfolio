@@ -1,0 +1,253 @@
+/* design-notes/design-notes-shell.css, extends styles.css for the Design Notes section */
+
+/* ─── Shared: back link + tag ───────────────────────────────────────────── */
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(242, 240, 236, 0.65);
+  transition: color var(--t-fast) var(--ease), gap var(--t-fast) var(--ease);
+}
+.back-link:hover { color: var(--accent); gap: 14px; }
+.back-link span { display: inline-block; transition: transform var(--t-fast) var(--ease); }
+.back-link:hover span { transform: translateX(-3px); }
+
+.note-tag {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: var(--t-label);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.note-tag::after {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: var(--accent);
+}
+
+/* ─── Notes hero (listing + article share the dark hero) ───────────────── */
+
+.notes-hero {
+  background: #0A0A0A;
+  color: #F2F0EC;
+  padding-top: calc(var(--pad-y) * 0.85);
+  padding-bottom: calc(var(--pad-y) * 0.55);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+.notes-hero .eyebrow { color: rgba(242, 240, 236, 0.65); margin-bottom: 20px; }
+
+.notes-title {
+  font-size: clamp(40px, 5.6vw, 76px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  color: #F2F0EC;
+  max-width: 20ch;
+}
+.notes-title em { font-style: normal; color: var(--accent); }
+.notes-sub {
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.5;
+  color: rgba(242, 240, 236, 0.78);
+  max-width: 58ch;
+  margin-top: 24px;
+}
+
+/* ─── Filters ────────────────────────────────────────────────────────────── */
+
+.notes-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 48px;
+}
+.notes-filter {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 10px 18px;
+  transition: border-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
+}
+.notes-filter:hover { border-color: var(--accent); color: var(--fg); }
+.notes-filter.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* ─── Notes grid + card ──────────────────────────────────────────────────── */
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+.note-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.note-card-img {
+  position: relative;
+  aspect-ratio: 1200 / 630;
+  overflow: hidden;
+  background: #1A1A1A;
+  border-radius: 2px;
+}
+.note-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 1.2s var(--ease-out);
+}
+.note-card:hover .note-card-img img { transform: scale(1.04); }
+.note-card-body { display: flex; flex-direction: column; gap: 12px; }
+.note-card-body h3 {
+  font-size: clamp(20px, 1.9vw, 26px);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+  color: var(--fg);
+}
+.note-card-body p {
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 52ch;
+}
+.note-card-meta {
+  font-family: var(--mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.notes-empty {
+  padding: 60px 0;
+  color: var(--muted);
+  font-size: 17px;
+  border-top: 1px solid var(--rule);
+}
+
+@media (max-width: 720px) {
+  .notes-grid { grid-template-columns: 1fr; gap: 48px; }
+}
+
+/* ─── Article hero ───────────────────────────────────────────────────────── */
+
+.notes-hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 56px;
+}
+.note-title {
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.08;
+  letter-spacing: -0.028em;
+  font-weight: 600;
+  color: #F2F0EC;
+  max-width: 22ch;
+}
+.note-sub {
+  font-size: clamp(17px, 1.6vw, 20px);
+  line-height: 1.5;
+  color: rgba(242, 240, 236, 0.78);
+  max-width: 60ch;
+  margin-top: 24px;
+}
+.note-meta {
+  display: inline-block;
+  margin-top: 24px;
+  font-family: var(--mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(242, 240, 236, 0.5);
+}
+.note-cover-wrap { margin-top: 48px; }
+.note-cover {
+  aspect-ratio: 1200 / 630;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #1A1A1A;
+}
+.note-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ─── Article body ───────────────────────────────────────────────────────── */
+
+.note-main { padding: calc(var(--pad-y) * 0.75) 0; }
+.note-article { max-width: 68ch; margin: 0 auto; }
+
+.note-h2 {
+  font-size: clamp(26px, 2.8vw, 38px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  color: var(--fg);
+  margin-top: 64px;
+  margin-bottom: 8px;
+}
+.note-h2:first-child { margin-top: 0; }
+.note-h3 {
+  font-size: clamp(19px, 1.8vw, 23px);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+  color: var(--fg);
+  margin-top: 40px;
+  margin-bottom: 4px;
+}
+.note-p {
+  font-size: 17.5px;
+  line-height: 1.68;
+  color: var(--fg-soft);
+  margin-top: 20px;
+}
+.note-h2 + .note-p,
+.note-h3 + .note-p { margin-top: 16px; }
+
+.note-image { margin: 40px 0 0; display: flex; flex-direction: column; gap: 14px; }
+.note-image-frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  background: #FFFFFF;
+}
+.note-image-frame img { width: 100%; height: auto; display: block; }
+.note-image figcaption {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+@media (max-width: 720px) {
+  .notes-hero-top { flex-direction: column; align-items: flex-start; gap: 14px; margin-bottom: 32px; }
+  .note-p { font-size: 16.5px; }
+}

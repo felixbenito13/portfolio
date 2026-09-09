@@ -334,7 +334,7 @@ function Footer() {
             <div className="col-h">Elsewhere</div>
             <ul>
               <li><a href="https://www.linkedin.com/in/felix-benito/" target="_blank" rel="noreferrer">LinkedIn ↗</a></li>
-              <li><a href="https://medium.com/@felixbenito13" target="_blank" rel="noreferrer">Medium ↗</a></li>
+              <li><a href="../design-notes/index.html">Design Notes ↗</a></li>
               <li><a href="../assets/Felix_Benito_Design_Lead_CV.pdf" target="_blank" rel="noreferrer">CV (PDF) ↗</a></li>
             </ul>
           </div>
