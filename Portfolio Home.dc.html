@@ -294,8 +294,13 @@
       setTimeout(start, 1200);
     }
 
-    if (document.body) run();
-    else document.addEventListener('DOMContentLoaded', run);
+    var seenIntro = false;
+    try { seenIntro = !!sessionStorage.getItem('fb_intro_seen'); } catch (e) {}
+    if (!seenIntro) {
+      try { sessionStorage.setItem('fb_intro_seen', '1'); } catch (e) {}
+      if (document.body) run();
+      else document.addEventListener('DOMContentLoaded', run);
+    }
 
     setTimeout(function () {
       var el = document.getElementById('intro');
