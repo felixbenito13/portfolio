@@ -3,6 +3,7 @@
 const NOTE_CATEGORIES = [
   { id: 'all',        label: 'All' },
   { id: 'strategy',   label: 'Strategy' },
+  { id: 'leadership', label: 'Leadership' },
   { id: 'craft',      label: 'Craft' },
   { id: 'ai',         label: 'AI' },
   { id: 'creativity', label: 'Creativity' },
