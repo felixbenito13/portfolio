@@ -535,13 +535,16 @@
       <p style="color: rgba(242,240,236,0.72); font-size: 17px; max-width: 42ch; line-height: 1.5">From the first survey to the launch email, one design voice across the whole thing.</p>
     </div>
     <div data-r="process" style="display: grid; grid-template-columns: 0.72fr 1.28fr; gap: 40px; align-items: start">
-      <div data-r="process-tabs" style="display: flex; flex-direction: column; border-top: 1px solid rgba(255,255,255,0.12)">
-        <sc-for list="{{ leadership }}" as="l" hint-placeholder-count="5">
-          <button type="button" onClick="{{ l.onSelect }}" style="appearance: none; -webkit-appearance: none; cursor: pointer; text-align: left; font: inherit; display: flex; align-items: center; gap: 14px; width: 100%; padding: 20px 18px; border: 0; border-bottom: 1px solid rgba(255,255,255,0.12); border-left: 2px solid {{ l.activeBar }}; background: {{ l.activeBg }}; color: {{ l.activeColor }}; transition: background 160ms ease, color 160ms ease" style-hover="background: rgba(255,255,255,0.06); color: #F2F0EC">
-            <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; color: {{ l.activeNum }}">{{ l.n }}</span>
-            <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase">{{ l.tag }}</span>
-          </button>
-        </sc-for>
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(242,240,236,0.5)">05 steps &middot; click to explore</span>
+        <div data-r="process-tabs" style="display: flex; flex-direction: column; border-top: 1px solid rgba(255,255,255,0.12)">
+          <sc-for list="{{ leadership }}" as="l" hint-placeholder-count="5">
+            <button type="button" onClick="{{ l.onSelect }}" style="appearance: none; -webkit-appearance: none; cursor: pointer; text-align: left; font: inherit; display: flex; align-items: center; gap: 14px; width: 100%; padding: 20px 18px; border: 0; border-bottom: 1px solid rgba(255,255,255,0.12); border-left: 2px solid {{ l.activeBar }}; background: {{ l.activeBg }}; color: {{ l.activeColor }}; transition: background 160ms ease, color 160ms ease" style-hover="background: rgba(255,255,255,0.06); color: #F2F0EC">
+              <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; color: {{ l.activeNum }}">{{ l.n }}</span>
+              <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase">{{ l.tag }}</span>
+            </button>
+          </sc-for>
+        </div>
       </div>
       <div data-r="process-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; min-height: 320px">
         <div style="display: flex; flex-direction: column; gap: 18px">
@@ -882,10 +885,10 @@ class Component extends DCLogic {
 
     const leadershipRaw = [
       { n: '01', tag: 'Research to shipped', title: 'Paper to hi-fi, fast.', body: 'Surveys, discovery interviews, personas and business rules first. Then prototypes, handoff and QA, with AI speeding up the early research without replacing the judgment behind it.', highlight: 'AI drafts the map, I choose the route. On Audi’s Onboarding flow, AI clustered patterns from dozens of interviews in hours. Usability testing then surfaced the gaps. I sketched the prototype by hand, then refined it with ideas from AI.' },
-      { n: '02', tag: 'Leadership', title: 'Leading projects, growing people.', body: 'Beyond running projects end to end, I lead through mentorship, weekly one on ones, portfolio reviews, and growth plans built around what someone is actually shipping, not their seniority.', highlight: 'Ten young designers mentored across the world. Every mentee gets direct feedback and real stakes, not a template.' },
-      { n: '03', tag: 'Design systems and ops', title: 'One language that survives turnover.', body: 'Component libraries, tokens and governance, built so a design system keeps teams aligned long after the people who built it move on.', highlight: 'Design systems for Coca-Cola, RHI Magnesita and Kraft Heinz. At PharosGraph I wrote the system as markdown so Claude Code could build from it directly, cutting content production from 18 hours to 75 minutes. The contract between a model’s suggestion and a person’s decision is the design.' },
-      { n: '04', tag: 'Cross functional alignment', title: 'Alignment before the file opens.', body: 'Stakeholder reviews, roadmaps and OKRs tied to what the business already measures, so the hard craft happens before a single pixel.', highlight: 'Twenty six stakeholders, five countries, one design. At Coca-Cola, plant visits and stakeholder reviews turned agreement into a formality by the time the screens shipped.' },
-      { n: '05', tag: 'Product and go to market', title: 'One voice, every surface.', body: 'Product UI, brand and campaign under the same voice, with data closing the loop on what to fix next.', highlight: 'At PharosGraph I led the landing page, email marketing, social posts and reporting behind our lead generation. One in five leads converted.' },
+      { n: '02', tag: 'Product and go to market', title: 'One voice, every surface.', body: 'Product UI, brand and campaign under the same voice, with data closing the loop on what to fix next.', highlight: 'At PharosGraph I led the landing page, email marketing, social posts and reporting behind our lead generation. One in five leads converted.' },
+      { n: '03', tag: 'Cross functional alignment', title: 'Alignment before the file opens.', body: 'Stakeholder reviews, roadmaps and OKRs tied to what the business already measures, so the hard craft happens before a single pixel.', highlight: 'Twenty six stakeholders, five countries, one design. At Coca-Cola, plant visits and stakeholder reviews turned agreement into a formality by the time the screens shipped.' },
+      { n: '04', tag: 'Leadership', title: 'Leading projects, growing people.', body: 'Beyond running projects end to end, I lead through mentorship, weekly one on ones, portfolio reviews, and growth plans built around what someone is actually shipping, not their seniority.', highlight: 'Ten young designers mentored across the world. Every mentee gets direct feedback and real stakes, not a template.' },
+      { n: '05', tag: 'Design systems and ops', title: 'One language that survives turnover.', body: 'Component libraries, tokens and governance, built so a design system keeps teams aligned long after the people who built it move on.', highlight: 'Design systems for Coca-Cola, RHI Magnesita and Kraft Heinz. At PharosGraph I wrote the system as markdown so Claude Code could build from it directly, cutting content production from 18 hours to 75 minutes. The contract between a model’s suggestion and a person’s decision is the design.' },
     ];
 
     const step = Math.min(this.state.step, leadershipRaw.length - 1);
