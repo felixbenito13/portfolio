@@ -80,11 +80,11 @@
     #intro .slot img, #intro .slot svg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; color: #8B1A1F; opacity: 0; transform: scale(.82); filter: blur(6px); animation-play-state: paused; }
     #intro .logo { animation-play-state: paused; }
     #intro.ready .slot img, #intro.ready .slot svg, #intro.ready .logo { animation-play-state: running; }
-    #intro .slot .o1 { animation: introMorph 1s cubic-bezier(.16,1,.3,1) .1s both; }
-    #intro .slot .o2 { animation: introMorphSoft 1s cubic-bezier(.16,1,.3,1) .78s both; padding: 4%; box-sizing: border-box; }
-    #intro .slot .o3 { animation: introMorphSoft 1s cubic-bezier(.16,1,.3,1) 1.46s both; padding: 8%; box-sizing: border-box; }
-    #intro .slot .o4 { animation: introMorph 1s cubic-bezier(.16,1,.3,1) 2.14s both; padding: 5%; box-sizing: border-box; }
-    #intro .logo { position: absolute; left: 50%; top: 50%; width: min(300px, 62vw); height: auto; display: block; opacity: 1; transform: translate(-50%, -50%); animation: introLogoIn .7s cubic-bezier(.16,1,.3,1) 2.82s both; }
+    #intro .slot .o1 { animation: introMorph .6s cubic-bezier(.16,1,.3,1) .1s both; }
+    #intro .slot .o2 { animation: introMorphSoft .6s cubic-bezier(.16,1,.3,1) .5s both; padding: 4%; box-sizing: border-box; }
+    #intro .slot .o3 { animation: introMorphSoft .6s cubic-bezier(.16,1,.3,1) .9s both; padding: 8%; box-sizing: border-box; }
+    #intro .slot .o4 { animation: introMorph .6s cubic-bezier(.16,1,.3,1) 1.3s both; padding: 5%; box-sizing: border-box; }
+    #intro .logo { position: absolute; left: 50%; top: 50%; width: min(300px, 62vw); height: auto; display: block; opacity: 1; transform: translate(-50%, -50%); animation: introLogoIn .45s cubic-bezier(.16,1,.3,1) 1.7s both; }
     #intro.fly .logo { animation: none; opacity: 1; filter: none; transition: transform 1.5s cubic-bezier(.5,0,.15,1); transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(var(--s)); }
     @keyframes introMorph {
       0% { opacity: 0; transform: scale(.82); filter: blur(6px); }
@@ -224,7 +224,7 @@
   (function () {
     if (window.__introRan) return;
     window.__introRan = true;
-    var HOLD = 3450, t0 = null, done = false;
+    var HOLD = 2100, t0 = null, done = false;
 
     function build() {
       if (document.getElementById('intro')) return document.getElementById('intro');
