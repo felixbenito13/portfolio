@@ -422,6 +422,41 @@
 .case-callout.placeholder { border-left-color: var(--faint); }
 .case-callout.placeholder .case-callout-tag { color: var(--muted); }
 
+/* ─── Testimonial ────────────────────────────────────────────────────── */
+
+.case-testimonial-wrap { padding: calc(var(--pad-y) * 0.4) 0; }
+.case-testimonial {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 62ch;
+}
+.case-testimonial-quote {
+  font-family: var(--mono);
+  font-size: 32px;
+  color: var(--accent);
+  line-height: 0;
+}
+.case-testimonial-text {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--fg-soft);
+}
+.case-testimonial-person {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.case-testimonial-person img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: grayscale(1);
+}
+.case-testimonial-name { font-weight: 600; font-size: 14px; }
+.case-testimonial-at { color: var(--muted); font-size: 13px; }
+
 /* ─── Next/prev ─────────────────────────────────────────────────────────── */
 
 .case-next {

@@ -265,6 +265,26 @@ function CalloutSection({ s }) {
   );
 }
 
+function TestimonialSection({ s }) {
+  return (
+    <section className="case-section case-testimonial-wrap">
+      <div className="shell">
+        <div className="case-testimonial reveal">
+          <div className="case-testimonial-quote">“</div>
+          <p className="case-testimonial-text">{s.text}</p>
+          <div className="case-testimonial-person">
+            <img src={s.img} alt={s.name} width="72" height="72" loading="lazy" />
+            <div>
+              <div className="case-testimonial-name">{s.name}</div>
+              <div className="case-testimonial-at">{s.at}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // Build a descriptive, unique alt from case + section context (keeps caption visible separately)
 let __caseLabel = '';
 function imgAltFor(sectionTitle, img) {
@@ -282,6 +302,7 @@ function renderSection(s, i) {
     case 'kpis':       return <KpisSection      key={i} s={s} />;
     case 'principles': return <PrinciplesSection key={i} s={s} />;
     case 'callout':    return <CalloutSection   key={i} s={s} />;
+    case 'testimonial': return <TestimonialSection key={i} s={s} />;
     default: return null;
   }
 }
