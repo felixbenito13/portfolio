@@ -70,7 +70,7 @@
     a, a *, button, button *, [role="button"], [role="button"] *, summary, label, video, [onclick], [onclick] * { cursor: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2226%22%20height%3D%2226%22%20viewBox%3D%220%200%2026%2026%22%3E%3Cpath%20d%3D%22M4.5%202.6%2019%2013.4h-7.1l-2.6%206.6z%22%20fill%3D%22%238B1A1F%22%20stroke%3D%22%238B1A1F%22%20stroke-width%3D%221.6%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E") 3 2, default !important; }
     input, textarea, select, [contenteditable="true"] { cursor: auto !important; }
 
-    #intro { position: fixed; inset: 0; z-index: 9999; pointer-events: none; }
+    #intro { position: fixed; top: 0; left: 0; right: 0; height: 100vh; height: 100svh; z-index: 9999; pointer-events: none; }
     #intro .bg { position: absolute; inset: 0; background: #FFFFFF; transition: opacity .5s ease; }
     #intro.fly .bg { opacity: 0; }
     #intro.gone { opacity: 0; visibility: hidden; transition: opacity .3s ease; }
