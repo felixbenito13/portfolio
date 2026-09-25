@@ -261,8 +261,11 @@
         intro.classList.add('fly');
       }
       setTimeout(function () {
-        document.body.classList.remove('intro-hide-logo', 'intro-hold');
+        document.body.classList.remove('intro-hold');
         document.body.classList.add('intro-cascade');
+      }, 80);
+      setTimeout(function () {
+        document.body.classList.remove('intro-hide-logo');
       }, 1120);
       setTimeout(function () { intro.classList.add('gone'); }, 1180);
       setTimeout(function () {
