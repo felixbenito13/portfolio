@@ -76,18 +76,7 @@ const CASES = {
           { src: 'assets/audi-onboarding-user-research-behavioral-patterns.jpg',  caption: 'Behavioral patterns' },
         ],
       },
-      { type: 'text', n: '07', title: 'Decisions & improvements',
-        body: [
-          'From the survey results and the work with the data team, I scored every improvement on a UX matrix (impact against effort) and ran it with the manager to prioritize what entered development first, so the table stopped being a wishlist and became a sequenced, agreed roadmap tied to the OKRs.',
-        ],
-      },
-      { type: 'imageRow',
-        images: [
-          { src: 'assets/audi-onboarding-prioritized-improvements-table.png',     caption: 'Prioritized table of improvements' },
-          { src: 'assets/audi-onboarding-design-decisions-documented.jpg', caption: 'Design decisions documented', note: 'This table is a summary of the survey results crossed with the prioritization matrix. It set the main focuses we would work on: cut the double login down to one, surface the maintenance entry point directly in the menu, give the page a clear ending with a single obvious CTA, and remove the dead ends that forced users to look up a phone number.' },
-        ],
-      },
-      { type: 'text', n: '08', title: 'Usability testing',
+      { type: 'text', n: '07', title: 'Usability testing',
         body: [
           'To get deep into the results from the survey, we invited 8 users to run a usability test. We were able to analyze 5 participants and ask follow-up questions on the biggest problems that came up.',
         ],
@@ -97,6 +86,17 @@ const CASES = {
           { src: 'assets/audi-onboarding-usability-test-session-notes.jpg', caption: 'User testing, session notes' },
           { src: 'assets/audi-onboarding-usability-test-task-flow.jpg', caption: 'User testing, task flow' },
           { src: 'assets/audi-onboarding-usability-test-synthesis.jpg', caption: 'User testing, synthesis' },
+        ],
+      },
+      { type: 'text', n: '08', title: 'Decisions & improvements',
+        body: [
+          'From the survey results and the work with the data team, I scored every improvement on a UX matrix (impact against effort) and ran it with the manager to prioritize what entered development first, so the table stopped being a wishlist and became a sequenced, agreed roadmap tied to the OKRs.',
+        ],
+      },
+      { type: 'imageRow',
+        images: [
+          { src: 'assets/audi-onboarding-prioritized-improvements-table.png',     caption: 'Prioritized table of improvements' },
+          { src: 'assets/audi-onboarding-design-decisions-documented.jpg', caption: 'Design decisions documented', note: 'This table is a summary of the survey results crossed with the prioritization matrix. It set the main focuses we would work on: cut the double login down to one, surface the maintenance entry point directly in the menu, give the page a clear ending with a single obvious CTA, and remove the dead ends that forced users to look up a phone number.' },
         ],
       },
       { type: 'imageRow', n: '09', title: 'Sketches & AI refinement', cols: 2,
