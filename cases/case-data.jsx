@@ -426,11 +426,31 @@ const CASES = {
         images: [
           { src: 'assets/coca-cola-ko-boss-old-version-audit-mobile.jpg', caption: 'Old version, audit (mobile)', wide: true },
           { src: 'assets/coca-cola-ko-boss-old-version-audit-desktop.jpg', caption: 'Old version, audit (desktop)', wide: true },
+        ],
+      },
+      { type: 'imageRow', n: '05', title: 'The redesign, UX and UI improvements', cols: 2,
+        body: 'The redesign worked on experience and interface together. Every change below answers a problem found in the audit, from how people find and reorder products to how the interface looks and behaves on each device.',
+        bullets: [
+          'Persistent, labeled search bar to reach any product fast',
+          'Unified navigation across mobile and desktop, same four items in the same order',
+          'Sticky bottom navigation on mobile, always within thumb reach',
+          'Clear button hierarchy, solid primary action and outlined secondary action',
+          'One tap order shortcut for suggested products',
+          'Dedicated profile section to manage account details',
+          'Notification center for order status, delivery updates and promotions',
+          'Updated visual language, modern icons and real product photography',
+          'Contrast raised above WCAG AA, reaching AAA',
+          'Colors limited to the Coca-Cola palette: black, white and red',
+          'Reusable design system, cards, buttons and headers built from the same components',
+          'Consistent spacing grid and fixed responsive alignment and padding',
+          'Single layer background to cut visual noise',
+        ],
+        images: [
           { src: 'assets/coca-cola-ko-boss-new-version-mobile.jpg', caption: 'New version (mobile)', wide: true },
           { src: 'assets/coca-cola-ko-boss-new-version-desktop.jpg', caption: 'New version (desktop)', wide: true },
         ],
       },
-      { type: 'imageRow', n: '05', title: 'Stakeholder map',
+      { type: 'imageRow', n: '06', title: 'Stakeholder map',
         body: 'Many stakeholders, managers, business analysts, developers and bottler owners. I mapped them to define communication channels and prioritize feedback loops, ensuring alignment across five distinct LATAM markets.',
         images: [
           { src: 'assets/coca-cola-ko-boss-stakeholder-map.jpg', caption: 'Stakeholder map' },
@@ -439,7 +459,7 @@ const CASES = {
       { type: 'callout', kind: 'leadership', title: 'Aligning 26 people across 5 countries',
         body: 'Owning the design across that span meant the harder craft was alignment, not pixels, running stakeholder reviews, prioritizing feedback loops, and protecting one cohesive design language as five regional teams pulled in different directions.',
       },
-      { type: 'imageRow', n: '06', title: 'UX scorecard analysis', cols: 2,
+      { type: 'imageRow', n: '07', title: 'UX scorecard analysis', cols: 2,
         body: 'This was the start of the audit and research, a way to find the gaps in the system and pinpoint where to bring improvements. The scorecard combines the System Usability Scale (SUS) with the Technology Acceptance Model (TAM), measuring Discoverability (how easily users find, access and authenticate), Usability (how intuitively they navigate), and Desirability (whether they return).',
         images: [
           { src: 'assets/coca-cola-ko-boss-ux-scorecard-discoverability.jpg',  caption: 'Discoverability scorecard' },
@@ -447,7 +467,7 @@ const CASES = {
           { src: 'assets/coca-cola-ko-boss-ux-scorecard-desirability.jpg', caption: 'Desirability scorecard', wide: true },
         ],
       },
-      { type: 'imageRow', n: '07', title: 'Competitive analysis', cols: 2,
+      { type: 'imageRow', n: '08', title: 'Competitive analysis', cols: 2,
         body: 'Direct competitors, Zé Delivery, Heineken app, Bees Ambev. Indirect, iFood, Uber Eats. Items analyzed: onboarding, menu exploring, search, user flows, promotions, tone of voice, reviews.',
         images: [
           { src: 'assets/coca-cola-ko-boss-competitive-ze-delivery.jpg',          caption: 'Zé Delivery, overview' },
@@ -464,7 +484,7 @@ const CASES = {
           { src: 'assets/coca-cola-ko-boss-feature-opportunities.jpg',          caption: 'Feature opportunities synthesized', wide: true },
         ],
       },
-      { type: 'imageRow', n: '08', title: 'Design system', cols: 2,
+      { type: 'imageRow', n: '09', title: 'Design system', cols: 2,
         body: 'To ensure scalability across five countries, I authored a comprehensive design system that standardized the component library, the contribution model, and the seniority rubric the team still uses today.',
         images: [
           { src: 'assets/coca-cola-ko-boss-design-system-cover.jpg',                 caption: 'DS, cover' },
@@ -484,7 +504,7 @@ const CASES = {
       { type: 'callout', kind: 'leadership', title: 'One pattern across every channel',
         body: 'The design system wasn\u2019t just for the bottler app, the same tokens, components and voice extended into the marketing landing pages, the onboarding decks, the WhatsApp comms and the internal docs. By the end of the engagement, no matter where a bottler met Coca-Cola digitally, they saw the same product.',
       },
-      { type: 'text', n: '09', title: 'Task · Equipment maintenance',
+      { type: 'text', n: '10', title: 'Task · Equipment maintenance',
         body: [
           'After discovery, I migrated the Equipment Maintenance feature from a WhatsApp bot (Solar BR) into the Latam Shopping Cart app, analyzing the original flow, sketching on paper, building lo-fi prototypes for team review, then hi-fi with developer notes.',
         ],
@@ -521,7 +541,7 @@ const CASES = {
           { src: 'assets/coca-cola-ko-boss-equipment-maintenance-hifi-3.jpg',                    caption: 'Hi-fi, step 3' },
         ],
       },
-      { type: 'text', n: '10', title: 'All delivered tasks',
+      { type: 'text', n: '11', title: 'All delivered tasks',
         body: [
           'Over twelve months the work paid off: conversion rose by 6%, we shipped 23 new features, and the System Usability Scale moved from a poor 65 to an excellent 85. Discoverability climbed from 2.5 to 4.2, and a single design system finally gave every bottler across five LATAM countries the same product to sell.',
         ],
