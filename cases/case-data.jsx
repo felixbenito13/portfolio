@@ -45,7 +45,7 @@ const CASES = {
       },
       { type: 'imageRow',
         images: [
-          { src: 'assets/audi-onboarding-current-solution-audit.png', caption: 'Audit of the current solution' },
+          { src: 'assets/audi-onboarding-current-solution-audit-updated.png', caption: 'Audit of the current solution' },
           { src: 'assets/audi-onboarding-current-flow-problems.jpg',                caption: 'Problems identified in the current flow' },
         ],
       },
