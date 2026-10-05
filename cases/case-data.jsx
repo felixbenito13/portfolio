@@ -424,9 +424,10 @@ const CASES = {
           'Padding adjustment across all pages',
         ],
         images: [
-          { src: 'assets/coca-cola-ko-boss-old-version-audit.png', caption: 'Old version, audit', maxWidth: '80%' },
-          { src: 'assets/coca-cola-ko-boss-new-version.jpg',                caption: 'New version', maxWidth: '80%' },
-          { src: 'assets/coca-cola-ko-boss-before-after-comparison.jpg', caption: 'Side-by-side comparison', wide: true },
+          { src: 'assets/coca-cola-ko-boss-old-version-audit-mobile.jpg', caption: 'Old version, audit (mobile)', wide: true },
+          { src: 'assets/coca-cola-ko-boss-old-version-audit-desktop.jpg', caption: 'Old version, audit (desktop)', wide: true },
+          { src: 'assets/coca-cola-ko-boss-new-version-mobile.jpg', caption: 'New version (mobile)', wide: true },
+          { src: 'assets/coca-cola-ko-boss-new-version-desktop.jpg', caption: 'New version (desktop)', wide: true },
         ],
       },
       { type: 'imageRow', n: '05', title: 'Stakeholder map',
