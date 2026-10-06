@@ -788,14 +788,7 @@ const CASES = {
           { src: 'assets/kraft-heinz-discovery-mural.png', caption: 'Discovery mural' },
         ],
       },
-      { type: 'imageRow', n: '07', title: 'Exploring prototypes', cols: 2,
-        body: 'With constraints defined, I moved into rapid ideation, paper sketches to explore multiple dashboard layouts, then low-fidelity prototypes to validate flow and structural feasibility before high-fidelity.',
-        images: [
-          { src: 'assets/kraft-heinz-execution-dashboard-sketch.jpg',     caption: 'Execution dashboard sketch' },
-          { src: 'assets/kraft-heinz-execution-sellout-lofi.jpg', caption: 'Execution × Sell-Out lo-fi' },
-        ],
-      },
-      { type: 'imageRow', n: '08', title: 'Branding', cols: 2,
+      { type: 'imageRow', n: '07', title: 'Branding', cols: 2,
         body: 'A brand system to keep the pattern consistent across designs and to create lasting value for stakeholders.',
         images: [
           { src: 'assets/kraft-heinz-branding-cover.jpg',                          caption: 'Cover', flush: true },
@@ -818,7 +811,7 @@ const CASES = {
           { src: 'assets/kraft-heinz-branding-dashboard-guidelines.jpg',          caption: 'Dashboard guidelines', flush: true },
         ],
       },
-      { type: 'imageRow', n: '09', title: 'Style guide for dashboards', cols: 2,
+      { type: 'imageRow', n: '08', title: 'Style guide for dashboards', cols: 2,
         body: 'A style guide to keep the design standards consistent across dashboards and communications.',
         images: [
           { src: 'assets/kraft-heinz-style-guide-cover.jpg',         caption: 'Cover', flush: true },
@@ -833,6 +826,13 @@ const CASES = {
           { src: 'assets/kraft-heinz-style-guide-icons.jpg',         caption: 'Icons', flush: true },
           { src: 'assets/kraft-heinz-style-guide-text-fields.jpg',   caption: 'Text fields', flush: true },
           { src: 'assets/kraft-heinz-style-guide-tips.jpg',          caption: 'Tips', flush: true },
+        ],
+      },
+      { type: 'imageRow', n: '09', title: 'Exploring prototypes', cols: 2,
+        body: 'With constraints defined, I moved into rapid ideation, paper sketches to explore multiple dashboard layouts, then low-fidelity prototypes to validate flow and structural feasibility before high-fidelity.',
+        images: [
+          { src: 'assets/kraft-heinz-execution-dashboard-sketch.jpg',     caption: 'Execution dashboard sketch' },
+          { src: 'assets/kraft-heinz-execution-sellout-lofi.jpg', caption: 'Execution × Sell-Out lo-fi' },
         ],
       },
       { type: 'text', n: '10', title: 'Design principles for all dashboards',
