@@ -419,7 +419,7 @@ const CASES = {
         ],
       },
       { type: 'imageRow', n: '04', title: 'Design / strategic improvements', cols: 2,
-        body: 'Old version vs new version, fixing contrast, spacing, branding consistency, product highlighting and search.',
+        body: 'The starting point was an audit of the old version, on mobile and desktop. Each annotation marks a problem behind the numbers above, from dated visuals and failing contrast to search hidden behind an icon, and together they set the direction for the redesign:',
         bullets: [
           'Modern visual design',
           'Contrast aligned to WCAG guidelines',
@@ -435,7 +435,7 @@ const CASES = {
         ],
       },
       { type: 'imageRow', n: '05', title: 'Stakeholder map',
-        body: 'Many stakeholders, managers, business analysts, developers and bottler owners. I mapped them to define communication channels and prioritize feedback loops, ensuring alignment across five distinct LATAM markets.',
+        body: 'Before starting the redesign, with the audit in hand, I had to map the stakeholders. There were many of them, managers, business analysts, developers and bottler owners, spread across five LATAM markets. The map defined who to involve at each stage, which communication channels to use and how to prioritize feedback loops, so every decision that came next had the right people behind it.',
         images: [
           { src: 'assets/coca-cola-ko-boss-stakeholder-map.jpg', caption: 'Stakeholder map' },
         ],
@@ -444,7 +444,7 @@ const CASES = {
         body: 'Owning the design across that span meant the harder craft was alignment, not pixels, running stakeholder reviews, prioritizing feedback loops, and protecting one cohesive design language as five regional teams pulled in different directions.',
       },
       { type: 'imageRow', n: '06', title: 'UX scorecard analysis', cols: 2,
-        body: 'This was the start of the audit and research, a way to find the gaps in the system and pinpoint where to bring improvements. The scorecard combines the System Usability Scale (SUS) with the Technology Acceptance Model (TAM), measuring Discoverability (how easily users find, access and authenticate), Usability (how intuitively they navigate), and Desirability (whether they return).',
+        body: 'With the right people aligned, the next step was to measure the problems the audit had surfaced. I ran a UX scorecard that combines the System Usability Scale (SUS) with the Technology Acceptance Model (TAM), measuring Discoverability (how easily users find, access and authenticate), Usability (how intuitively they navigate), and Desirability (whether they return). The scores turned observations into a baseline and showed exactly where to focus.',
         images: [
           { src: 'assets/coca-cola-ko-boss-ux-scorecard-discoverability.jpg',  caption: 'Discoverability scorecard' },
           { src: 'assets/coca-cola-ko-boss-ux-scorecard-usability.jpg', caption: 'Usability scorecard' },
@@ -452,7 +452,7 @@ const CASES = {
         ],
       },
       { type: 'imageRow', n: '07', title: 'Competitive analysis', cols: 2,
-        body: 'Direct competitors, Zé Delivery, Heineken app, Bees Ambev. Indirect, iFood, Uber Eats. Items analyzed: onboarding, menu exploring, search, user flows, promotions, tone of voice, reviews.',
+        body: 'Knowing where the product fell short, I looked at how others solved the same problems. Direct competitors: Zé Delivery, Heineken app and Bees Ambev. Indirect: iFood and Uber Eats. I compared onboarding, menu exploration, search, user flows, promotions, tone of voice and reviews.',
         images: [
           { src: 'assets/coca-cola-ko-boss-competitive-ze-delivery.jpg',          caption: 'Zé Delivery, overview' },
           { src: 'assets/coca-cola-ko-boss-competitive-heineken-tone.jpg',    caption: 'Heineken, tone of voice' },
@@ -469,7 +469,7 @@ const CASES = {
         ],
       },
       { type: 'imageRow', n: '08', title: 'Design system', cols: 2,
-        body: 'To ensure scalability across five countries, I authored a comprehensive design system that standardized the component library, the contribution model, and the seniority rubric the team still uses today.',
+        body: 'With a roadmap tied to the OKRs, the fixes had to scale across five countries without each team rebuilding them its own way. So before redesigning screens, I authored a comprehensive design system that standardized the component library, the contribution model, and the seniority rubric the team still uses today.',
         images: [
           { src: 'assets/coca-cola-ko-boss-design-system-cover.jpg',                 caption: 'DS, cover' },
           { src: 'assets/coca-cola-ko-boss-design-system-contents.jpg',    caption: 'Table of contents' },
@@ -489,7 +489,7 @@ const CASES = {
         body: 'The design system wasn\u2019t just for the bottler app, the same tokens, components and voice extended into the marketing landing pages, the onboarding decks, the WhatsApp comms and the internal docs. By the end of the engagement, no matter where a bottler met Coca-Cola digitally, they saw the same product.',
       },
       { type: 'imageRow', n: '09', title: 'The redesign, final result', cols: 2,
-        body: 'With the design system in place, the final screens apply every decision from the audit. Each change below answers a problem found in the old version, from how people find and reorder products to how the interface looks and behaves on each device.',
+        body: 'With the design system in place, the final screens apply every decision from the audit. Each change below answers a problem found in the old version, from how people find and reorder products to how the interface looks and behaves on each device. The annotations keep the same numbers as the audit in section 04, so each fix traces back to the problem it solves.',
         bullets: [
           'Persistent, labeled search bar to reach any product fast',
           'Unified navigation across mobile and desktop, same four items in the same order',
@@ -512,7 +512,7 @@ const CASES = {
       },
       { type: 'text', n: '10', title: 'Task · Equipment maintenance',
         body: [
-          'After discovery, I migrated the Equipment Maintenance feature from a WhatsApp bot (Solar BR) into the Latam Shopping Cart app, analyzing the original flow, sketching on paper, building lo-fi prototypes for team review, then hi-fi with developer notes.',
+          'The redesign also made room to remove one of the manual workarounds listed in the problem: equipment maintenance, which ran through a WhatsApp bot (Solar BR). I migrated it into the Latam Shopping Cart app, analyzing the original flow, sketching on paper, building lo-fi prototypes for team review, then hi-fi with developer notes.',
         ],
       },
       { type: 'imageRow',
