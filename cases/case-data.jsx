@@ -468,7 +468,7 @@ const CASES = {
           { src: 'assets/coca-cola-ko-boss-feature-opportunities.jpg',          caption: 'Feature opportunities synthesized', wide: true },
         ],
       },
-      { type: 'imageRow', n: '08', title: 'Design system', cols: 2,
+      { type: 'imageRow', n: '08', title: 'Design system',
         body: 'With a roadmap tied to the OKRs, the fixes had to scale across five countries without each team rebuilding them its own way. So before redesigning screens, I authored a comprehensive design system that standardized the component library, the contribution model, and the seniority rubric the team still uses today.',
         images: [
           { src: 'assets/coca-cola-ko-boss-design-system-cover.jpg',                 caption: 'DS, cover' },
@@ -510,44 +510,7 @@ const CASES = {
           { src: 'assets/coca-cola-ko-boss-new-version-desktop.jpg', caption: 'New version (desktop)', wide: true },
         ],
       },
-      { type: 'text', n: '10', title: 'Task · Equipment maintenance',
-        body: [
-          'The redesign also made room to remove one of the manual workarounds listed in the problem: equipment maintenance, which ran through a WhatsApp bot (Solar BR). I migrated it into the Latam Shopping Cart app, analyzing the original flow, sketching on paper, building lo-fi prototypes for team review, then hi-fi with developer notes.',
-        ],
-      },
-      { type: 'imageRow',
-        images: [
-          { src: 'assets/coca-cola-ko-boss-equipment-maintenance-whatsapp-flow.jpg',        caption: 'Complete user flow, from WhatsApp to the maintenance request' },
-        ],
-      },
-      { type: 'text',
-        body: [
-          'I start my thinking, sketching and screen creation by drawing on paper, that is where I feel most comfortable working. Once the idea holds up, I create the digital version with the help of an AI or directly in Figma.',
-        ],
-      },
-      { type: 'imageRow',
-        images: [
-          { src: 'assets/coca-cola-ko-boss-equipment-maintenance-app-flow.jpg',             caption: 'New app-native flow' },
-        ],
-      },
-      { type: 'imageRow',
-        images: [
-          { src: 'assets/coca-cola-ko-boss-equipment-maintenance-lofi.png', caption: 'Lo-fi prototype' },
-        ],
-      },
-      { type: 'text',
-        body: [
-          'With the flow and screens defined, I move on to the high-fidelity build in Figma, already adding some dev notes along the way that will help me run the handoff.',
-        ],
-      },
-      { type: 'imageRow', cols: 3,
-        images: [
-          { src: 'assets/coca-cola-ko-boss-equipment-maintenance-hifi-1.jpg',                    caption: 'Hi-fi, step 1' },
-          { src: 'assets/coca-cola-ko-boss-equipment-maintenance-hifi-2.jpg',                    caption: 'Hi-fi, step 2' },
-          { src: 'assets/coca-cola-ko-boss-equipment-maintenance-hifi-3.jpg',                    caption: 'Hi-fi, step 3' },
-        ],
-      },
-      { type: 'text', n: '11', title: 'All delivered tasks',
+      { type: 'text', n: '10', title: 'All delivered tasks',
         body: [
           'Over twelve months the work paid off: conversion rose by 6%, we shipped 23 new features, and the System Usability Scale moved from a poor 65 to an excellent 85. Discoverability climbed from 2.5 to 4.2, and a single design system finally gave every bottler across five LATAM countries the same product to sell.',
         ],
