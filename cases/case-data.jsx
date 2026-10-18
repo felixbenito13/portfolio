@@ -95,8 +95,7 @@ const CASES = {
       },
       { type: 'imageRow',
         images: [
-          { src: 'assets/audi-onboarding-prioritized-improvements-table.png',     caption: 'Prioritized table of improvements' },
-          { src: 'assets/audi-onboarding-design-decisions-documented.jpg', caption: 'Design decisions documented', note: 'This table is a summary of the survey results crossed with the prioritization matrix. It set the main focuses we would work on: cut the double login down to one, surface the maintenance entry point directly in the menu, give the page a clear ending with a single obvious CTA, and remove the dead ends that forced users to look up a phone number.' },
+          { src: 'assets/audi-onboarding-prioritized-improvements-table.png',     caption: 'Prioritized table of improvements', note: 'This table is a summary of the survey results crossed with the prioritization matrix. It set the main focuses we would work on: cut the double login down to one, surface the maintenance entry point directly in the menu, give the page a clear ending with a single obvious CTA, and remove the dead ends that forced users to look up a phone number.' },
         ],
       },
       { type: 'principles', n: '09', title: 'Design principles (derived from research)',
