@@ -372,7 +372,16 @@ function Footer() {
         </div>
         <div className="footer-base">
           <span>© 2007 / {new Date().getFullYear()} Felix Benito</span>
-          <span>Hand-built with coffee</span>
+          <span className="footer-coffee">
+            <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center' }}>
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.5 5.5h9v4a3 3 0 0 1-3 3h-3a3 3 0 0 1-3-3v-4Z" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" />
+                <path d="M11.5 6.5h1.4a1.6 1.6 0 0 1 0 3.2h-1.4" stroke="currentColor" strokeWidth="1.3" />
+                <path d="M5 1.6c-.5.7-.5 1.3 0 2M8 1.6c-.5.7-.5 1.3 0 2" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+              </svg>
+            </span>
+            Hand-built with coffee
+          </span>
         </div>
       </div>
     </section>
