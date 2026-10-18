@@ -510,7 +510,14 @@ const CASES = {
           { src: 'assets/coca-cola-ko-boss-new-version-desktop.jpg', caption: 'New version (desktop)', wide: true },
         ],
       },
-      { type: 'text', n: '10', title: 'All delivered tasks',
+      { type: 'imageRow', n: '10', title: 'The purchase flow, end to end',
+        body: 'With the new screens in place, I mapped the full journey a store owner takes to place an order, from opening the app to the order confirmed. The flow lays out every screen, decision and fallback across five stages, entry, discover, cart, checkout and post-purchase, and the final screens below follow that same path step by step, each one annotated with the decision behind it.',
+        images: [
+          { src: 'assets/coca-cola-ko-boss-purchase-flow.jpg', caption: 'Purchase flow', flush: true, maxWidth: '1197px' },
+          { src: 'assets/coca-cola-ko-boss-purchase-final-screens.jpg', caption: 'Final purchase screens', flush: true, maxWidth: '758px' },
+        ],
+      },
+      { type: 'text', n: '11', title: 'All delivered tasks',
         body: [
           'Over twelve months the work paid off: conversion rose by 6%, we shipped 23 new features, and the System Usability Scale moved from a poor 65 to an excellent 85. Discoverability climbed from 2.5 to 4.2, and a single design system finally gave every bottler across five LATAM countries the same product to sell.',
         ],
