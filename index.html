@@ -189,7 +189,8 @@
     }
 
     @media (max-width: 1080px) {
-      [data-r="process"] { grid-template-columns: 1fr !important; }
+      [data-r="process"] { grid-template-columns: minmax(0, 1fr) !important; }
+      [data-r="process"] > * { min-width: 0; }
       [data-r="process-content"] { min-height: 0 !important; }
       [data-r="process-tabs"] { flex-direction: row !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch; scrollbar-width: none; border-top: 0 !important; }
       [data-r="process-tabs"]::-webkit-scrollbar { display: none; }
