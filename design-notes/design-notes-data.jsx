@@ -9,9 +9,80 @@ const NOTE_CATEGORIES = [
   { id: 'creativity', label: 'Creativity' },
 ];
 
-const NOTE_ORDER = ['alignment-happens-before-the-file-opens'];
+const NOTE_ORDER = ['where-creativity-comes-from', 'alignment-happens-before-the-file-opens'];
 
 const NOTES = {
+
+  'where-creativity-comes-from': {
+    slug: 'where-creativity-comes-from',
+    category: 'creativity',
+    categoryLabel: 'Creativity',
+    title: 'Where Creativity Comes From',
+    subtitle: 'Six unconventional habits I use to keep my creative mind fresh, even on cloudy days.',
+    date: '2026-10-26',
+    dateLabel: 'Oct 2026',
+    readTime: '4 min read',
+    cover: 'assets/where-creativity-comes-from-cover.jpg',
+    coverAlt: 'Where Creativity Comes From, a Design Notes creativity post by Felix Benito',
+    excerpt: 'Ideas rarely show up on demand. Six habits, almost none of them in front of a screen, that keep my creative mind rested, curious and open.',
+    metaDescription: 'A design & brand lead’s 6 unconventional habits for daily creativity: travel, sketching, talking with strangers, campaign mapping, music and the classics.',
+    body: [
+      { type: 'p', text: 'After years of working in design and marketing, with the daily challenge of creating something new, I’ve learned that ideas rarely show up on demand. They show up when the mind is rested, curious, and open enough to catch them.' },
+      { type: 'p', text: 'Over time, I developed a few habits that keep my mind refreshed and ready to receive small daily insights, which I then turn into part of my work. Almost none of them happen in front of a screen. Today I want to share some of these unconventional techniques, the ones that keep my creativity going every day, even on cloudy days.' },
+
+      { type: 'h2', text: 'Creativity Is a Muscle' },
+      { type: 'p', text: 'Creativity works like a muscle. If you don’t train it, it weakens. If you keep it fresh and keep working on it, the effort pays off in the long term, not only in the job you’re doing today, but in how sharp and healthy your mind stays over the years. It’s also my way of avoiding what Pink Floyd called “Brain Damage.”' },
+      { type: 'p', text: 'These are the habits that have been helping me.' },
+
+      { type: 'h2', text: '6 Habits That Keep My Creativity Fresh' },
+
+      { type: 'h3', text: '1. Travel and Discover a New Culture' },
+      { type: 'p', text: 'A new café, a song playing on the street, a theater, a mountain, the sea. Traveling sparks creativity in so many ways that it’s hard to describe. It doesn’t matter if it’s a city close to where you live or another country: travel is usually the number one tip I give.' },
+      { type: 'p', text: 'Every new place breaks the patterns your brain runs on autopilot. New colors, new sounds, new ways of solving everyday problems, and suddenly you’re looking at your own work with fresh eyes.' },
+      { type: 'image', src: 'assets/creativity-vinicunca-rainbow-mountain.jpg',
+        alt: 'Felix Benito with arms open beside the Montaña Vinicunca sign on the Rainbow Mountain in Peru, with striped red, yellow and green slopes behind him',
+        caption: 'Vinicunca, the Rainbow Mountain in Peru. Some color palettes you only find by getting there.' },
+
+      { type: 'h3', text: '2. Cultivate an Art Hobby' },
+      { type: 'p', text: 'I love drawing, and lately I’ve been focusing on urban sketching. Stepping away from the computer to see the real world through its colors, shapes and shadows, and trying to translate it into a quick, freestyle drawing, trains me to pay attention to my surroundings and to keep asking: how can I simplify this and put it on paper?' },
+      { type: 'p', text: 'That’s the same question I ask in every design project. Other hobbies work just as well: playing music, singing, making things by hand. They all spark creativity.' },
+      { type: 'image', src: 'assets/creativity-urban-sketch-cusco.jpg',
+        alt: 'Ink urban sketch of the domes of the Iglesia de la Compañía de Jesús held up in front of the real church in Cusco, Peru',
+        caption: 'Sketching the Iglesia de la Compañía de Jesús in Cusco. Seeing, simplifying, putting it on paper.' },
+
+      { type: 'h3', text: '3. Talk With Strangers' },
+      { type: 'p', text: 'A fun way to be more creative is to talk with at least one stranger a day. Figuring out how to start a conversation and keep the connection going is a challenge in itself, and you’ll discover your own ways to do it.' },
+      { type: 'p', text: 'It doesn’t matter who the person is: the cashier, the Uber driver, someone at the gym. These conversations can bring real, and often fun, discoveries. And as designers, listening to people outside our own bubble is never wasted time.' },
+      { type: 'image', src: 'assets/creativity-talk-with-strangers-peru.jpg',
+        alt: 'Selfie of Felix Benito in sunglasses with his mototaxi driver during a ride in Peru',
+        caption: 'A selfie with my mototaxi driver in Peru. A short ride, a long conversation, a new view of the city.' },
+
+      { type: 'h3', text: '4. Map the Most Engaging Campaigns on Social Media' },
+      { type: 'p', text: 'I enjoy following big tech companies, and small ones too, that do a great job engaging their audience. So I started mapping them: a doc where I log each post, the data behind it, and what I find creative about it.' },
+      { type: 'p', text: 'It has become my personal library of inspiration. Every once in a while, I go back and revisit the collection.' },
+      { type: 'image', src: 'assets/creativity-campaign-library.jpg',
+        alt: 'Social media analysis document logging an Instagram carousel post with its content type, post format and a creativity score',
+        caption: 'My campaign library: each post logged by content type, format, and a score for creativity and execution.' },
+
+      { type: 'h3', text: '5. Listen to Different Music Every Day' },
+      { type: 'p', text: 'When I was younger, I used to read music blogs to discover new bands in the styles I liked. Today, with YouTube and streaming, it’s even easier. So whenever I’m at the gym, I’m always discovering a new band.' },
+      { type: 'p', text: 'Different genres bring different rhythms, structures and moods, and that variety finds its way into the work.' },
+      { type: 'image', src: 'assets/creativity-listening-history.jpg',
+        alt: 'Streaming app listening history mixing Iron Maiden, Manu Chao, Natiruts and the Ramones, with John Coltrane’s My Favorite Things playing',
+        caption: 'From Iron Maiden to Manu Chao, Natiruts, the Ramones and John Coltrane. A regular week in my listening history.' },
+
+      { type: 'h3', text: '6. Read the Classics' },
+      { type: 'p', text: 'The classics of literature earned that label for a reason: thousands of people have enjoyed them and taken different lessons from them over the years. I really recommend them.' },
+      { type: 'p', text: 'Right now I’m reading Moby Dick by Herman Melville, and to my surprise, I’m really enjoying that adventure at sea. Imagining the scenarios, the descriptions and the way the story unfolds will certainly help improve your creativity.' },
+      { type: 'image', src: 'assets/creativity-reading-the-classics.jpg',
+        alt: 'Open book on the chapter Analyzing the Competition, with the opening quote highlighted in yellow and a highlighter beside it',
+        caption: 'Reading with a highlighter in hand. Literature for imagination, strategy books for method.' },
+
+      { type: 'h2', text: 'Creativity Is a Daily Practice' },
+      { type: 'p', text: 'These are some of the unconventional habits that help me be more creative in my daily routine. None of them happen in front of a screen, but all of them end up there eventually.' },
+      { type: 'p', text: 'What about you? I’d love to hear the techniques that keep your creativity fresh.' },
+    ],
+  },
 
   'alignment-happens-before-the-file-opens': {
     slug: 'alignment-happens-before-the-file-opens',
