@@ -166,7 +166,7 @@ function NotesIndex() {
   useReveal();
 
   React.useEffect(() => {
-    document.title = 'Design Notes · Felix Benito, Design Lead';
+    /* page <title> is set in the HTML for SEO */
   }, []);
 
   const notes = NOTE_ORDER.map((slug) => NOTES[slug]);
@@ -219,7 +219,7 @@ function renderBlock(b, i) {
       return (
         <figure key={i} className="note-image reveal">
           <div className="note-image-frame">
-            <img src={b.src} alt={b.alt} loading="lazy" />
+            <img src={b.src} alt={b.alt} width={b.w} height={b.h} loading="lazy" decoding="async" />
           </div>
           {b.caption && <figcaption>{b.caption}</figcaption>}
         </figure>
@@ -233,7 +233,7 @@ function NoteArticle({ note }) {
   useReveal();
 
   React.useEffect(() => {
-    document.title = note.title + ' · Design Notes · Felix Benito';
+    /* page <title> is set in the HTML for SEO */
   }, [note.title]);
 
   return (

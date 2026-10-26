@@ -182,7 +182,7 @@ function ImageRowSection({ s }) {
                         style={img.maxWidth ? { maxWidth: img.maxWidth, marginLeft: 'auto', marginRight: 'auto' } : undefined}>
                   {img.caption && <figcaption>{img.caption}</figcaption>}
                   <div className="case-image-frame">
-                    <img src={img.src} alt={imgAltFor(s.title, img)} loading="lazy" />
+                    <img src={img.src} alt={imgAltFor(s.title, img)} width={img.w} height={img.h} loading="lazy" decoding="async" />
                   </div>
                   {img.note && <p className="case-image-note">{img.note}</p>}
                 </figure>
@@ -216,7 +216,7 @@ function KpisSection({ s }) {
             <figure className="case-image case-image-wide" style={{ marginTop: 40, ...(s.image.maxWidth ? { maxWidth: s.image.maxWidth, marginLeft: 'auto', marginRight: 'auto' } : {}) }}>
               {s.image.caption && <figcaption>{s.image.caption}</figcaption>}
               <div className="case-image-frame">
-                <img src={s.image.src} alt={imgAltFor(s.title, s.image)} loading="lazy" />
+                <img src={s.image.src} alt={imgAltFor(s.title, s.image)} width={s.image.w} height={s.image.h} loading="lazy" decoding="async" />
               </div>
             </figure>
           )}
@@ -398,7 +398,7 @@ function CaseApp() {
   __caseLabel = c.company || '';
 
   React.useEffect(() => {
-    document.title = c.title + ' · Felix Benito';
+    /* page <title> is set per case in its HTML for SEO */
     const r = document.documentElement;
     r.setAttribute('data-direction', 'quiet');
     r.setAttribute('data-density', t.density);
