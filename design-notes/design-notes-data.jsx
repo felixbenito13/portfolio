@@ -7,11 +7,71 @@ const NOTE_CATEGORIES = [
   { id: 'craft',      label: 'Craft' },
   { id: 'ai',         label: 'AI' },
   { id: 'creativity', label: 'Creativity' },
+  { id: 'breakdown',  label: 'Breakdown' },
 ];
 
-const NOTE_ORDER = ['where-creativity-comes-from', 'alignment-happens-before-the-file-opens'];
+const NOTE_ORDER = ['breakdown-01-amazon-homepage', 'where-creativity-comes-from', 'alignment-happens-before-the-file-opens'];
 
 const NOTES = {
+
+  'breakdown-01-amazon-homepage': {
+    slug: 'breakdown-01-amazon-homepage',
+    category: 'breakdown',
+    categoryLabel: 'Breakdown',
+    title: 'When Everything Is a Deal, Nothing Feels Like a Deal',
+    subtitle: 'Design Notes: Breakdown #01. A UX look at Amazon Brazil’s homepage, and what I’d test differently.',
+    date: '2026-10-27',
+    dateLabel: 'Oct 2026',
+    readTime: '4 min read',
+    cover: 'assets/breakdown-01-amazon-homepage-cover.jpg',
+    coverAlt: 'Breakdown #01, When Everything Is a Deal, Nothing Feels Like a Deal, a UX breakdown of Amazon’s homepage by Felix Benito',
+    excerpt: 'A new series on the design decisions behind platforms everyone knows. First up: Amazon Brazil’s homepage, weeks before Black Friday.',
+    metaDescription: 'A design & brand lead breaks down Amazon Brazil’s homepage: highlights, grid, visual clutter and personalization, plus what he’d test differently.',
+    body: [
+      { type: 'video', src: 'assets/breakdown-01-amazon-homepage.mp4', poster: 'assets/breakdown-01-amazon-homepage-poster.jpg', w: 1600, h: 862,
+        label: 'Breakdown #01 video with captions: Felix Benito walks through Amazon Brazil’s homepage in Figma, marking highlights, grid, visual clutter and personalization',
+        caption: 'Breakdown #01 in video: the whole homepage, top to bottom, in about three minutes.' },
+
+      { type: 'p', text: 'Design Notes: Breakdown is a new series where I take a platform everyone knows and look at the design decisions behind it. The goal isn’t to criticize. It’s to understand the reasoning behind the screen, and to share what I would test differently.' },
+      { type: 'p', text: 'First up: Amazon Brazil’s homepage, a few weeks before Black Friday. I scrolled from top to bottom and stopped at four points: highlights, grid, visual clutter, and personalization.' },
+
+      { type: 'h2', text: '1. Highlight: When Every Banner Is Orange' },
+      { type: 'p', text: 'Right at the top, Amazon uses color to grab attention. The banners get colored backgrounds, especially the orange ones, and that works: color creates instant hierarchy and pulls your eye to the offer.' },
+      { type: 'p', text: 'The problem is that almost every banner gets the same treatment. Orange next to orange next to orange, and they start competing with each other. When everything is highlighted, nothing really is.' },
+      { type: 'p', text: 'I would create one banner specifically for the main promotion and focus on it, letting the other banners step back so the one that matters can actually stand out.' },
+      { type: 'image', src: 'assets/breakdown-01-amazon-highlight.jpg', w: 1200, h: 630,
+        alt: 'Top of Amazon Brazil’s homepage with several orange promotional banners side by side, marked as point 1, Highlight',
+        caption: 'The top of the page: several orange banners, all asking for attention at once.' },
+
+      { type: 'h2', text: '2. Grid: Four Columns, Different Rules' },
+      { type: 'p', text: 'The homepage runs on a four-column grid, but the grid changes from section to section. Some cards show a two-by-two product block, some show a single image, some mix both, and in some rows the cards stop following the columns altogether.' },
+      { type: 'p', text: 'That flexibility makes sense for a company where many teams plug their own campaigns into the same page. The cost is rhythm: every new row asks your eye to learn a new layout.' },
+      { type: 'p', text: 'I would create consistency through patterns: a small set of card templates, shared across sections, so the page feels like one system while you scroll.' },
+      { type: 'image', src: 'assets/breakdown-01-amazon-grid.jpg', w: 1200, h: 630,
+        alt: 'Amazon Brazil homepage product sections outlined in red, showing four columns whose card layouts change from row to row, marked as point 2, Grid',
+        caption: 'The grid marked in red: four columns, but each section plays by its own rules.' },
+
+      { type: 'h2', text: '3. Polluted: Too Many Options, Too Little Space' },
+      { type: 'p', text: 'As you keep scrolling, the page is full of products. Some sit on colorful backgrounds, others on white or grey ones, and red discount badges appear almost everywhere.' },
+      { type: 'p', text: 'In my opinion, it’s simply too many options. As a user, I don’t know which product to choose or where to look first. When everything is a deal, nothing feels like a deal.' },
+      { type: 'p', text: 'I would create more white space around the products, keep the backgrounds clean, and show fewer things at once, saving color for the one or two highlights that really deserve it.' },
+      { type: 'image', src: 'assets/breakdown-01-amazon-polluted.jpg', w: 1200, h: 630,
+        alt: 'Dense Amazon Brazil homepage sections with purple and yellow-green product backgrounds and red discount badges, marked as point 3, Polluted',
+        caption: 'Purple, green, and yellow-green backgrounds, plus discount badges: everything competes for the same attention.' },
+
+      { type: 'h2', text: '4. Personalization: Looking Back vs. Looking Ahead' },
+      { type: 'p', text: 'At the end of the page, Amazon shows two rows built from my browsing history: what other customers viewed after seeing the same products, and the products I viewed myself. It’s a reminder, an attempt to close a sale I left open.' },
+      { type: 'p', text: 'I would change this to something based on what I actually purchased: “Based on your purchase, customers also bought…”. Less “come back to this,” more “here’s what’s next.”' },
+      { type: 'image', src: 'assets/breakdown-01-amazon-personalization.jpg', w: 1200, h: 630,
+        alt: 'Two Amazon Brazil recommendation rows based on browsing history, with design and marketing books and recently viewed products, marked as point 4, Personalization',
+        caption: 'Two rows built from browsing history, pointing back to what I already looked at.' },
+
+      { type: 'h2', text: 'Takeaway: Hierarchy Needs Contrast' },
+      { type: 'p', text: 'Hierarchy needs contrast, and contrast needs restraint. When everything on the page calls for your attention, nothing gets highlighted. Focus on fewer things, and the highlights you keep become much stronger.' },
+      { type: 'p', text: 'What would you change on Amazon’s homepage? Let me know in the comments. See you in the next Breakdown.' },
+      { type: 'note', text: 'Independent analysis. I have no affiliation with Amazon. Screenshots are used for commentary and education.' },
+    ],
+  },
 
   'where-creativity-comes-from': {
     slug: 'where-creativity-comes-from',

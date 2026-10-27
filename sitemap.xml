@@ -38,7 +38,7 @@
   </url>
   <url>
     <loc>https://felixbenito.com/design-notes/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -51,6 +51,12 @@
   <url>
     <loc>https://felixbenito.com/design-notes/where-creativity-comes-from.html</loc>
     <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://felixbenito.com/design-notes/breakdown-01-amazon-homepage.html</loc>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

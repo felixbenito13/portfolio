@@ -224,6 +224,17 @@ function renderBlock(b, i) {
           {b.caption && <figcaption>{b.caption}</figcaption>}
         </figure>
       );
+    case 'video':
+      return (
+        <figure key={i} className="note-image note-video reveal">
+          <div className="note-image-frame">
+            <video src={b.src} poster={b.poster} width={b.w} height={b.h} controls playsInline preload="metadata" aria-label={b.label} />
+          </div>
+          {b.caption && <figcaption>{b.caption}</figcaption>}
+        </figure>
+      );
+    case 'note':
+      return <p key={i} className="note-p note-disclaimer reveal">{b.text}</p>;
     default:
       return null;
   }
