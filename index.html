@@ -947,16 +947,16 @@ class Component extends DCLogic {
       { name: 'Audi', src: 'assets/client-logo-audi.svg' },
       { name: 'Coca-Cola', src: 'assets/client-logo-coca-cola.png' },
       { name: 'Kraft Heinz', src: 'assets/client-logo-kraft-heinz.png' },
-      { name: 'RHI Magnesita', src: 'assets/client-logo-rhi-magnesita.jpg', scale: 0.72 },
+      { name: 'RHI Magnesita', src: 'assets/client-logo-rhi-magnesita.jpg', h: 84 },
       { name: 'Algar', src: 'assets/client-logo-algar.jpg' },
       { name: 'Ourofino', src: 'assets/client-logo-ourofino.jpg' },
-      { name: 'Ice Kiss', src: 'assets/client-logo-ice-kiss.jpg', scale: 0.72 },
+      { name: 'Ice Kiss', src: 'assets/client-logo-ice-kiss.jpg', h: 78 },
       { name: 'Saraiva', src: 'assets/client-logo-saraiva.png' },
     ].map((c) => ({
       ...c,
       alt: c.name + ' logo, client of Felix Benito',
-      maxW: c.scale ? (c.scale * 80) + '%' : '80%',
-      maxH: c.scale ? (51 * c.scale) + 'px' : '51px',
+      maxW: c.h ? '60%' : '80%',
+      maxH: c.h ? c.h + 'px' : '51px',
     }));
 
     const navItems = [
