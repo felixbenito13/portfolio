@@ -32,44 +32,7 @@
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
-    hs.forEach(function (h) { if (!h.closest('#top')) io.observe(h); });
-  }
-
-  /* ── 1 · hero ──────────────────────────────────────────────────────────── */
-  function hero() {
-    var top = document.getElementById('top'); if (!top) return;
-    var h1 = top.querySelector('h1.mh');
-    var photo = top.querySelector('.hero-media img');
-    function go() {
-      if (top.classList.contains('on')) return;
-      top.classList.add('on');
-      if (h1) h1.classList.add('in');
-    }
-    /* open the window only once the photo is ready to show, never longer than 1.5s */
-    function start() {
-      if (!photo || (photo.complete && photo.naturalWidth)) return go();
-      var done = false; function once() { if (!done) { done = true; go(); } }
-      if (photo.decode) photo.decode().then(once, once); else photo.addEventListener('load', once);
-      setTimeout(once, 1500);
-    }
-    if (RM) { start(); return; }
-    var b = document.body;
-    if (b.classList.contains('intro-hold')) {
-      var mo = new MutationObserver(function () {
-        if (!b.classList.contains('intro-hold')) { mo.disconnect(); setTimeout(start, 60); }
-      });
-      mo.observe(b, { attributes: true, attributeFilter: ['class'] });
-      setTimeout(start, 9000);
-    } else {
-      requestAnimationFrame(function () { setTimeout(start, 120); });
-    }
-    /* subtle parallax on the photo, and the scroll cue fades once you move */
-    var img = top.querySelector('.hero-media img');
-    onScrollFrame(function () {
-      var y = window.pageYOffset || 0;
-      top.classList.toggle('scrolled', y > 40);
-      if (img) img.style.setProperty('--py', Math.min(14, y * 0.03).toFixed(1) + 'px');
-    });
+    hs.forEach(function (h) { io.observe(h); });
   }
 
   /* ── 9 · nav over the dark hero ───────────────────────────────────────── */
@@ -182,7 +145,7 @@
 
   function init() {
     window.__motionReady = true;
-    headlines(); hero(); nav(); images(); pinnedProcess(); quotes();
+    headlines(); nav(); images(); pinnedProcess(); quotes();
   }
 
   var tries = 0;

@@ -139,7 +139,7 @@ function Nav() {
     <nav className={open ? 'nav nav-open' : 'nav'}>
       <div className="shell nav-inner">
         <a href="../index.html" className="nav-brand">
-          <img src="../assets/felix-benito-logo.png" alt="Felix Benito, design lead, home" className="nav-logo" />
+          <img src="../assets/felix-benito-logo.png?v=2" alt="Felix Benito, design and brand lead, home" className="nav-logo" />
         </a>
         <div className="nav-links">
           <a href="../index.html#work" className="active" onClick={() => setOpen(false)}>Cases</a>
