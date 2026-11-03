@@ -13,6 +13,78 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "density": "regular"
 }/*EDITMODE-END*/;
 
+// ─── Motion helpers ────────────────────────────────────────────────────────
+const MOTION_OK = (() => { try { return !window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { return false; } })();
+if (MOTION_OK) document.documentElement.classList.add('motion');
+
+/* words that rise out of their own mask, like the home headlines */
+function SplitWords({ text }) {
+  const words = String(text).split(/\s+/).filter(Boolean);
+  return words.map((w, i) => (
+    <React.Fragment key={i}>
+      <span className="mw"><span style={{ '--i': i }}>{w}</span></span>{i < words.length - 1 ? ' ' : ''}
+    </React.Fragment>
+  ));
+}
+
+/* images open from the edges as they scroll in; headlines rise when visible */
+function useCaseMotion() {
+  React.useEffect(() => {
+    if (!MOTION_OK || !('IntersectionObserver' in window)) {
+      document.querySelectorAll('.case-image-frame, .mh').forEach((el) => el.classList.add('in'));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
+    const bind = () => document.querySelectorAll('.case-image-frame:not(.clip), .mh:not(.bound)').forEach((el) => {
+      el.classList.add(el.classList.contains('mh') ? 'bound' : 'clip');
+      io.observe(el);
+    });
+    bind();
+    const t = setTimeout(bind, 800);
+    return () => { clearTimeout(t); io.disconnect(); };
+  }, []);
+}
+
+/* slim bar under the nav: which case and which section you are reading */
+function CaseProgress({ c }) {
+  const [state, setState] = React.useState({ show: false, label: '', n: '', p: 0 });
+  React.useEffect(() => {
+    let tick = false;
+    const update = () => {
+      tick = false;
+      const hero = document.querySelector('.case-hero');
+      const heads = [].slice.call(document.querySelectorAll('.case-section-head'));
+      const show = hero ? hero.getBoundingClientRect().bottom < 64 : false;
+      let n = '', label = '';
+      heads.forEach((h) => {
+        if (h.getBoundingClientRect().top < window.innerHeight * 0.4) {
+          n = h.getAttribute('data-n') || n; label = h.getAttribute('data-title') || label;
+        }
+      });
+      const doc = document.documentElement;
+      const max = Math.max(1, doc.scrollHeight - window.innerHeight);
+      const p = Math.min(1, Math.max(0, (window.pageYOffset || 0) / max));
+      setState((s) => (s.show === show && s.n === n && s.label === label && Math.abs(s.p - p) < 0.002) ? s : { show, n, label, p });
+    };
+    const req = () => { if (!tick) { tick = true; requestAnimationFrame(update); } };
+    window.addEventListener('scroll', req, { passive: true });
+    window.addEventListener('resize', req, { passive: true });
+    req();
+    return () => { window.removeEventListener('scroll', req); window.removeEventListener('resize', req); };
+  }, []);
+  return (
+    <div className={'case-progress' + (state.show ? ' on' : '')} aria-hidden="true">
+      <div className="shell case-progress-inner">
+        <span className="case-progress-case">{c.company}</span>
+        <span className="case-progress-sec">{state.n ? state.n + ' · ' : ''}{state.label}</span>
+      </div>
+      <span className="case-progress-bar" style={{ transform: 'scaleX(' + state.p.toFixed(4) + ')' }} />
+    </div>
+  );
+}
+
 // ─── Reveal-on-scroll ──────────────────────────────────────────────────────
 function useReveal() {
   React.useEffect(() => {
@@ -101,7 +173,7 @@ function CaseHero({ c }) {
           </span>
         </div>
         <div className="reveal">
-          <h1 className="case-title">{c.title}</h1>
+          <h1 className="case-title mh"><SplitWords text={c.title} /></h1>
           <p className="case-sub">{c.subtitle}</p>
         </div>
       </div>
@@ -137,7 +209,7 @@ function CaseHero({ c }) {
 // ─── Section types ─────────────────────────────────────────────────────────
 function SectionHeader({ n, title }) {
   return (
-    <div className="case-section-head reveal">
+    <div className="case-section-head reveal" data-n={n || ''} data-title={title || ''}>
       <span className="case-section-n">{n}</span>
       <h2>{title}</h2>
     </div>
@@ -392,6 +464,7 @@ function Footer() {
 function CaseApp() {
   const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
   useReveal();
+  useCaseMotion();
 
   const c = CASES[window.CURRENT_CASE_SLUG];
   if (!c) return <div style={{ padding: 60 }}>Case not found.</div>;
@@ -409,6 +482,7 @@ function CaseApp() {
   return (
     <div className="page-mount">
       <Nav />
+      <CaseProgress c={c} />
       <CaseHero c={c} />
       <main className="case-main">
         {c.sections.map((s, i) => renderSection(s, i))}

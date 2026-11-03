@@ -647,3 +647,27 @@ body { padding-top: 64px; }
 *, *::before, *::after { cursor: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2226%22%20height%3D%2226%22%20viewBox%3D%220%200%2026%2026%22%3E%3Cpath%20d%3D%22M4.5%202.6%2019%2013.4h-7.1l-2.6%206.6z%22%20fill%3D%22%23FFFFFF%22%20stroke%3D%22%238B1A1F%22%20stroke-width%3D%221.6%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E") 3 2, default !important; }
 a, a *, button, button *, [role="button"], [role="button"] *, summary, label, video, [onclick], [onclick] * { cursor: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2226%22%20height%3D%2226%22%20viewBox%3D%220%200%2026%2026%22%3E%3Cpath%20d%3D%22M4.5%202.6%2019%2013.4h-7.1l-2.6%206.6z%22%20fill%3D%22%238B1A1F%22%20stroke%3D%22%238B1A1F%22%20stroke-width%3D%221.6%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E") 3 2, default !important; }
 input, textarea, select, [contenteditable="true"] { cursor: auto !important; }
+
+/* ─── Motion ──────────────────────────────────────────────────────────────── */
+/* masked headline words */
+.mw { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .1em; margin-bottom: -.1em; }
+.mw > span { display: inline-block; }
+html.motion .mh .mw > span { transform: translateY(108%); transition: transform 1.05s cubic-bezier(.77,0,.18,1); transition-delay: calc(var(--i, 0) * 55ms + 150ms); }
+html.motion .mh.in .mw > span { transform: none; }
+
+/* images open from the edges as they arrive */
+html.motion .case-image-frame.clip { clip-path: inset(10% 7% 10% 7%); opacity: 0; transition: clip-path 1.4s cubic-bezier(.77,0,.18,1), opacity .8s ease; }
+html.motion .case-image-frame.clip.in { clip-path: inset(0 0 0 0); opacity: 1; }
+html.motion .case-image-frame.clip img { transform: scale(1.06); transition: transform 1.8s cubic-bezier(.22,.61,.36,1); }
+html.motion .case-image-frame.clip.in img { transform: none; }
+html.motion .case-image:hover .case-image-frame.clip.in img { transform: scale(1.02); }
+
+/* reading bar under the nav */
+.case-progress { position: fixed; left: 0; right: 0; top: 64px; z-index: 40; height: 40px; background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); transform: translateY(-100%); opacity: 0; pointer-events: none; transition: transform .45s cubic-bezier(.22,.61,.36,1), opacity .3s ease; }
+.case-progress.on { transform: none; opacity: 1; }
+.case-progress-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.case-progress-case { color: var(--fg); white-space: nowrap; }
+.case-progress-sec { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.case-progress-bar { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--accent); transform-origin: left; }
+@media (max-width: 720px) { .case-progress-case { display: none; } .case-progress { top: 56px; } }
+@media (prefers-reduced-motion: reduce) { .case-progress { transition: none; } }

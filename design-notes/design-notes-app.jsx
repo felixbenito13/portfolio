@@ -2,6 +2,73 @@
 
 const ACCENT_OPTIONS = ['#8B1A1F', '#5A0F12', '#C8252B', '#A8243F'];
 
+// ─── Motion ────────────────────────────────────────────────────────────────
+const MOTION_OK = (() => { try { return !window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { return false; } })();
+if (MOTION_OK) document.documentElement.classList.add('motion');
+
+/* photographs drifting slowly toward you in depth, kept clear of the headline */
+const DRIFT_IMAGES = [
+  'assets/where-creativity-comes-from-cover.jpg',
+  '../cases/assets/audi-myaudi-maintenance-onboarding-cover.jpg',
+  'assets/breakdown-01-amazon-highlight.jpg',
+  '../cases/assets/coca-cola-ko-boss-cover.png',
+  'assets/creativity-urban-sketch-cusco.jpg',
+  '../cases/assets/kraft-heinz-sales-tech-ecosystem-cover.jpg',
+  'assets/alignment-business-model-canvas.jpg',
+  '../cases/assets/pharosgraph-cover.png',
+  'assets/creativity-vinicunca-rainbow-mountain.jpg',
+  '../cases/assets/rhi-magnesita-ladle-slag-model-cover.jpg',
+];
+function DriftGallery() {
+  const ref = React.useRef(null);
+  React.useEffect(() => {
+    const box = ref.current; if (!box) return;
+    const cards = [].slice.call(box.querySelectorAll('.drift-card'));
+    const N = cards.length, RANGE = 2200, NEAR = 260;
+    const items = cards.map((el, i) => ({ el, z: -RANGE + ((i + 0.5) / N) * RANGE, x: ((i * 0.61803) % 1) * 2 - 1, y: ((i * 0.37 + 0.2) % 1) * 2 - 1 }));
+    const sm = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+    let W = box.clientWidth, H = box.clientHeight, mx = 0, my = 0, cx = 0, cy = 0, raf = 0, tp = 0, vis = true;
+    const place = () => items.forEach((it) => {
+      const a = sm(-RANGE, -RANGE + 500, it.z) * (1 - sm(NEAR - 420, NEAR, it.z));
+      it.el.style.transform = 'translate(-50%,-50%) translate3d(' + (it.x * W * 0.4 + cx * 36).toFixed(1) + 'px,' + (it.y * H * 0.34 + cy * 22).toFixed(1) + 'px,' + it.z.toFixed(1) + 'px)';
+      it.el.style.opacity = (a * 0.7).toFixed(3);
+    });
+    const loop = (t) => {
+      raf = requestAnimationFrame(loop);
+      const dt = Math.min(0.05, (t - tp) / 1000 || 0); tp = t;
+      cx += (mx - cx) * 0.03; cy += (my - cy) * 0.03;
+      items.forEach((it) => { it.z += 70 * dt; if (it.z > NEAR) it.z -= RANGE; });
+      place();
+    };
+    const start = () => { if (!MOTION_OK || raf || !vis || document.hidden) return; tp = performance.now(); raf = requestAnimationFrame(loop); };
+    const stop = () => { cancelAnimationFrame(raf); raf = 0; };
+    const onMove = (e) => { mx = e.clientX / window.innerWidth - 0.5; my = e.clientY / window.innerHeight - 0.5; };
+    const onResize = () => { W = box.clientWidth; H = box.clientHeight; if (!raf) place(); };
+    const onVis = () => (document.hidden ? stop() : start());
+    window.addEventListener('pointermove', onMove, { passive: true });
+    window.addEventListener('resize', onResize, { passive: true });
+    document.addEventListener('visibilitychange', onVis);
+    const io = 'IntersectionObserver' in window ? new IntersectionObserver((es) => { vis = es[0].isIntersecting; vis ? start() : stop(); }) : null;
+    if (io) io.observe(box);
+    place(); box.classList.add('ready'); start();
+    return () => { stop(); if (io) io.disconnect(); window.removeEventListener('pointermove', onMove); window.removeEventListener('resize', onResize); document.removeEventListener('visibilitychange', onVis); };
+  }, []);
+  return (
+    <div className="notes-drift" ref={ref} aria-hidden="true">
+      {DRIFT_IMAGES.map((src, i) => <div key={i} className="drift-card"><img src={src} alt="" loading="lazy" decoding="async" /></div>)}
+    </div>
+  );
+}
+
+function useHeadlineMotion() {
+  React.useEffect(() => {
+    const hs = document.querySelectorAll('.mh');
+    hs.forEach((h) => h.querySelectorAll('.mw > span').forEach((w, i) => w.style.setProperty('--i', i)));
+    const t = setTimeout(() => hs.forEach((h) => h.classList.add('in')), 120);
+    return () => clearTimeout(t);
+  }, []);
+}
+
 // ─── Reveal-on-scroll ──────────────────────────────────────────────────────
 function useReveal() {
   React.useEffect(() => {
@@ -164,6 +231,7 @@ function NoteCard({ note, i }) {
 function NotesIndex() {
   const [active, setActive] = React.useState('all');
   useReveal();
+  useHeadlineMotion();
 
   React.useEffect(() => {
     /* page <title> is set in the HTML for SEO */
@@ -175,11 +243,12 @@ function NotesIndex() {
   return (
     <div className="page-mount">
       <Nav />
-      <header className="notes-hero">
+      <header className="notes-hero notes-hero-drift">
+        <DriftGallery />
         <div className="shell">
           <div className="reveal">
             <span className="eyebrow no-dot">Design Notes</span>
-            <h1 className="notes-title">Strategy, craft, AI and creativity<em>.</em></h1>
+            <h1 className="notes-title mh">{['Strategy,', 'craft,', 'AI', 'and'].map((w, i) => <React.Fragment key={i}><span className="mw"><span>{w}</span></span> </React.Fragment>)}<span className="mw"><span>creativity<em>.</em></span></span></h1>
             <p className="notes-sub">Notes on how I lead design and brand work day to day, written to stay useful longer than a news cycle.</p>
           </div>
         </div>
