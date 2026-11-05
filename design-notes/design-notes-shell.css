@@ -228,6 +228,10 @@
   color: var(--fg-soft);
   margin-top: 20px;
 }
+.note-p a { color: var(--fg); text-decoration: underline; text-decoration-color: rgba(139,26,31,.55); text-decoration-thickness: 1.5px; text-underline-offset: 3px; transition: color .25s ease, text-decoration-color .25s ease; }
+.note-p a:hover, .note-p a:focus-visible { color: #8B1A1F; text-decoration-color: #8B1A1F; }
+.note-related { padding-top: 24px; }
+.note-related .eyebrow { display: inline-block; margin-bottom: 28px; }
 .note-h2 + .note-p,
 .note-h3 + .note-p { margin-top: 16px; }
 

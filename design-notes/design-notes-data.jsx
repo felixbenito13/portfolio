@@ -10,9 +10,83 @@ const NOTE_CATEGORIES = [
   { id: 'breakdown',  label: 'Breakdown' },
 ];
 
-const NOTE_ORDER = ['breakdown-01-amazon-homepage', 'where-creativity-comes-from', 'alignment-happens-before-the-file-opens'];
+const NOTE_ORDER = ['breakdown-02-globo-homepage', 'breakdown-01-amazon-homepage', 'where-creativity-comes-from', 'alignment-happens-before-the-file-opens'];
 
 const NOTES = {
+
+  'breakdown-02-globo-homepage': {
+    slug: 'breakdown-02-globo-homepage',
+    category: 'breakdown',
+    categoryLabel: 'Breakdown',
+    title: 'Users Should Be in Control',
+    subtitle: 'Design Notes: Breakdown #02. A content strategy and UX look at Globo’s homepage, and the one thing I’d take away from the user.',
+    date: '2026-11-05',
+    dateLabel: 'Nov 2026',
+    readTime: '5 min read',
+    cover: 'assets/breakdown-02-globo-homepage-cover.jpg',
+    coverAlt: 'Breakdown #02, Users should be in control, a UX breakdown of the Globo homepage by Felix Benito',
+    excerpt: 'Globo.com, one of Brazil’s best-known portals, broken down: menu, grid, color palette, highlights, big numbers, and the autoplay video that takes control away.',
+    metaDescription: 'A design & brand lead breaks down Globo’s homepage: navigation, grid, color coding, highlights and big numbers, and why autoplay video breaks user control.',
+    related: ['breakdown-01-amazon-homepage', 'alignment-happens-before-the-file-opens'],
+    body: [
+      { type: 'video', src: 'assets/breakdown-02-globo-homepage.mp4', poster: 'assets/breakdown-02-globo-homepage-poster.jpg', w: 1600, h: 852,
+        label: 'Breakdown #02 video with captions: Felix Benito walks through the Globo homepage in Figma, marking the menu, grid, color palette, highlights, big numbers and autoplay videos',
+        caption: 'Breakdown #02 in video: the whole Globo homepage, top to bottom, in about three minutes.' },
+
+      { type: 'p', text: 'Welcome to the second episode of Design Notes: Breakdown, the series where I take a platform everyone knows and look at the design decisions behind it. In [Breakdown #01](breakdown-01-amazon-homepage.html) it was Amazon Brazil and its sea of deals. This time it’s a different kind of homepage: [Globo.com](https://www.globo.com/), one of the most famous portals in Brazil, where news, sports and entertainment live side by side.' },
+      { type: 'p', text: 'A news portal is a content strategy problem before it’s a visual one. Hundreds of stories a day, from very different areas, all competing for the same screen. So I scrolled from top to bottom and stopped at six points: menu, grid, color palette, highlights, big numbers, and the videos at the end of the page.' },
+
+      { type: 'h2', text: '1. Menu: Sections You Can Read by Color' },
+      { type: 'p', text: 'The navigation is divided by the kind of content each section talks about: g1 for news, ge for sports, gshow for entertainment, valor for business, and so on. I like this information architecture a lot. Each brand has its own color, so you can easily associate a story with the section it belongs to, even before you read the label.' },
+      { type: 'p', text: 'What I don’t like much is that the same menu appears twice. The sections are listed in the top bar, and when you open the “Menu” button, you get the same list again in a side panel. Two ways to do the same thing on the same screen isn’t extra help, it’s extra noise. I would keep one of them and use the space for something the user can’t find anywhere else.' },
+      { type: 'image', src: 'assets/breakdown-02-globo-menu.jpg', w: 1200, h: 630,
+        alt: 'Top of the Globo homepage with the globo.com logo, the Menu button and the color-coded section links g1, o globo, valor, ge, cartola, globoplay, globopop, gshow, receitas and quem, marked as point 1, Menu',
+        caption: 'The top bar: every section with its own color, and a Menu button that opens the same list again.' },
+
+      { type: 'h2', text: '2. Grid: Structure That Lets You Keep Reading' },
+      { type: 'p', text: 'The grid is very structured. Under the hood it works like a 12-column grid, and the layout moves between four and three columns from one block to the next. Every story sits in its own slot, so the content is very well divided.' },
+      { type: 'p', text: 'Mixing these layouts is what makes the reading pleasant. The change in rhythm works like a divider: you go through one block, the next one looks a little different, and you don’t feel tired, even on a page this long. It’s the opposite of what happened on Amazon, where every section followed its own rules. Here the variation happens inside one system.' },
+      { type: 'image', src: 'assets/breakdown-02-globo-grid.jpg', w: 1200, h: 630,
+        alt: 'Globo homepage news blocks outlined in red columns, showing a structured grid that alternates between four and three columns, marked as point 2, Grid',
+        caption: 'The grid marked in red: columns that change from block to block, without breaking the system.' },
+
+      { type: 'h2', text: '3. Color Palette: Color That Carries Meaning' },
+      { type: 'p', text: 'The color palette is very strong, and it isn’t decoration. Each area has its own color, and the color is related to the content. Journalism is red, because news is something that just happened, an alert. Sports are green, the color of the field. Entertainment is orange, a lighter, more fun color for content that isn’t meant to be so serious.' },
+      { type: 'p', text: 'This is color coding done right: the same palette repeats in the headlines, the labels and the “Mais Jornalismo”, “Mais Esportes” and “Mais Entretenimento” buttons, so the [visual hierarchy](https://ixdf.org/literature/topics/visual-hierarchy) of the whole page is built on three colors that you learn in a few seconds. Consistency turns color into a shortcut.' },
+      { type: 'image', src: 'assets/breakdown-02-globo-palette.jpg', w: 1200, h: 630,
+        alt: 'Three Globo homepage columns labeled Jornalismo in red, Esporte in green and Entretenimento in orange, circled by hand, marked as point 3, Color palette',
+        caption: 'Jornalismo in red, Esporte in green, Entretenimento in orange. Three colors, three kinds of content.' },
+
+      { type: 'h2', text: '4. Highlights: Images That Complement the Story' },
+      { type: 'p', text: 'Inside these structured sections, some stories get an image and some don’t. The image isn’t there to fill space: it complements the headline and gives you more details about what you’re about to read. It’s a good approach, because it creates hierarchy inside each block without adding more colors or badges.' },
+      { type: 'image', src: 'assets/breakdown-02-globo-highlights.jpg', w: 1200, h: 630,
+        alt: 'Globo homepage block mixing large photos with headlines and smaller text-only stories, marked as point 4, Highlights',
+        caption: 'Bigger photos for the stories that matter most, text only for the rest.' },
+
+      { type: 'h2', text: '5. Big Numbers: One View, Easy to Scan' },
+      { type: 'p', text: 'Almost at the end, there’s a row of “big numbers”: the Ibovespa and the dollar rate in Economia, today’s games in Agenda, your sign in Horóscopo. I really like this one. Instead of asking you to open three stories, it packs the key message of each area into one view.' },
+      { type: 'p', text: 'People don’t read web pages word by word, they scan them. [Eye-tracking research from Nielsen Norman Group](https://www.nngroup.com/articles/text-scanning-patterns-eyetracking/) has shown this for years. A card like this respects that behavior: a number, a label, a color, and you already know what you need to know.' },
+      { type: 'image', src: 'assets/breakdown-02-globo-big-numbers.jpg', w: 1200, h: 630,
+        alt: 'Globo homepage cards for Economia with the Ibovespa at plus 0.33 percent, Agenda with today’s football games and Horóscopo, circled by hand, marked as point 5, Big numbers',
+        caption: 'Economia, Agenda, Horóscopo: three areas summarized in one scannable row.' },
+
+      { type: 'h2', text: '6. Videos in Loop: When the Page Decides for You' },
+      { type: 'p', text: 'At the end of the page there’s a “Vídeos em alta” section, and this is the part I don’t like. The video starts automatically. You open the page, you scroll, and something starts playing without you asking for it.' },
+      { type: 'p', text: 'Autoplay takes a decision away from the user. It breaks one of the oldest [usability heuristics, user control and freedom](https://www.nngroup.com/videos/usability-heuristic-user-control-freedom/), and it’s also an accessibility issue: the [WCAG guidelines on audio control](https://www.w3.org/WAI/WCAG21/Understanding/audio-control.html) ask that anything that plays on its own can be paused or stopped. If people want to watch a video, they will open it and press play. I would show a strong thumbnail with the duration and let them choose.' },
+      { type: 'image', src: 'assets/breakdown-02-globo-autoplay.jpg', w: 1200, h: 630,
+        alt: 'Vídeos em alta section on the Globo homepage with a large news video that plays automatically and a list of other videos beside it, marked as point 6, Videos in loop',
+        caption: 'Vídeos em alta: a big player that starts on its own as soon as you reach it.' },
+
+      { type: 'h2', text: 'Takeaway: Structure Helps, Control Matters' },
+      { type: 'p', text: 'A clear grid, a color palette with meaning and a consistent structure make the message easier to understand. Globo shows how much a strong design system can do for a page with this much content: you always know where you are and what kind of story you’re reading.' },
+      { type: 'p', text: 'And one rule I’d keep above all the others: users should be in control. Don’t make decisions for them, like autoplaying videos. Good UX design guides people, it doesn’t push them.' },
+      { type: 'image', src: 'assets/breakdown-02-globo-takeaway.jpg', w: 1200, h: 630,
+        alt: 'Three sticky notes: A clear grid, color palette and structure make the message easier to understand; Users should be in control, don’t make decisions for them, like autoplaying videos; What would you change?',
+        caption: 'The takeaway board from the video.' },
+      { type: 'p', text: 'What would you change on Globo’s homepage? And which website should I break down next? Let me know in the comments. If you missed the first episode, [Breakdown #01 on Amazon’s homepage](breakdown-01-amazon-homepage.html) is about the opposite problem: what happens when everything asks for attention.' },
+      { type: 'note', text: 'Independent analysis. I have no affiliation with Globo. Screenshots are used for commentary and education.' },
+    ],
+  },
 
   'breakdown-01-amazon-homepage': {
     slug: 'breakdown-01-amazon-homepage',
@@ -27,16 +101,17 @@ const NOTES = {
     coverAlt: 'Breakdown #01, When Everything Is a Deal, Nothing Feels Like a Deal, a UX breakdown of Amazon’s homepage by Felix Benito',
     excerpt: 'A new series on the design decisions behind platforms everyone knows. First up: Amazon Brazil’s homepage, weeks before Black Friday.',
     metaDescription: 'A design & brand lead breaks down Amazon Brazil’s homepage: highlights, grid, visual clutter and personalization, plus what he’d test differently.',
+    related: ['breakdown-02-globo-homepage', 'alignment-happens-before-the-file-opens'],
     body: [
       { type: 'video', src: 'assets/breakdown-01-amazon-homepage.mp4', poster: 'assets/breakdown-01-amazon-homepage-poster.jpg', w: 1600, h: 862,
         label: 'Breakdown #01 video with captions: Felix Benito walks through Amazon Brazil’s homepage in Figma, marking highlights, grid, visual clutter and personalization',
         caption: 'Breakdown #01 in video: the whole homepage, top to bottom, in about three minutes.' },
 
       { type: 'p', text: 'Design Notes: Breakdown is a new series where I take a platform everyone knows and look at the design decisions behind it. The goal isn’t to criticize. It’s to understand the reasoning behind the screen, and to share what I would test differently.' },
-      { type: 'p', text: 'First up: Amazon Brazil’s homepage, a few weeks before Black Friday. I scrolled from top to bottom and stopped at four points: highlights, grid, visual clutter, and personalization.' },
+      { type: 'p', text: 'First up: [Amazon Brazil’s homepage](https://www.amazon.com.br/), a few weeks before Black Friday. I scrolled from top to bottom and stopped at four points: highlights, grid, visual clutter, and personalization.' },
 
       { type: 'h2', text: '1. Highlight: When Every Banner Is Orange' },
-      { type: 'p', text: 'Right at the top, Amazon uses color to grab attention. The banners get colored backgrounds, especially the orange ones, and that works: color creates instant hierarchy and pulls your eye to the offer.' },
+      { type: 'p', text: 'Right at the top, Amazon uses color to grab attention. The banners get colored backgrounds, especially the orange ones, and that works: color creates instant [visual hierarchy](https://ixdf.org/literature/topics/visual-hierarchy) and pulls your eye to the offer.' },
       { type: 'p', text: 'The problem is that almost every banner gets the same treatment. Orange next to orange next to orange, and they start competing with each other. When everything is highlighted, nothing really is.' },
       { type: 'p', text: 'I would create one banner specifically for the main promotion and focus on it, letting the other banners step back so the one that matters can actually stand out.' },
       { type: 'image', src: 'assets/breakdown-01-amazon-highlight.jpg', w: 1200, h: 630,
@@ -46,7 +121,7 @@ const NOTES = {
       { type: 'h2', text: '2. Grid: Four Columns, Different Rules' },
       { type: 'p', text: 'The homepage runs on a four-column grid, but the grid changes from section to section. Some cards show a two-by-two product block, some show a single image, some mix both, and in some rows the cards stop following the columns altogether.' },
       { type: 'p', text: 'That flexibility makes sense for a company where many teams plug their own campaigns into the same page. The cost is rhythm: every new row asks your eye to learn a new layout.' },
-      { type: 'p', text: 'I would create consistency through patterns: a small set of card templates, shared across sections, so the page feels like one system while you scroll.' },
+      { type: 'p', text: 'I would create consistency through patterns: a small set of card templates, shared across sections, so the page feels like one system while you scroll. That’s exactly what a design system is for, and it’s how I approached the [Coca-Cola KO Boss redesign](../cases/coke-ko-boss.html): reusable components first, screens after.' },
       { type: 'image', src: 'assets/breakdown-01-amazon-grid.jpg', w: 1200, h: 630,
         alt: 'Amazon Brazil homepage product sections outlined in red, showing four columns whose card layouts change from row to row, marked as point 2, Grid',
         caption: 'The grid marked in red: four columns, but each section plays by its own rules.' },
@@ -68,7 +143,7 @@ const NOTES = {
 
       { type: 'h2', text: 'Takeaway: Hierarchy Needs Contrast' },
       { type: 'p', text: 'Hierarchy needs contrast, and contrast needs restraint. When everything on the page calls for your attention, nothing gets highlighted. Focus on fewer things, and the highlights you keep become much stronger.' },
-      { type: 'p', text: 'What would you change on Amazon’s homepage? Let me know in the comments. See you in the next Breakdown.' },
+      { type: 'p', text: 'What would you change on Amazon’s homepage? Let me know in the comments. The series continues in [Breakdown #02](breakdown-02-globo-homepage.html), where I look at Globo’s homepage: a page with just as much content, held together by a clear grid and a color palette with meaning.' },
       { type: 'note', text: 'Independent analysis. I have no affiliation with Amazon. Screenshots are used for commentary and education.' },
     ],
   },
@@ -86,6 +161,7 @@ const NOTES = {
     coverAlt: 'Where Creativity Comes From, a Design Notes creativity post by Felix Benito',
     excerpt: 'Ideas rarely show up on demand. Six habits, almost none of them in front of a screen, that keep my creative mind rested, curious and open.',
     metaDescription: 'A design & brand lead’s 6 unconventional habits for daily creativity: travel, sketching, talking with strangers, campaign mapping, music and the classics.',
+    related: ['breakdown-02-globo-homepage', 'alignment-happens-before-the-file-opens'],
     body: [
       { type: 'p', text: 'After years of working in design and marketing, with the daily challenge of creating something new, I’ve learned that ideas rarely show up on demand. They show up when the mind is rested, curious, and open enough to catch them.' },
       { type: 'p', text: 'Over time, I developed a few habits that keep my mind refreshed and ready to receive small daily insights, which I then turn into part of my work. Almost none of them happen in front of a screen. Today I want to share some of these unconventional techniques, the ones that keep my creativity going every day, even on cloudy days.' },
@@ -104,7 +180,7 @@ const NOTES = {
         caption: 'Vinicunca, the Rainbow Mountain in Peru. Some color palettes you only find by getting there.' },
 
       { type: 'h3', text: '2. Cultivate an Art Hobby' },
-      { type: 'p', text: 'I love drawing, and lately I’ve been focusing on urban sketching. Stepping away from the computer to see the real world through its colors, shapes and shadows, and trying to translate it into a quick, freestyle drawing, trains me to pay attention to my surroundings and to keep asking: how can I simplify this and put it on paper?' },
+      { type: 'p', text: 'I love drawing, and lately I’ve been focusing on [urban sketching](https://urbansketchers.org/). Stepping away from the computer to see the real world through its colors, shapes and shadows, and trying to translate it into a quick, freestyle drawing, trains me to pay attention to my surroundings and to keep asking: how can I simplify this and put it on paper?' },
       { type: 'p', text: 'That’s the same question I ask in every design project. Other hobbies work just as well: playing music, singing, making things by hand. They all spark creativity.' },
       { type: 'image', src: 'assets/creativity-urban-sketch-cusco.jpg', w: 1200, h: 630,
         alt: 'Ink urban sketch of the domes of the Iglesia de la Compañía de Jesús held up in front of the real church in Cusco, Peru',
@@ -119,7 +195,7 @@ const NOTES = {
 
       { type: 'h3', text: '4. Map the Most Engaging Campaigns on Social Media' },
       { type: 'p', text: 'I enjoy following big tech companies, and small ones too, that do a great job engaging their audience. So I started mapping them: a doc where I log each post, the data behind it, and what I find creative about it.' },
-      { type: 'p', text: 'It has become my personal library of inspiration. Every once in a while, I go back and revisit the collection.' },
+      { type: 'p', text: 'It has become my personal library of inspiration. Every once in a while, I go back and revisit the collection. The same curiosity is behind my Breakdown series, where I take apart the homepages of platforms everyone knows, like [Amazon](breakdown-01-amazon-homepage.html) and [Globo](breakdown-02-globo-homepage.html).' },
       { type: 'image', src: 'assets/creativity-campaign-library.jpg', w: 1200, h: 630,
         alt: 'Social media analysis document logging an Instagram carousel post with its content type, post format and a creativity score',
         caption: 'My campaign library: each post logged by content type, format, and a score for creativity and execution.' },
@@ -140,7 +216,7 @@ const NOTES = {
 
       { type: 'h2', text: 'Creativity Is a Daily Practice' },
       { type: 'p', text: 'These are some of the unconventional habits that help me be more creative in my daily routine. None of them happen in front of a screen, but all of them end up there eventually.' },
-      { type: 'p', text: 'What about you? I’d love to hear the techniques that keep your creativity fresh.' },
+      { type: 'p', text: 'What about you? I’d love to hear the techniques that keep your creativity fresh. And if you want to see where those ideas go once the work starts, read how I [align with stakeholders before opening the file](alignment-happens-before-the-file-opens.html).' },
     ],
   },
 
@@ -157,6 +233,7 @@ const NOTES = {
     coverAlt: 'Alignment Happens Before the File Opens, a Design Notes strategy post by Felix Benito',
     excerpt: 'Opening Figma before alignment feels proactive. It usually isn’t. A 5-step framework for research and stakeholder alignment before any screen gets built.',
     metaDescription: 'A UX and brand strategist’s 5-step framework for stakeholder alignment and research before any screen gets designed, from executor to strategist.',
+    related: ['breakdown-02-globo-homepage', 'where-creativity-comes-from'],
     body: [
       { type: 'p', text: 'In a world of packed agendas, endless to-do lists, gym sessions, social commitments, family duties, and constant pressure to perform and lead, it’s easy to fall into a trap: opening Figma before the real alignment with managers and stakeholders has happened.' },
       { type: 'p', text: 'It feels productive. It feels proactive. But it can quietly become the opposite of what you intended, and instead of showing initiative, it can show that you’re an executor, not a strategist.' },
@@ -165,7 +242,7 @@ const NOTES = {
       { type: 'h2', text: 'The Mistake I Made: Skipping Stakeholder Alignment' },
       { type: 'p', text: 'A few years ago, when I stepped into a senior position, I wanted to bring results as fast as possible. So instead of aligning objectives with the team first, I jumped straight to solutions based on my own point of view.' },
       { type: 'p', text: 'The problem was that my perspective wasn’t ready yet. I didn’t have the context to understand what was really happening behind the scenes, the details that could have improved my results or even changed my whole approach.' },
-      { type: 'p', text: 'Onboarding alone is rarely enough to grasp the layers of a business, a market, and its customers. It takes more: additional rounds of meetings, research, interviews, competitive analysis, and a close read of digital marketing trends. All of that is what actually clarifies how a product should be built or evolved.' },
+      { type: 'p', text: 'Onboarding alone is rarely enough to grasp the layers of a business, a market, and its customers. It takes more: additional rounds of meetings, research, interviews, competitive analysis (the kind of exercise I share publicly in my [Breakdown series](breakdown-02-globo-homepage.html)), and a close read of digital marketing trends. All of that is what actually clarifies how a product should be built or evolved.' },
       { type: 'p', text: 'Driven by the fear of not showing results quickly enough, I started building screens, drafting a design system, and adjusting the brand. When I presented the work to the team, the developers pushed back, citing technical restrictions I hadn’t accounted for. The manager liked the design system idea, but for later, not now. The brand adjustments met the same fate. What actually mattered at that moment were bugs in the checkout flow.' },
 
       { type: 'image', src: 'assets/alignment-design-system-definitions.jpg', w: 1200, h: 630,
@@ -186,7 +263,7 @@ const NOTES = {
         caption: 'Mapping the business model canvas is part of the homework I do before the first onboarding call.' },
 
       { type: 'h3', text: '2. A Living UX Research Board' },
-      { type: 'p', text: 'Big projects come with layers: stakeholders, constraints, hidden details. I don’t rely on memory. I keep a research board that grows continuously as I learn more about the business, a single source of truth I can always return to.' },
+      { type: 'p', text: 'Big projects come with layers: stakeholders, constraints, hidden details. I don’t rely on memory. I keep a research board that grows continuously as I learn more about the business, a single source of truth I can always return to. Artifacts like an [empathy map](https://www.nngroup.com/videos/empathy-map/) and personas live there.' },
 
       { type: 'image', src: 'assets/alignment-empathy-map.jpg', w: 1200, h: 630,
         alt: 'UX empathy map capturing what the user thinks and feels, used in stakeholder alignment research',
@@ -196,14 +273,14 @@ const NOTES = {
       { type: 'p', text: 'I need clarity on business objectives and priorities as early as possible, ideally during onboarding itself. I like to map out what I’ll learn, when it will happen, and when the actual work begins.' },
 
       { type: 'h3', text: '4. Stakeholder Alignment' },
-      { type: 'p', text: 'In larger companies, different areas often have their own goals, and those goals don’t always line up with the broader business objectives. Sometimes a legal or operational constraint from another sector can block what you’re building entirely. Talking to a wide range of stakeholders early on helps you avoid building something that can’t actually be used.' },
+      { type: 'p', text: 'In larger companies, different areas often have their own goals, and those goals don’t always line up with the broader business objectives. Sometimes a legal or operational constraint from another sector can block what you’re building entirely. Talking to a wide range of stakeholders early on helps you avoid building something that can’t actually be used. In the [Coca-Cola KO Boss case](../cases/coke-ko-boss.html), mapping the stakeholders was the first step after the audit, before a single screen was redesigned.' },
 
       { type: 'image', src: 'assets/alignment-personas.jpg', w: 1200, h: 630,
         alt: 'User persona profile showing background, goals, pain points and personality traits for UX research',
         caption: 'Personas turn scattered research into a shared reference point for every stakeholder conversation.' },
 
       { type: 'h3', text: '5. Constant Communication' },
-      { type: 'p', text: 'I break projects into small pieces and share them with leadership along the way to confirm I’m on the right path. It’s the core of agile methodology, and it consistently saves time and effort.' },
+      { type: 'p', text: 'I break projects into small pieces and share them with leadership along the way to confirm I’m on the right path. It’s the core of [agile methodology](https://agilemanifesto.org/), and it consistently saves time and effort.' },
 
       { type: 'h2', text: 'Alignment Is a Practice, Not a Checkbox' },
       { type: 'p', text: 'This is how I work today, and it keeps evolving. Structuring alignment before execution has consistently helped me deliver the right results on the right priorities. It’s a practice that never really ends, but every project makes it a little sharper.' },

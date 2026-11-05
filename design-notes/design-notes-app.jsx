@@ -11,6 +11,7 @@ const DRIFT_IMAGES = [
   'assets/where-creativity-comes-from-cover.jpg',
   '../cases/assets/audi-myaudi-maintenance-onboarding-cover.jpg',
   'assets/breakdown-01-amazon-highlight.jpg',
+  'assets/breakdown-02-globo-palette.jpg',
   '../cases/assets/coca-cola-ko-boss-cover.png',
   'assets/creativity-urban-sketch-cusco.jpg',
   '../cases/assets/kraft-heinz-sales-tech-ecosystem-cover.jpg',
@@ -276,6 +277,22 @@ function NotesIndex() {
 }
 
 // ─── Article (single note) ─────────────────────────────────────────────────
+/* inline links in body text: [label](href). Relative links stay on the site,
+   absolute ones open in a new tab. */
+function rich(text) {
+  const out = []; const re = /\[([^\]]+)\]\(([^)\s]+)\)/g; let last = 0, m, k = 0;
+  while ((m = re.exec(text))) {
+    if (m.index > last) out.push(text.slice(last, m.index));
+    const ext = /^https?:/.test(m[2]);
+    out.push(ext
+      ? <a key={k++} href={m[2]} target="_blank" rel="noopener">{m[1]}</a>
+      : <a key={k++} href={m[2]}>{m[1]}</a>);
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) out.push(text.slice(last));
+  return out;
+}
+
 function renderBlock(b, i) {
   switch (b.type) {
     case 'h2':
@@ -283,7 +300,7 @@ function renderBlock(b, i) {
     case 'h3':
       return <h3 key={i} className="note-h3 reveal">{b.text}</h3>;
     case 'p':
-      return <p key={i} className="note-p reveal">{b.text}</p>;
+      return <p key={i} className="note-p reveal">{rich(b.text)}</p>;
     case 'image':
       return (
         <figure key={i} className="note-image reveal">
@@ -303,7 +320,7 @@ function renderBlock(b, i) {
         </figure>
       );
     case 'note':
-      return <p key={i} className="note-p note-disclaimer reveal">{b.text}</p>;
+      return <p key={i} className="note-p note-disclaimer reveal">{rich(b.text)}</p>;
     default:
       return null;
   }
@@ -345,6 +362,17 @@ function NoteArticle({ note }) {
           {note.body.map((b, i) => renderBlock(b, i))}
         </div>
       </main>
+
+      {note.related && note.related.length > 0 && (
+        <section className="section note-related" aria-labelledby="keep-reading">
+          <div className="shell">
+            <span id="keep-reading" className="eyebrow no-dot reveal">Keep reading</span>
+            <div className="notes-grid">
+              {note.related.filter((s) => NOTES[s]).map((s, i) => <NoteCard key={s} note={NOTES[s]} i={i} />)}
+            </div>
+          </div>
+        </section>
+      )}
 
       <Footer />
     </div>
