@@ -14,7 +14,7 @@ const CASES = {
     subtitle: 'Lifting maintenance scheduling engagement from 4.8% to 11.2% across the North American myAudi app, through user research, AI-assisted prototyping and cross-functional alignment.',
     cover: '',
     meta: [
-      { label: 'Role',     value: 'Senior Product Designer' },
+      { label: 'Role',     value: 'Senior Product Designer · led discovery, user testing and AI-assisted prototyping' },
       { label: 'Timeline', value: 'One year' },
       { label: 'Team',     value: '8 people · me, manager, 4 devs, QA, lead architect' },
       { label: 'Method',   value: 'Agile' },
@@ -26,7 +26,7 @@ const CASES = {
         body: [
           'The Owner\u2019s Literature and Maintenance features within myAudi consolidate essential vehicle resources for North American customers.',
           'While these tools aim to save users time and money, initial research revealed significant friction in the existing service.',
-          'As Product Designer, I bridged this gap by leading discovery sessions and user testing, turning research and data into high-fidelity, functional prototypes.',
+          'As Senior Product Designer, I bridged this gap by leading discovery sessions and user testing, turning research and data into high-fidelity, functional prototypes.',
         ],
       },
       { type: 'text', n: '02', title: 'Problems identified in the current solution',
@@ -151,7 +151,7 @@ const CASES = {
       },
     ],
     next: 'pharosgraph',
-    prev: 'sales-tech-ecosystem',
+    prev: 'coke-ko-boss',
   },
 
   /* ─────────────────────────────────────────────────────────────────────── */
@@ -165,7 +165,7 @@ const CASES = {
     subtitle: 'Joining a political intelligence platform as Design Lead: from a fragmented starting point to one design language that runs from the dashboard to the press release.',
     cover: '',
     meta: [
-      { label: 'Role',     value: 'Design Lead (contractor)' },
+      { label: 'Role',     value: 'Design Lead' },
       { label: 'Scope',    value: 'Research, branding, design system, product, website, marketing' },
       { label: 'Team',     value: 'Two founders, content lead, second designer, engineering · remote' },
       { label: 'Sector',   value: 'Political intelligence SaaS' },
@@ -370,7 +370,7 @@ const CASES = {
         name: 'Mathieu Trepanier', at: 'CEO & Founder at PharosGraph', img: 'assets/testimonial-mathieu-trepanier.jpg',
       },
     ],
-    next: 'coke-ko-boss',
+    next: 'ladle-slag-model',
     prev: 'audi-onboarding',
   },
 
@@ -385,7 +385,7 @@ const CASES = {
     subtitle: 'Redesigning the bottler buying experience across five LATAM countries, design system, branding, and migrating Equipment Maintenance out of a WhatsApp bot into the app.',
     cover: '',
     meta: [
-      { label: 'Role',     value: 'Senior Product Designer' },
+      { label: 'Role',     value: 'Senior Product Designer · led product design across 5 LATAM countries' },
       { label: 'Timeline', value: '12 months' },
       { label: 'Team',     value: '26 people · me, managers, devs, business analysts' },
       { label: 'Method',   value: 'Lean UX + Agile' },
@@ -538,8 +538,8 @@ const CASES = {
         name: 'Minal Pala', at: 'UX Designer · Nirakaar', img: '../assets/testimonial-minal-pala.jpg',
       },
     ],
-    next: 'ladle-slag-model',
-    prev: 'pharosgraph',
+    next: 'audi-onboarding',
+    prev: 'sales-tech-ecosystem',
   },
 
   /* ─────────────────────────────────────────────────────────────────────── */
@@ -565,7 +565,7 @@ const CASES = {
     ],
     coverAlt: 'RHI Magnesita Ladle Slag Model running on a laptop, showing the Tapping Mode monitoring interface',
     meta: [
-      { label: 'Role',     value: 'Senior Product Designer' },
+      { label: 'Role',     value: 'Senior Product Designer · led end-to-end design, Austria & Brazil' },
       { label: 'Timeline', value: '12 months' },
       { label: 'Team',     value: '12 people · me, scrum master, squad leader, senior manager, 2 devs, QA, lead architect, technical marketing, 2 APO & AI experts, head of digital solutions' },
       { label: 'Method',   value: 'Lean UX + Scrumban' },
@@ -681,7 +681,7 @@ const CASES = {
       },
     ],
     next: 'sales-tech-ecosystem',
-    prev: 'coke-ko-boss',
+    prev: 'pharosgraph',
   },
 
   /* ─────────────────────────────────────────────────────────────────────── */
@@ -695,7 +695,7 @@ const CASES = {
     subtitle: 'Leading the design of the Sales Tech Ecosystem for Kraft Heinz, a key initiative in the company\u2019s digital transformation. Sell-In, Execution and Sell-Out unified into one source of truth, across France and Brazil.',
     cover: '',
     meta: [
-      { label: 'Role',     value: 'Senior Product Designer' },
+      { label: 'Role',     value: 'Senior Product Designer · led design of the sales-tech ecosystem, France & Brazil' },
       { label: 'Timeline', value: '12 months' },
       { label: 'Team',     value: '17 people · me, managers, devs, business analysts' },
       { label: 'Method',   value: 'Scrum, bi-weekly sprints' },
@@ -876,7 +876,7 @@ const CASES = {
         ],
       },
     ],
-    next: 'audi-onboarding',
+    next: 'coke-ko-boss',
     prev: 'ladle-slag-model',
   },
 
