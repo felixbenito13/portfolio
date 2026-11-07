@@ -1,0 +1,11 @@
+{
+  "name": "portfolio-tools",
+  "private": true,
+  "description": "Build step for the case and Design Notes pages: compiles the JSX sources to plain JS so browsers don't download Babel.",
+  "type": "module",
+  "scripts": { "build": "node build-jsx.mjs" },
+  "devDependencies": {
+    "@babel/core": "7.26.0",
+    "@babel/preset-react": "7.26.3"
+  }
+}
