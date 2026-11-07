@@ -147,7 +147,7 @@ function Nav() {
 // ─── Footer (mirrors cases/case-app.jsx Footer, Medium replaced with Design Notes) ──
 function Footer() {
   return (
-    <section id="contact" className="section footer">
+    <footer id="contact" className="section footer">
       <div className="shell">
         <div className="footer-inner">
           <div className="reveal">
@@ -177,6 +177,7 @@ function Footer() {
         </div>
         <div className="footer-base">
           <span>© 2007 / {new Date().getFullYear()} Felix Benito</span>
+          <span className="footer-credits">
           <span className="footer-coffee">
             <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center' }}>
               <svg width="15" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -187,9 +188,14 @@ function Footer() {
             </span>
             Hand-built with coffee
           </span>
+          <span className="footer-a11y">
+            <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center' }}><svg width="15" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.3" /><circle cx="8" cy="4.5" r="1.1" fill="currentColor" /><path d="M4.6 6.5 8 7.2l3.4-.7M8 7.2v2.5m0 0-1.7 2.9M8 9.7l1.7 2.9" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg></span>
+            <span>Built and tested for <a href="/accessibility.html">accessibility</a> (WCAG 2.2 AA)</span>
+          </span>
+          </span>
         </div>
       </div>
-    </section>
+    </footer>
   );
 }
 
@@ -244,6 +250,7 @@ function NotesIndex() {
   return (
     <div className="page-mount">
       <Nav />
+      <main id="main" tabIndex={-1}>
       <header className="notes-hero notes-hero-drift">
         <DriftGallery />
         <div className="shell">
@@ -259,6 +266,7 @@ function NotesIndex() {
         <div className="shell">
           <NoteFilters active={active} onChange={setActive} />
 
+          <h2 className="sr-only">{active === 'all' ? 'All notes' : 'Notes in this category'}</h2>
           {filtered.length > 0 ? (
             <div className="notes-grid">
               {filtered.map((note, i) => <NoteCard key={note.slug} note={note} i={i} />)}
@@ -271,6 +279,7 @@ function NotesIndex() {
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );
@@ -336,6 +345,7 @@ function NoteArticle({ note }) {
   return (
     <div className="page-mount">
       <Nav />
+      <main id="main" tabIndex={-1}>
       <header className="notes-hero note-hero">
         <div className="shell">
           <div className="notes-hero-top">
@@ -357,16 +367,17 @@ function NoteArticle({ note }) {
         </div>
       </header>
 
-      <main className="note-main">
+      <div className="note-main">
         <div className="shell note-article">
           {note.body.map((b, i) => renderBlock(b, i))}
         </div>
-      </main>
+      </div>
 
       {note.related && note.related.length > 0 && (
         <section className="section note-related" aria-labelledby="keep-reading">
           <div className="shell">
-            <span id="keep-reading" className="eyebrow no-dot reveal">Keep reading</span>
+            <h2 id="keep-reading" className="sr-only">Keep reading</h2>
+            <span className="eyebrow no-dot reveal" aria-hidden="true">Keep reading</span>
             <div className="notes-grid">
               {note.related.filter((s) => NOTES[s]).map((s, i) => <NoteCard key={s} note={NOTES[s]} i={i} />)}
             </div>
@@ -374,6 +385,7 @@ function NoteArticle({ note }) {
         </section>
       )}
 
+      </main>
       <Footer />
     </div>
   );

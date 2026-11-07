@@ -211,7 +211,7 @@ function SectionHeader({ n, title }) {
   return (
     <div className="case-section-head reveal" data-n={n || ''} data-title={title || ''}>
       <span className="case-section-n">{n}</span>
-      <h2>{title}</h2>
+      {title ? <h2>{title}</h2> : null}
     </div>
   );
 }
@@ -308,7 +308,7 @@ function PrinciplesSection({ s }) {
             {s.items.map((it, i) => (
               <div key={i} className="case-principle reveal" style={{ '--rd': `${i * 60}ms` }}>
                 <span className="case-principle-n">{String(i + 1).padStart(2, '0')}</span>
-                <h4>{it.k}</h4>
+                <h3>{it.k}</h3>
                 <p>{it.v}</p>
               </div>
             ))}
@@ -405,7 +405,7 @@ function CaseNavCard({ c, dir }) {
       <div className="case-next-meta">
         <span className="case-next-dir">{dir === 'prev' ? '← Previous' : 'Next →'}</span>
         <span className="case-next-company">{c.company} · {c.year}</span>
-        <h4>{c.title}</h4>
+        <h3>{c.title}</h3>
       </div>
     </a>
   );
@@ -414,7 +414,7 @@ function CaseNavCard({ c, dir }) {
 // ─── Footer ────────────────────────────────────────────────────────────────
 function Footer() {
   return (
-    <section id="contact" className="section footer">
+    <footer id="contact" className="section footer">
       <div className="shell">
         <div className="footer-inner">
           <div className="reveal">
@@ -444,6 +444,7 @@ function Footer() {
         </div>
         <div className="footer-base">
           <span>© 2007 / {new Date().getFullYear()} Felix Benito</span>
+          <span className="footer-credits">
           <span className="footer-coffee">
             <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center' }}>
               <svg width="15" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -454,9 +455,14 @@ function Footer() {
             </span>
             Hand-built with coffee
           </span>
+          <span className="footer-a11y">
+            <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center' }}><svg width="15" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.3" /><circle cx="8" cy="4.5" r="1.1" fill="currentColor" /><path d="M4.6 6.5 8 7.2l3.4-.7M8 7.2v2.5m0 0-1.7 2.9M8 9.7l1.7 2.9" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" /></svg></span>
+            <span>Built and tested for <a href="/accessibility.html">accessibility</a> (WCAG 2.2 AA)</span>
+          </span>
+          </span>
         </div>
       </div>
-    </section>
+    </footer>
   );
 }
 
@@ -483,11 +489,13 @@ function CaseApp() {
     <div className="page-mount">
       <Nav />
       <CaseProgress c={c} />
-      <CaseHero c={c} />
-      <main className="case-main">
-        {c.sections.map((s, i) => renderSection(s, i))}
+      <main id="main" tabIndex={-1}>
+        <CaseHero c={c} />
+        <div className="case-main">
+          {c.sections.map((s, i) => renderSection(s, i))}
+        </div>
+        <CaseNav c={c} />
       </main>
-      <CaseNav c={c} />
       <Footer />
 
       <TweaksPanel title="Tweaks">

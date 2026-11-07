@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HM56LQNL1F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HM56LQNL1F');
+</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Accessibility · Felix Benito, Design Lead</title>
+  <meta name="description" content="How felixbenito.com was built and tested to WCAG 2.2 AA: contrast, keyboard focus, skip link, video pause, landmarks and headings, with before and after screenshots." />
+  <meta name="author" content="Felix Benito" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0A0A0A" />
+  <link rel="canonical" href="https://felixbenito.com/accessibility.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://felixbenito.com/accessibility.html" />
+  <meta property="og:title" content="Accessibility: built and tested to WCAG 2.2 AA" />
+  <meta property="og:description" content="What I changed to make my portfolio accessible, how it was tested, and what is still open, with before and after screenshots." />
+  <meta property="og:image" content="https://felixbenito.com/assets/accessibility/hero-highlight-after.jpg" />
+  <meta property="og:image:alt" content="The home page headline on a dark background, with the highlighted phrase in a brighter brand red that meets contrast requirements" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Accessibility: built and tested to WCAG 2.2 AA" />
+  <meta name="twitter:description" content="What I changed to make my portfolio accessible, how it was tested, and what is still open." />
+  <meta name="twitter:image" content="https://felixbenito.com/assets/accessibility/hero-highlight-after.jpg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Accessibility",
+    "url": "https://felixbenito.com/accessibility.html",
+    "description": "How felixbenito.com was built and tested to WCAG 2.2 AA, with before and after screenshots.",
+    "inLanguage": "en",
+    "dateModified": "2026-11-06",
+    "author": { "@type": "Person", "name": "Felix Benito", "url": "https://felixbenito.com/" },
+    "about": [
+      { "@type": "Thing", "name": "Web accessibility" },
+      { "@type": "Thing", "name": "WCAG 2.2" }
+    ]
+  }
+  </script>
+
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=60" />
+  <link rel="stylesheet" href="a11y.css?v=1" />
+  <style>
+    .ax-hero { background: #0A0A0A; color: #F2F0EC; padding: 150px 0 72px; }
+    .ax-hero .eyebrow { color: rgba(242,240,236,.62); }
+    .ax-hero h1 { font-size: clamp(44px, 6.4vw, 92px); line-height: 1.02; margin: 18px 0 24px; color: #F2F0EC; }
+    .ax-hero h1 em { font-style: normal; color: #C9212B; }
+    .ax-lead { font-size: clamp(18px, 1.6vw, 22px); line-height: 1.5; max-width: 60ch; color: rgba(242,240,236,.86); }
+    .ax-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 56px; border-top: 1px solid rgba(255,255,255,.12); }
+    .ax-facts > div { padding: 20px 24px 4px 0; }
+    .ax-facts > div + div { padding-left: 24px; border-left: 1px solid rgba(255,255,255,.12); }
+    .ax-facts span { display: block; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: rgba(242,240,236,.62); margin-bottom: 8px; }
+    .ax-facts p { font-size: 17px; line-height: 1.4; color: #F2F0EC; }
+
+    .ax-section { padding: 88px 0; border-top: 1px solid var(--rule); }
+    .ax-head { max-width: 760px; margin-bottom: 48px; }
+    .ax-head .eyebrow { color: #6B6A66; }
+    .ax-head h2 { font-size: clamp(32px, 3.8vw, 54px); line-height: 1.06; margin: 14px 0 18px; }
+    .ax-head p, .ax-prose p { font-size: 18px; line-height: 1.6; color: #1F1F1E; max-width: 66ch; }
+    .ax-prose p + p { margin-top: 14px; }
+    .ax-prose a, .ax-head a, .ax-list a { color: #0E0E0E; text-decoration: underline; text-decoration-color: rgba(139,26,31,.6); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+    .ax-prose a:hover, .ax-list a:hover { color: #8B1A1F; }
+
+    .ax-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; }
+    .ax-list li { padding: 18px 0; border-top: 1px solid var(--rule); font-size: 17px; line-height: 1.5; color: #1F1F1E; }
+    .ax-list li b { display: block; font-weight: 600; color: #0E0E0E; margin-bottom: 4px; }
+    .ax-list li code, .ax-change code { font-family: var(--mono); font-size: .86em; background: rgba(0,0,0,.05); padding: 1px 6px; border-radius: 3px; }
+
+    .ax-change { padding: 56px 0; border-top: 1px solid var(--rule); }
+    .ax-change:first-of-type { border-top: 0; padding-top: 0; }
+    .ax-change-head { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 8px 24px; max-width: 980px; margin-bottom: 28px; }
+    .ax-n { font-family: var(--mono); font-size: 14px; color: #8B1A1F; padding-top: 8px; }
+    .ax-change h3 { font-size: clamp(24px, 2.4vw, 34px); line-height: 1.15; }
+    .ax-tags { grid-column: 2; display: flex; flex-wrap: wrap; gap: 8px; }
+    .ax-tag { font-family: var(--mono); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: #3D3C39; border: 1px solid rgba(0,0,0,.16); border-radius: 999px; padding: 5px 11px; }
+    .ax-tag.ratio { color: #0E0E0E; border-color: #8B1A1F; }
+    .ax-change-head p { grid-column: 2; font-size: 17px; line-height: 1.6; color: #1F1F1E; max-width: 70ch; }
+    .ax-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .ax-pair.narrow { grid-template-columns: repeat(2, minmax(0, 300px)); }
+    .ax-pair figure { margin: 0; }
+    .ax-pair figcaption { display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: #3D3C39; margin-bottom: 10px; }
+    .ax-pair figcaption::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #6B6A66; }
+    .ax-pair figure.after figcaption { color: #0E0E0E; }
+    .ax-pair figure.after figcaption::before { background: #8B1A1F; }
+    .ax-pair img { display: block; width: 100%; height: auto; border: 1px solid rgba(0,0,0,.12); border-radius: 4px; background: #fff; }
+
+    .ax-contact { background: #F2F0EC; padding: 72px 0; }
+    .ax-contact h2 { font-size: clamp(30px, 3.4vw, 48px); line-height: 1.08; margin-bottom: 16px; }
+    .ax-contact p { font-size: 18px; line-height: 1.6; max-width: 62ch; color: #1F1F1E; }
+    .ax-contact .btn { margin-top: 26px; }
+
+    @media (max-width: 860px) {
+      .ax-hero { padding: 120px 0 56px; }
+      .ax-facts { grid-template-columns: 1fr; }
+      .ax-facts > div + div { padding-left: 0; border-left: 0; border-top: 1px solid rgba(255,255,255,.12); }
+      .ax-list { grid-template-columns: 1fr; }
+      .ax-change-head { grid-template-columns: 1fr; }
+      .ax-tags, .ax-change-head p { grid-column: 1; }
+      .ax-pair, .ax-pair.narrow { grid-template-columns: 1fr; }
+      .ax-pair.narrow { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .ax-section { padding: 64px 0; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="nav">
+    <div class="shell nav-inner">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/felix-benito-logo.png?v=2" alt="Felix Benito, design and brand lead, home" class="nav-logo" width="931" height="232" />
+      </a>
+      <div class="nav-links">
+        <a href="index.html#work">Cases</a>
+        <a href="index.html#practice">How I work</a>
+        <a href="index.html#cv">CV</a>
+        <a href="index.html#me">Me</a>
+        <a href="design-notes/index.html">Design Notes</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">
+        <svg width="26" height="26" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg>
+      </button>
+    </div>
+  </nav>
+
+  <main id="main" tabindex="-1">
+    <header class="ax-hero">
+      <div class="shell">
+        <span class="eyebrow no-dot">Accessibility</span>
+        <h1>Built for everyone<em>.</em><br />Tested to prove it<em>.</em></h1>
+        <p class="ax-lead">I design products for people with very different needs, so my own site should work for all of them too. This page explains the standard I follow, what I changed, how I tested it and what is still open, with before and after screenshots.</p>
+        <div class="ax-facts">
+          <div><span>Standard</span><p>WCAG 2.2, level AA</p></div>
+          <div><span>Last tested</span><p>November 6, 2026</p></div>
+          <div><span>Result</span><p>0 automated issues on 12 pages, desktop and mobile</p></div>
+        </div>
+      </div>
+    </header>
+
+    <section class="ax-section" aria-labelledby="standard">
+      <div class="shell">
+        <div class="ax-head">
+          <span class="eyebrow no-dot">01 · The standard</span>
+          <h2 id="standard">Why WCAG 2.2 AA</h2>
+        </div>
+        <div class="ax-prose">
+          <p>The <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener">Web Content Accessibility Guidelines (WCAG) 2.2</a> are the W3C standard for accessible websites. Level AA is the level most laws and companies ask for. It covers things like readable contrast, a site you can use with only a keyboard, motion you can stop, and a structure screen readers can follow.</p>
+          <p>There is also a level AAA. The W3C itself does not recommend requiring it for a whole site, because some content can’t meet it. I went for AA everywhere and adopted a few AAA practices where they cost little and help a lot: larger touch targets, a very visible keyboard focus, and animation that switches off when you ask your device for less motion.</p>
+          <p>I chose not to add an accessibility widget (the floating panel with font size and contrast buttons). Your browser and operating system already do that better, and those widgets often conflict with screen readers. The site should be accessible by default, not after you press a button.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ax-section" aria-labelledby="testing">
+      <div class="shell">
+        <div class="ax-head">
+          <span class="eyebrow no-dot">02 · How I tested it</span>
+          <h2 id="testing">Automated checks and real keyboard use</h2>
+          <p>Every page type was tested: the home page, the five cases, the Design Notes list, the four posts and this page.</p>
+        </div>
+        <ul class="ax-list">
+          <li><b>Automated audit</b>The <a href="https://github.com/dequelabs/axe-core" target="_blank" rel="noopener">axe-core</a> engine, with the WCAG 2.0, 2.1 and 2.2 A and AA rules plus best practices, on desktop and mobile widths.</li>
+          <li><b>Contrast, measured</b>Every text color checked against its real background with the WCAG contrast formula, not by eye.</li>
+          <li><b>Keyboard only</b>Every link and button reached with Tab, in a logical order, with a visible focus ring.</li>
+          <li><b>Zoom and small screens</b>No horizontal scroll and no cut text at 320 px wide, the same as zooming a desktop browser to 400%.</li>
+          <li><b>Reduced motion</b>Pages checked with the system setting “reduce motion” on: animations and autoplaying video stop.</li>
+          <li><b>Structure</b>Landmarks, heading order, page language and alternative text reviewed on every page.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="ax-section" aria-labelledby="changes">
+      <div class="shell">
+        <div class="ax-head">
+          <span class="eyebrow no-dot">03 · What changed</span>
+          <h2 id="changes">Before and after</h2>
+          <p>The first audit found four groups of problems. Most of them were small color decisions that looked fine on my screen but were hard to read for people with low vision, in bright light or on a cheap display.</p>
+        </div>
+
+        <article class="ax-change">
+          <div class="ax-change-head">
+            <span class="ax-n">01</span>
+            <h3>The headline highlight was too dark to read</h3>
+            <div class="ax-tags"><span class="ax-tag">1.4.3 Contrast</span><span class="ax-tag ratio">2.1:1 → 3.5:1</span></div>
+            <p>The highlighted phrase on the home page used a dark wine red on black. Large text needs at least 3:1, and it had 2.1:1. It now uses the brand red from the logo, <code>#C9212B</code>, so the brand stays the same and the phrase is readable.</p>
+          </div>
+          <div class="ax-pair">
+            <figure><figcaption>Before</figcaption><img src="assets/accessibility/hero-highlight-before.jpg" width="1422" height="890" loading="lazy" alt="Before: home headline on black, the phrase from paper sketch to AI execution and working code in a dark red that blends into the background" /></figure>
+            <figure class="after"><figcaption>After</figcaption><img src="assets/accessibility/hero-highlight-after.jpg" width="1422" height="890" loading="lazy" alt="After: the same headline with the phrase in a brighter brand red that stands out clearly from the black background" /></figure>
+          </div>
+        </article>
+
+        <article class="ax-change">
+          <div class="ax-change-head">
+            <span class="ax-n">02</span>
+            <h3>Small red labels on dark backgrounds</h3>
+            <div class="ax-tags"><span class="ax-tag">1.4.3 Contrast</span><span class="ax-tag ratio">3.2:1 → 5.1:1</span></div>
+            <p>Small text needs 4.5:1. The labels under the hero (Currently, Experience, Practice, Based) and the category tag on each post were below that. On dark surfaces they now use a lighter red, <code>#E5484D</code>. On light surfaces the original dark red stays, because there it already reaches 8:1.</p>
+          </div>
+          <div class="ax-pair">
+            <figure><figcaption>Before</figcaption><img src="assets/accessibility/hero-labels-before.jpg" width="1424" height="432" loading="lazy" alt="Before: hero labels 01 Currently and 02 Experience in a dim red on black" /></figure>
+            <figure class="after"><figcaption>After</figcaption><img src="assets/accessibility/hero-labels-after.jpg" width="1424" height="432" loading="lazy" alt="After: the same labels in a lighter red that is easy to read on black" /></figure>
+          </div>
+        </article>
+
+        <article class="ax-change">
+          <div class="ax-change-head">
+            <span class="ax-n">03</span>
+            <h3>Light grey details that almost disappeared</h3>
+            <div class="ax-tags"><span class="ax-tag">1.4.3 Contrast</span><span class="ax-tag ratio">2.4:1 → 5.2:1</span></div>
+            <p>The country next to each role in my experience, and the date and reading time on Design Notes cards, used a very light grey on an off-white background. They now use the same darker grey as the rest of the secondary text.</p>
+          </div>
+          <div class="ax-pair">
+            <figure><figcaption>Before</figcaption><img src="assets/accessibility/cv-place-before.jpg" width="1600" height="626" loading="lazy" alt="Before: experience list where the country labels US and International are a pale grey that is hard to see" /></figure>
+            <figure class="after"><figcaption>After</figcaption><img src="assets/accessibility/cv-place-after.jpg" width="1600" height="626" loading="lazy" alt="After: the same list with the country labels in a darker grey" /></figure>
+          </div>
+          <div class="ax-pair" style="margin-top: 24px">
+            <figure><figcaption>Before</figcaption><img src="assets/accessibility/note-card-before.jpg" width="1440" height="458" loading="lazy" alt="Before: Design Notes card where the date and reading time line is pale grey" /></figure>
+            <figure class="after"><figcaption>After</figcaption><img src="assets/accessibility/note-card-after.jpg" width="1440" height="458" loading="lazy" alt="After: the same card with the date and reading time in a readable grey" /></figure>
+          </div>
+        </article>
+
+        <article class="ax-change">
+          <div class="ax-change-head">
+            <span class="ax-n">04</span>
+            <h3>Labels in the case details and the footer</h3>
+            <div class="ax-tags"><span class="ax-tag">1.4.3 Contrast</span><span class="ax-tag ratio">4.1:1 → 6.9:1</span></div>
+            <p>The Role, Timeline and Team labels on each case, and the small print at the bottom of every page, were just under the 4.5:1 line. They were brightened, and the footer now carries the line that links to this page.</p>
+          </div>
+          <div class="ax-pair">
+            <figure><figcaption>Before</figcaption><img src="assets/accessibility/case-meta-before.jpg" width="1600" height="286" loading="lazy" alt="Before: case details grid with the labels Role, Timeline and Team in a dim grey on black" /></figure>
+            <figure class="after"><figcaption>After</figcaption><img src="assets/accessibility/case-meta-after.jpg" width="1600" height="286" loading="lazy" alt="After: the same grid with brighter labels" /></figure>
+          </div>
+          <div class="ax-pair" style="margin-top: 24px">
+            <figure><figcaption>Before</figcaption><img src="assets/accessibility/footer-line-before.jpg" width="1432" height="176" loading="lazy" alt="Before: footer line reading Hand-built with coffee in a dim grey" /></figure>
+            <figure class="after"><figcaption>After</figcaption><img src="assets/accessibility/footer-line-after.jpg" width="1432" height="240" loading="lazy" alt="After: brighter footer text with a new line, Built and tested for accessibility, WCAG 2.2 AA, with an accessibility icon" /></figure>
+          </div>
+        </article>
+
+        <article class="ax-change">
+          <div class="ax-change-head">
+            <span class="ax-n">05</span>
+            <h3>Videos you can pause</h3>
+            <div class="ax-tags"><span class="ax-tag">2.2.2 Pause, Stop, Hide</span><span class="ax-tag">2.3.3 Animation from interactions</span></div>
+            <p>The case covers on the home page play short videos in a loop, and before there was no way to stop them. Moving content can make reading hard, especially for people with attention or vestibular disorders. There is now a Pause videos button, and if your device is set to reduce motion, the videos don’t start at all.</p>
+          </div>
+          <div class="ax-pair">
+            <figure><figcaption>Before</figcaption><img src="assets/accessibility/videos-before.jpg" width="1600" height="929" loading="lazy" alt="Before: Cases section of the home page with a looping video cover and no control to stop it" /></figure>
+            <figure class="after"><figcaption>After</figcaption><img src="assets/accessibility/videos-after.jpg" width="1600" height="929" loading="lazy" alt="After: the same section with a Pause videos button above the first case" /></figure>
+          </div>
+        </article>
+
+        <article class="ax-change">
+          <div class="ax-change-head">
+            <span class="ax-n">06</span>
+            <h3>A focus ring you can actually see</h3>
+            <div class="ax-tags"><span class="ax-tag">2.4.7 Focus visible</span><span class="ax-tag">2.4.13 Focus appearance (AAA)</span></div>
+            <p>People who navigate with a keyboard need to see where they are. The browser default was a thin dark line that vanished on the black sections. Now every link and button gets a 3 px red ring that reads on both light (3.9:1) and dark (5.1:1) backgrounds.</p>
+          </div>
+          <div class="ax-pair">
+            <figure><figcaption>Before</figcaption><img src="assets/accessibility/focus-before.jpg" width="1160" height="140" loading="lazy" alt="Before: How I work menu link focused with a thin black outline" /></figure>
+            <figure class="after"><figcaption>After</figcaption><img src="assets/accessibility/focus-after.jpg" width="1160" height="140" loading="lazy" alt="After: the same link focused with a thick, rounded red ring" /></figure>
+          </div>
+        </article>
+
+        <article class="ax-change">
+          <div class="ax-change-head">
+            <span class="ax-n">07</span>
+            <h3>Skip to content</h3>
+            <div class="ax-tags"><span class="ax-tag">2.4.1 Bypass blocks</span></div>
+            <p>Keyboard and screen reader users had to go through the seven menu items on every page before reaching the content. Now the first Tab shows a Skip to content link that jumps straight to it. It stays hidden for everyone else.</p>
+          </div>
+          <div class="ax-pair">
+            <figure><figcaption>Before</figcaption><img src="assets/accessibility/skip-link-before.jpg" width="1600" height="167" loading="lazy" alt="Before: after pressing Tab, the focus lands on the logo" /></figure>
+            <figure class="after"><figcaption>After</figcaption><img src="assets/accessibility/skip-link-after.jpg" width="1600" height="167" loading="lazy" alt="After: after pressing Tab, a Skip to content button appears in the top left corner" /></figure>
+          </div>
+        </article>
+
+        <article class="ax-change">
+          <div class="ax-change-head">
+            <span class="ax-n">08</span>
+            <h3>Back to top</h3>
+            <div class="ax-tags"><span class="ax-tag">Usability</span><span class="ax-tag">2.5.8 Target size</span></div>
+            <p>The cases are long, especially on a phone. After you scroll about two screens, a round button appears in the bottom corner and takes you back to the top. It is 48 px or larger, has a name for screen readers, and also moves the keyboard focus to the top, not only the view.</p>
+          </div>
+          <div class="ax-pair narrow">
+            <figure><figcaption>Before</figcaption><img src="assets/accessibility/mobile-scrolled-before.jpg" width="780" height="1688" loading="lazy" alt="Before: Coca-Cola case scrolled halfway on a phone, with no shortcut back to the top" /></figure>
+            <figure class="after"><figcaption>After</figcaption><img src="assets/accessibility/mobile-scrolled-after.jpg" width="780" height="1688" loading="lazy" alt="After: the same screen with a round black button with an up arrow in the bottom right corner" /></figure>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="ax-section" aria-labelledby="hidden">
+      <div class="shell">
+        <div class="ax-head">
+          <span class="eyebrow no-dot">04 · Under the hood</span>
+          <h2 id="hidden">Changes you don’t see, but a screen reader does</h2>
+        </div>
+        <ul class="ax-list">
+          <li><b>Landmarks</b>Every page now marks its main content and its footer, so assistive tech can jump between them. <span class="ax-tag" style="margin-left:4px">1.3.1</span></li>
+          <li><b>Heading order</b>Headings follow a clean outline (h1, h2, h3) with no skipped levels, and sections without a title no longer create empty headings. <span class="ax-tag" style="margin-left:4px">1.3.1</span></li>
+          <li><b>Recommendations carousel</b>The sideways list of recommendations can receive keyboard focus and has a name, so it can be scrolled without a mouse. <span class="ax-tag" style="margin-left:4px">2.1.1</span></li>
+          <li><b>Mobile menu</b>The menu button on the home page now says whether the menu is open or closed, like the other pages already did. <span class="ax-tag" style="margin-left:4px">4.1.2</span></li>
+          <li><b>Hidden headings for context</b>Lists such as Keep reading and the Design Notes grid have headings that only screen readers announce.</li>
+          <li><b>Comfortable targets</b>Footer links got extra padding, and buttons are at least 44 px, above the 24 px minimum of WCAG 2.2. <span class="ax-tag" style="margin-left:4px">2.5.8</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="ax-section" aria-labelledby="already">
+      <div class="shell">
+        <div class="ax-head">
+          <span class="eyebrow no-dot">05 · Already in place</span>
+          <h2 id="already">What was right from the start</h2>
+        </div>
+        <ul class="ax-list">
+          <li><b>Alternative text</b>Every image has a description of what it shows, written by hand, not generated from file names.</li>
+          <li><b>Captions</b>The Breakdown videos have captions burned in, and each post repeats the content as text.</li>
+          <li><b>Reduced motion</b>Scroll animations and the pinned How I work section switch off when you ask your device for less motion.</li>
+          <li><b>Reflow</b>The layout adapts down to 320 px without horizontal scrolling.</li>
+          <li><b>Language</b>Every page declares English, so screen readers use the right voice and pronunciation.</li>
+          <li><b>No autoplay with sound</b>Nothing on the site plays audio on its own.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="ax-section" aria-labelledby="limits">
+      <div class="shell">
+        <div class="ax-head">
+          <span class="eyebrow no-dot">06 · Known limitations</span>
+          <h2 id="limits">What is still open</h2>
+          <p>Being honest about the gaps is part of the work.</p>
+        </div>
+        <ul class="ax-list">
+          <li><b>Screen reader testing</b>The structure was checked with automated tools and by hand, but not yet in a full session with NVDA or VoiceOver. That is the next step.</li>
+          <li><b>Videos</b>The Breakdown videos have open captions but no separate transcript file, sign language or audio description. The text of each post covers the same points.</li>
+          <li><b>Text size setting</b>Browser zoom works everywhere, but the browser’s “font size” setting doesn’t enlarge every text, because some sizes are set in pixels.</li>
+          <li><b>Case screenshots</b>Product screenshots inside the cases contain small interface text that is described in the alt text, not readable at full contrast.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="ax-contact" aria-labelledby="feedback">
+      <div class="shell">
+        <h2 id="feedback">Found a barrier?</h2>
+        <p>If something on this site is hard to use with your setup, I want to know. Tell me the page, what you tried to do and what you use (browser, screen reader, zoom), and I will fix it.</p>
+        <a class="btn primary" href="mailto:contact@felixbenito.com?subject=Accessibility%20feedback">contact@felixbenito.com <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="section footer">
+    <div class="shell">
+      <div class="footer-inner">
+        <div>
+          <span class="eyebrow no-dot" style="margin-bottom: 18px; display: inline-block">Contact</span>
+          <h2>Hiring a design lead<em>?</em><br />Let’s talk<em>.</em></h2>
+          <a class="btn primary" href="mailto:contact@felixbenito.com" style="margin-top: 28px">contact@felixbenito.com <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+        <div>
+          <div class="col-h">Elsewhere</div>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/felix-benito/" target="_blank" rel="noreferrer">LinkedIn ↗</a></li>
+            <li><a href="design-notes/index.html">Design Notes ↗</a></li>
+            <li><a href="assets/Felix_Benito_Design_Lead_CV.pdf" target="_blank" rel="noreferrer">CV (PDF) ↗</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="col-h">Open to</div>
+          <ul>
+            <li>Design lead &amp; head of design roles</li>
+            <li>AI product design engagements</li>
+            <li>Design system audits</li>
+            <li>Speaking &amp; workshops</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-base">
+        <span>© 2007 / 2026 Felix Benito</span>
+        <span class="footer-credits">
+          <span class="footer-coffee">
+            <span aria-hidden="true" style="display: inline-flex; align-items: center"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 5.5h9v4a3 3 0 0 1-3 3h-3a3 3 0 0 1-3-3v-4Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" /><path d="M11.5 6.5h1.4a1.6 1.6 0 0 1 0 3.2h-1.4" stroke="currentColor" stroke-width="1.3" /><path d="M5 1.6c-.5.7-.5 1.3 0 2M8 1.6c-.5.7-.5 1.3 0 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" /></svg></span>
+            Hand-built with coffee
+          </span>
+          <span class="footer-a11y">
+            <span aria-hidden="true" style="display: inline-flex; align-items: center"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.3" /><circle cx="8" cy="4.5" r="1.1" fill="currentColor" /><path d="M4.6 6.5 8 7.2l3.4-.7M8 7.2v2.5m0 0-1.7 2.9M8 9.7l1.7 2.9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+            <span>Built and tested for <a href="accessibility.html" aria-current="page">accessibility</a> (WCAG 2.2 AA)</span>
+          </span>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var nav = document.querySelector('.nav'), btn = document.querySelector('.nav-toggle');
+      if (!nav || !btn) return;
+      btn.addEventListener('click', function () {
+        var open = !nav.classList.contains('nav-open');
+        nav.classList.toggle('nav-open', open);
+        document.body.classList.toggle('nav-open', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      nav.querySelectorAll('.nav-links a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('nav-open'); document.body.classList.remove('nav-open'); btn.setAttribute('aria-expanded', 'false'); }); });
+    })();
+  </script>
+  <script src="a11y.js?v=1" defer></script>
+</body>
+</html>

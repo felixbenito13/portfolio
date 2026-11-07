@@ -13,11 +13,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="motion.css?v=2" />
-<script>try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("motion");setTimeout(function(){if(!window.__motionReady)document.documentElement.classList.remove("motion")},6000)}}catch(e){}</script>
+<link rel="stylesheet" href="a11y.css?v=1" />
+<script>try{window.__videosPaused=matchMedia("(prefers-reduced-motion: reduce)").matches;if(!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("motion");setTimeout(function(){if(!window.__motionReady)document.documentElement.classList.remove("motion")},6000)}}catch(e){}</script>
 <script src="./support.js" defer></script>
 <script src="motion.js?v=2" defer></script>
+<script src="a11y.js?v=1" defer></script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <x-dc>
 <helmet>
   <title>Felix Benito · Design Lead, brand strategy and AI products</title>
@@ -409,7 +412,7 @@
         </a>
       </sc-for>
     </div>
-    <button data-r="nav-toggle" type="button" onClick="{{ toggleMenu }}" aria-label="Menu" style="display: none; appearance: none; -webkit-appearance: none; cursor: pointer; align-items: center; justify-content: center; width: 44px; height: 44px; margin-right: -10px; background: none; border: 0; color: #0E0E0E">
+    <button data-r="nav-toggle" type="button" onClick="{{ toggleMenu }}" aria-label="Menu" aria-expanded="{{ menuOpenAttr }}" style="display: none; appearance: none; -webkit-appearance: none; cursor: pointer; align-items: center; justify-content: center; width: 44px; height: 44px; margin-right: -10px; background: none; border: 0; color: #0E0E0E">
       <svg width="26" height="26" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
       </svg>
@@ -417,6 +420,7 @@
   </div>
 </nav>
 
+<main id="main" tabindex="-1">
 <section id="top" data-screen-label="Hero" style="padding: 101px 0 53px; background: #0A0A0A; color: #F2F0EC; border-bottom: 1px solid rgba(255,255,255,0.10)">
   <div data-r="shell" style="max-width: 1440px; margin: 0 auto; padding: 0 28px">
     <div data-r="hero" style="display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: start; margin-top: 36px">
@@ -425,7 +429,7 @@
       </div>
       <div style="display: flex; flex-direction: column; justify-content: space-between; min-width: 0; gap: 36px">
         <div>
-          <h1 style="font-size: clamp(34px, 3.9vw, 56px); line-height: 1.16; letter-spacing: -0.022em; font-weight: 600; color: #F2F0EC">Leading design and brand strategy end to end, <em style="font-style: normal; color: #8B1A1F">from paper sketch to AI execution and working code</em>, for global teams.</h1>
+          <h1 style="font-size: clamp(34px, 3.9vw, 56px); line-height: 1.16; letter-spacing: -0.022em; font-weight: 600; color: #F2F0EC">Leading design and brand strategy end to end, <em style="font-style: normal; color: #C9212B">from paper sketch to AI execution and working code</em>, for global teams.</h1>
           <p style="margin-top: 28px; font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: clamp(11px, 0.85vw, 13px); font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242,240,236,0.55); display: inline-flex; align-items: center; gap: 14px">18 years designing for Audi, Coca-Cola and Kraft Heinz.</p>
         </div>
       </div>
@@ -442,8 +446,8 @@
           </svg>
         </span>
       </a>
-      <a class="btn-fill" href="assets/Felix_Benito_Design_Lead_CV.pdf" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 46px; padding: 0 18px; border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; font-size: 14px; font-weight: 500; white-space: nowrap; color: #F2F0EC" style-hover="border-color: #8B1A1F; color: #8B1A1F">Download CV <span>↓</span></a>
-      <a href="mailto:contact@felixbenito.com" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 46px; padding: 0 18px; border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; font-size: 14px; font-weight: 500; white-space: nowrap; color: #F2F0EC" style-hover="border-color: #8B1A1F; color: #8B1A1F">
+      <a class="btn-fill" href="assets/Felix_Benito_Design_Lead_CV.pdf" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 46px; padding: 0 18px; border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; font-size: 14px; font-weight: 500; white-space: nowrap; color: #F2F0EC" style-hover="border-color: #8B1A1F; color: #E5484D">Download CV <span>↓</span></a>
+      <a href="mailto:contact@felixbenito.com" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 46px; padding: 0 18px; border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; font-size: 14px; font-weight: 500; white-space: nowrap; color: #F2F0EC" style-hover="border-color: #8B1A1F; color: #E5484D">
         contact@felixbenito.com
         <span aria-hidden="true" style="display: inline-flex; align-items: center; margin: 0 2px">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -456,19 +460,19 @@
 
     <div data-r="stats" style="display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 56px; border-top: 1px solid rgba(255,255,255,0.10); border-left: 1px solid rgba(255,255,255,0.10)">
       <div style="padding: 16px 20px; border-right: 1px solid rgba(255,255,255,0.10); border-bottom: 1px solid rgba(255,255,255,0.10); min-height: 104px; display: flex; flex-direction: column">
-        <span style="display: flex; flex-direction: column; align-items: flex-start; gap: 7px; font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #B23439; margin-bottom: 9px"><span style="font-weight: 500; font-size: 12px">01</span>Currently</span>
+        <span style="display: flex; flex-direction: column; align-items: flex-start; gap: 7px; font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #E5484D; margin-bottom: 9px"><span style="font-weight: 500; font-size: 12px">01</span>Currently</span>
         <p style="font-size: 15.5px; color: #FFFFFF; line-height: 1.5; max-width: 36ch">Design and brand lead.</p>
       </div>
       <div style="padding: 16px 20px; border-right: 1px solid rgba(255,255,255,0.10); border-bottom: 1px solid rgba(255,255,255,0.10); min-height: 104px; display: flex; flex-direction: column">
-        <span style="display: flex; flex-direction: column; align-items: flex-start; gap: 7px; font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #B23439; margin-bottom: 9px"><span style="font-weight: 500; font-size: 12px">02</span>Experience</span>
+        <span style="display: flex; flex-direction: column; align-items: flex-start; gap: 7px; font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #E5484D; margin-bottom: 9px"><span style="font-weight: 500; font-size: 12px">02</span>Experience</span>
         <p style="font-size: 15.5px; color: #FFFFFF; line-height: 1.5; max-width: 36ch">18+ years across consumer, enterprise B2B, automotive and industrial product.</p>
       </div>
       <div style="padding: 16px 20px; border-right: 1px solid rgba(255,255,255,0.10); border-bottom: 1px solid rgba(255,255,255,0.10); min-height: 104px; display: flex; flex-direction: column">
-        <span style="display: flex; flex-direction: column; align-items: flex-start; gap: 7px; font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #B23439; margin-bottom: 9px"><span style="font-weight: 500; font-size: 12px">03</span>Practice</span>
+        <span style="display: flex; flex-direction: column; align-items: flex-start; gap: 7px; font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #E5484D; margin-bottom: 9px"><span style="font-weight: 500; font-size: 12px">03</span>Practice</span>
         <p style="font-size: 15.5px; color: #FFFFFF; line-height: 1.5; max-width: 36ch">Design and brand strategy, AI product design, go-to-market, design systems in Figma, from tokens to code, design-to-code handoff.</p>
       </div>
       <div style="padding: 16px 20px; border-right: 1px solid rgba(255,255,255,0.10); border-bottom: 1px solid rgba(255,255,255,0.10); min-height: 104px; display: flex; flex-direction: column">
-        <span style="display: flex; flex-direction: column; align-items: flex-start; gap: 7px; font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #B23439; margin-bottom: 9px"><span style="font-weight: 500; font-size: 12px">04</span>Based</span>
+        <span style="display: flex; flex-direction: column; align-items: flex-start; gap: 7px; font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #E5484D; margin-bottom: 9px"><span style="font-weight: 500; font-size: 12px">04</span>Based</span>
         <p style="font-size: 15.5px; color: #FFFFFF; line-height: 1.5; max-width: 36ch">Working with teams across LATAM, EU and US.</p>
       </div>
     </div>
@@ -525,7 +529,7 @@
   <div data-r="shell" style="max-width: 1440px; margin: 0 auto; padding: 0 28px">
     <div style="display: flex; flex-direction: column; gap: 18px; margin-bottom: 48px">
       <div style="display: flex; flex-direction: column; gap: 14px">
-        <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6A66; display: inline-flex; align-items: center; gap: 10px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #8B1A1F; display: inline-block"></span>How I work</span>
+        <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #8A8A87; display: inline-flex; align-items: center; gap: 10px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #8B1A1F; display: inline-block"></span>How I work</span>
         <h2 data-r="h2" class="mh" style="font-size: clamp(48px, 6.6vw, 96px); line-height: 1.06; letter-spacing: -0.03em; font-weight: 600; color: #F2F0EC"><span class="mw"><span>My</span></span> <span class="mw"><span>process,</span></span><br /><span class="mw"><span>end</span></span> <span class="mw"><span>to</span></span> <span class="mw"><span>end.</span></span></h2>
       </div>
       <p style="color: rgba(242,240,236,0.72); font-size: 17px; max-width: 42ch; line-height: 1.5">From the first survey to the shipped code and the numbers after launch, one design voice across the whole thing.</p>
@@ -545,7 +549,7 @@
       </div>
       <div data-r="process-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; min-height: 320px">
         <div style="display: flex; flex-direction: column; gap: 18px">
-          <h4 style="font-size: clamp(24px, 2.4vw, 34px); line-height: 1.16; letter-spacing: -0.018em; font-weight: 600; color: #F2F0EC">{{ active.title }}</h4>
+          <h3 style="font-size: clamp(24px, 2.4vw, 34px); line-height: 1.16; letter-spacing: -0.018em; font-weight: 600; color: #F2F0EC">{{ active.title }}</h3>
           <p style="color: rgba(242,240,236,0.72); font-size: 15.5px; line-height: 1.6; max-width: 52ch">{{ active.body }}</p>
         </div>
         <div style="padding: 30px 32px; background: #8B1A1F; color: #F2F0EC; border-radius: 24px">
@@ -573,7 +577,7 @@
           <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.06em; color: #6B6A66">{{ row.year }}</span>
           <span style="font-weight: 600">{{ row.role }}</span>
           <span style="color: #6B6A66">{{ row.org }}</span>
-          <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #A6A39E; text-align: right; white-space: nowrap">{{ row.place }}</span>
+          <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #6B6A66; text-align: right; white-space: nowrap">{{ row.place }}</span>
         </div>
       </sc-for>
     </div>
@@ -584,7 +588,7 @@
 <section id="formation" data-screen-label="Education" data-r="section" style="padding: 67px 0 86px; background: #0A0A0A; color: #F2F0EC; border-bottom: 1px solid rgba(255,255,255,0.10)">
   <div data-r="shell" style="max-width: 1440px; margin: 0 auto; padding: 0 28px">
     <div style="max-width: 980px; margin: 0 auto; display: flex; flex-direction: column; align-items: flex-start; gap: 22px">
-      <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6A66; display: inline-flex; align-items: center; gap: 10px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #8B1A1F; display: inline-block"></span>Education</span>
+      <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #8A8A87; display: inline-flex; align-items: center; gap: 10px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #8B1A1F; display: inline-block"></span>Education</span>
       <h2 class="mh" style="font-size: clamp(28px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -0.025em; font-weight: 600; color: #F2F0EC; text-wrap: balance"><span class="mw"><span>Always</span></span> <span class="mw"><span>learning,</span></span> <span class="mw"><span>always</span></span> <span class="mw"><span>shipping</span></span></h2>
       <p style="font-size: 17px; line-height: 1.65; color: rgba(242,240,236,0.72); max-width: 62ch; text-wrap: pretty">It started with a <em style="font-style: normal; color: #F2F0EC; font-weight: 500; box-shadow: inset 0 -2px 0 #8B1A1F; padding: 0 1px">degree in advertising</em>, where audience, narrative and brand are the entire craft. A <em style="font-style: normal; color: #F2F0EC; font-weight: 500; box-shadow: inset 0 -2px 0 #8B1A1F; padding: 0 1px">postgraduate degree in design</em> turned that craft into systems and products. An <em style="font-style: normal; color: #F2F0EC; font-weight: 500; box-shadow: inset 0 -2px 0 #8B1A1F; padding: 0 1px">MBA in strategic communication</em> added the business lens, positioning, framing, the discipline of saying no. Right now I am working toward my <em style="font-style: normal; color: #F2F0EC; font-weight: 500; box-shadow: inset 0 -2px 0 #8B1A1F; padding: 0 1px">NN/g UX Certification</em>, and I keep studying English, Spanish and Portuguese so the work lands wherever the team happens to be.</p>
       <div data-r="edu3" style="width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 14px; align-items: start">
@@ -593,7 +597,7 @@
         <figure style="margin: 0; display: flex; flex-direction: column; gap: 10px"><img src="assets/felix-benito-product-discovery-notes.jpg" alt="Handwritten study notes on product discovery beside an open copy of Inspired, on product-discovery principles" width="1200" height="700" loading="lazy" style="width: 100%; height: auto; object-fit: contain; border-radius: 2px" /><figcaption style="font-size: 13px; line-height: 1.5; color: rgba(242,240,236,0.62)">Notes on product discovery, written by hand while reading Inspired.</figcaption></figure>
         <figure style="margin: 0; display: flex; flex-direction: column; gap: 10px"><img src="assets/felix-benito-marketing-course-lima.jpg" alt="Felix Benito in an in-person digital marketing course in Lima, Peru, with the class working through a live campaign on screen" width="1200" height="1118" loading="lazy" style="width: 100%; height: auto; object-fit: contain; border-radius: 2px" /><figcaption style="font-size: 13px; line-height: 1.5; color: rgba(242,240,236,0.62)">In-person digital marketing course in Lima, Peru, running real campaigns in the classroom.</figcaption></figure>
       </div>
-      <p style="font-size: 15px; line-height: 1.6; color: #6B6A66; max-width: 62ch; margin-top: 6px">I stay in constant development: taking courses and workshops, reading and summarizing books by hand, which is how I hold on to what I learn.</p>
+      <p style="font-size: 15px; line-height: 1.6; color: #8A8A87; max-width: 62ch; margin-top: 6px">I stay in constant development: taking courses and workshops, reading and summarizing books by hand, which is how I hold on to what I learn.</p>
     </div>
   </div>
 </section>
@@ -611,7 +615,7 @@
       <div data-r="quotes-bg" aria-hidden="true">
         <sc-for list="{{ testimonials }}" as="q" hint-placeholder-count="3"><span>{{ q.org }}</span></sc-for>
       </div>
-      <div data-r="quotes" style="position: relative; display: flex; gap: 56px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 8px">
+      <div data-r="quotes" tabindex="0" role="region" aria-label="Recommendations, scroll sideways or use the arrows below" style="position: relative; display: flex; gap: 56px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 8px">
         <sc-for list="{{ testimonials }}" as="q" hint-placeholder-count="3">
         <div data-r="quote" style="flex: 0 0 min(720px, 84vw); scroll-snap-align: start; display: flex; flex-direction: column; gap: 22px; padding-right: 8px">
           <div style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 32px; color: #8B1A1F; line-height: 0; margin-top: 16px">“</div>
@@ -639,7 +643,7 @@
   <div data-r="shell" style="max-width: 1440px; margin: 0 auto; padding: 0 28px">
     <div style="display: flex; flex-direction: column; gap: 18px; margin-bottom: 48px">
       <div style="display: flex; flex-direction: column; gap: 14px">
-        <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6A66; display: inline-flex; align-items: center; gap: 10px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #8B1A1F; display: inline-block"></span>Companies</span>
+        <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #8A8A87; display: inline-flex; align-items: center; gap: 10px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #8B1A1F; display: inline-block"></span>Companies</span>
         <h2 data-r="h2" class="mh" style="font-size: clamp(48px, 6.6vw, 96px); line-height: 1.06; letter-spacing: -0.03em; font-weight: 600; color: #F2F0EC"><span class="mw"><span>Worked</span></span> <span class="mw"><span>with.</span></span></h2>
       </div>
       <p style="color: rgba(242,240,236,0.72); font-size: 17px; max-width: 42ch; line-height: 1.5">Selected global, regional and startup clients across automotive, FMCG, agriculture, retail and biotech.</p>
@@ -696,12 +700,14 @@
   </div>
 </section>
 
+</main>
+<footer>
 <section id="contact" data-screen-label="Contact" data-r="section" style="padding: 86px 0; background: #0A0A0A; color: #F2F0EC; border-top: 1px solid rgba(255,255,255,0.10)">
   <div data-r="shell" style="max-width: 1440px; margin: 0 auto; padding: 0 28px">
     <div data-r="footer" style="display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; align-items: start">
       <div>
         <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(242,240,236,0.55); margin-bottom: 18px; display: inline-block">Contact</span>
-        <h2 data-r="h2" class="mh" style="font-size: clamp(48px, 6.6vw, 96px); line-height: 1.06; letter-spacing: -0.03em; max-width: 14ch; color: #F2F0EC"><span class="mw"><span>Hiring</span></span> <span class="mw"><span>a</span></span> <em style="font-style: normal; color: #8B1A1F"><span class="mw"><span>design</span></span> <span class="mw"><span>lead?</span></span></em><br /><span class="mw"><span>Let’s</span></span> <span class="mw"><span>talk.</span></span></h2>
+        <h2 data-r="h2" class="mh" style="font-size: clamp(48px, 6.6vw, 96px); line-height: 1.06; letter-spacing: -0.03em; max-width: 14ch; color: #F2F0EC"><span class="mw"><span>Hiring</span></span> <span class="mw"><span>a</span></span> <em style="font-style: normal; color: #C9212B"><span class="mw"><span>design</span></span> <span class="mw"><span>lead?</span></span></em><br /><span class="mw"><span>Let’s</span></span> <span class="mw"><span>talk.</span></span></h2>
         <a href="mailto:contact@felixbenito.com" style="display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 18px; border: 1px solid #8B1A1F; border-radius: 999px; font-size: 14px; font-weight: 500; background: #8B1A1F; color: #F2F0EC; margin-top: 28px" style-hover="background: #F2F0EC; border-color: #F2F0EC; color: #0A0A0A">
           contact@felixbenito.com
           <span aria-hidden="true" style="display: inline-flex; align-items: center; margin: 0 2px">
@@ -731,8 +737,9 @@
         </ul>
       </div>
     </div>
-    <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(242,240,236,0.45); margin-top: 56px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.10)">
+    <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(242,240,236,0.62); margin-top: 56px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.10)">
       <span>© 2007 / {{ year }} Felix Benito</span>
+      <span class="footer-credits">
       <span style="display: inline-flex; align-items: center; gap: 8px">
         <span aria-hidden="true" style="display: inline-flex; align-items: center">
           <svg width="15" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -743,9 +750,15 @@
         </span>
         Hand-built with coffee
       </span>
+      <span class="footer-a11y">
+        <span aria-hidden="true" style="display: inline-flex; align-items: center"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.3"></circle><circle cx="8" cy="4.5" r="1.1" fill="currentColor"></circle><path d="M4.6 6.5 8 7.2l3.4-.7M8 7.2v2.5m0 0-1.7 2.9M8 9.7l1.7 2.9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+        <span>Built and tested for <a href="accessibility.html">accessibility</a> (WCAG 2.2 AA)</span>
+      </span>
+      </span>
     </div>
   </div>
 </section>
+</footer>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;useVideoCovers&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Cases&quot;},&quot;caseCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:5,&quot;min&quot;:1,&quot;max&quot;:5,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Cases&quot;}}">
 class Component extends DCLogic {
@@ -758,7 +771,7 @@ class Component extends DCLogic {
     this._io = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         const v = e.target;
-        if (e.isIntersecting) {
+        if (e.isIntersecting && !window.__videosPaused) {
           v.muted = true;
           const p = v.play();
           if (p && p.catch) p.catch(() => {});
@@ -919,7 +932,7 @@ class Component extends DCLogic {
       activeBar: i === step ? '#8B1A1F' : 'transparent',
       activeBg: i === step ? 'rgba(255,255,255,0.05)' : 'transparent',
       activeColor: i === step ? '#F2F0EC' : 'rgba(242,240,236,0.6)',
-      activeNum: i === step ? '#B23439' : 'rgba(242,240,236,0.4)',
+      activeNum: i === step ? '#E5484D' : 'rgba(242,240,236,0.62)',
     }));
     const active = leadership[step];
 
