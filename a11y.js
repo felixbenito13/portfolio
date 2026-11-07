@@ -72,7 +72,7 @@
     btn.addEventListener('click', function () {
       window.__videosPaused = !window.__videosPaused;
       track(window.__videosPaused ? 'videos_paused' : 'videos_played');
-      videos.forEach(function (v) {
+      [].slice.call(document.querySelectorAll('#work video')).forEach(function (v) {
         if (window.__videosPaused) { v.pause(); }
         else {
           var r = v.getBoundingClientRect();
@@ -87,8 +87,13 @@
 
   function init() {
     backToTop();
-    var tries = 0;
-    (function wait() { if (videoControl() || tries++ > 120) return; setTimeout(wait, 100); })();
+    /* the home template renders after this script, and later still in a background tab:
+       watch the DOM until the case list is ready (max 60 s) */
+    videoControl();
+    var mo = new MutationObserver(function () { videoControl(); }); /* re-adds the control if a re-render removes it */
+    mo.observe(document.documentElement, { childList: true, subtree: true });
+    setTimeout(function () { mo.disconnect(); }, 60000);
+    window.addEventListener('scroll', function () { videoControl(); }, { passive: true });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
