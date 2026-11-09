@@ -10,9 +10,79 @@ const NOTE_CATEGORIES = [
   { id: 'breakdown',  label: 'Breakdown' },
 ];
 
-const NOTE_ORDER = ['breakdown-02-globo-homepage', 'breakdown-01-amazon-homepage', 'where-creativity-comes-from', 'alignment-happens-before-the-file-opens'];
+const NOTE_ORDER = ['breakdown-03-younger-self', 'breakdown-02-globo-homepage', 'breakdown-01-amazon-homepage', 'where-creativity-comes-from', 'alignment-happens-before-the-file-opens'];
 
 const NOTES = {
+
+  'breakdown-03-younger-self': {
+    slug: 'breakdown-03-younger-self',
+    category: 'breakdown',
+    categoryLabel: 'Breakdown',
+    title: 'What I’d Tell My Younger Self as a Designer',
+    subtitle: 'Design Notes: Breakdown #03. Six lessons from 18 years in design, from UX and languages to business, books and code.',
+    date: '2026-11-09',
+    dateLabel: 'Nov 2026',
+    readTime: '5 min read',
+    cover: 'assets/breakdown-03-younger-self-cover.jpg',
+    coverAlt: 'Breakdown #03, What I’d tell my younger self as a designer: Felix Benito at age 4 and at age 36, 18 years in design',
+    excerpt: 'Six things I’d do earlier if I could start again: UX and UI, English and Spanish, smart courses, the classic books, business and negotiation, and code.',
+    metaDescription: 'A design & brand lead’s 6 lessons from 18 years in design: focus on UX early, learn languages, take focused courses, read the classics, learn business and code.',
+    related: ['where-creativity-comes-from', 'alignment-happens-before-the-file-opens'],
+    body: [
+      { type: 'video', src: 'assets/breakdown-03-younger-self.mp4', poster: 'assets/breakdown-03-younger-self-poster.jpg', w: 1600, h: 852,
+        label: 'Breakdown #03 video with captions: Felix Benito shares six lessons he would tell his younger self as a designer, over a board with photos of him at age 4 and age 36',
+        caption: 'Breakdown #03 in video: six lessons in under three minutes.' },
+
+      { type: 'p', text: 'The third episode of Design Notes: Breakdown is a little different. In [Breakdown #01](breakdown-01-amazon-homepage.html) and [Breakdown #02](breakdown-02-globo-homepage.html) I took apart the homepages of Amazon and Globo. This time the platform under analysis is my own career.' },
+      { type: 'p', text: 'I started very young, painting and drawing the things I wanted to make. Today, at 36, with 18 years of experience in design, I’m proud of the path. But if I had the chance to talk to my younger self, there are six things I would do differently, or simply earlier.' },
+      { type: 'image', src: 'assets/breakdown-03-intro.jpg', w: 1200, h: 630,
+        alt: 'Two photos side by side: Felix at 4 years old, playing designer and illustrator, and Felix at 36, design and brand lead, with an arrow labeled 18 years in design',
+        caption: 'From playing designer at 4 to design and brand lead at 36.' },
+
+      { type: 'h2', text: '1. Focus on UX, UI and Digital Earlier' },
+      { type: 'p', text: 'I really love graphic design, and it gave me a strong base in typography, composition and brand. But the market moved to digital products, and I would have changed my focus to UX and UI design earlier in my career. User research, interaction design and product thinking are where most of the impact, and most of the opportunities, are today.' },
+      { type: 'image', src: 'assets/breakdown-03-ux-ui.jpg', w: 1200, h: 630,
+        alt: 'Board section titled 1, UX, UI and digital, with a photo of a person reading a printed newspaper',
+        caption: 'Print taught me the basics. Digital is where I wish I had arrived sooner.' },
+
+      { type: 'h2', text: '2. Learn English and Spanish' },
+      { type: 'p', text: 'Languages opened a very good career path for me. Working in English and Spanish is what made it possible to design for teams across LATAM, Europe and the US, with companies like Audi, Coca-Cola and Kraft Heinz. I would start learning them much earlier, to have the chance to work with international companies sooner.' },
+      { type: 'image', src: 'assets/breakdown-03-languages.jpg', w: 1200, h: 630,
+        alt: 'Board section titled 2, English and Spanish, with a photo of many international flags',
+        caption: 'Every language is one more market, one more team, one more way to understand users.' },
+
+      { type: 'h2', text: '3. Choose Smart Courses Over Another Postgraduate Degree' },
+      { type: 'p', text: 'I did two postgraduate degrees. Today, for one of them, I would choose smart, smaller courses instead, focused on exactly the areas I wanted to grow in: design, UI, UX and marketing. Platforms like [Coursera](https://www.coursera.org/) make it possible to learn from great schools and companies in weeks, not years, and to update your skills as fast as the industry changes.' },
+      { type: 'image', src: 'assets/breakdown-03-courses.jpg', w: 1200, h: 630,
+        alt: 'Board section titled 3, Smart courses, with a screenshot of Coursera showing design and AI courses',
+        caption: 'Short, focused courses beat long programs when the goal is a specific skill.' },
+
+      { type: 'h2', text: '4. Read the Classic Books' },
+      { type: 'p', text: 'When I was studying, I didn’t have time to go deep into the books. I really recommend to my younger self, and to anyone starting now, to read the classics of design, business and strategy. A good place to start is [The Design of Everyday Things](https://en.wikipedia.org/wiki/The_Design_of_Everyday_Things) by Don Norman, the book that gave the industry words like affordance and user-centered design. The classics are also one of the habits I describe in [Where Creativity Comes From](where-creativity-comes-from.html).' },
+      { type: 'image', src: 'assets/breakdown-03-books.jpg', w: 1200, h: 630,
+        alt: 'Board section titled 4, Classic books, with the Amazon page of The Design of Everyday Things by Don Norman',
+        caption: 'The Design of Everyday Things: still the best first book on usability.' },
+
+      { type: 'h2', text: '5. Learn Business and Negotiation' },
+      { type: 'p', text: 'Design itself is an amazing thing to learn, but the goal is to solve problems. To do that well, you need to understand the business behind them. Learning business and negotiation earlier would have helped me close deals, defend design decisions and think not just in pixels, but also in money: revenue, costs and return on investment. It’s the shift I describe in [Alignment Happens Before the File Opens](alignment-happens-before-the-file-opens.html), from executor to strategist.' },
+      { type: 'image', src: 'assets/breakdown-03-business.jpg', w: 1200, h: 630,
+        alt: 'Board section titled 5, Business and negotiation, with a photo of two people reviewing printed charts next to laptops',
+        caption: 'Design solves problems. Business tells you which problems are worth solving.' },
+
+      { type: 'h2', text: '6. Learn a Bit of Code' },
+      { type: 'p', text: 'The last one is to learn more about code. Understanding how things are built helps you understand the real problems you need to solve, talk better with developers, and create better roadmaps and plans for your work. Today design-to-code handoff is part of [how I work](../index.html#practice), and with AI tools the line between designing and building is getting thinner every month.' },
+      { type: 'image', src: 'assets/breakdown-03-code.jpg', w: 1200, h: 630,
+        alt: 'Board section titled 6, Code, with a screenshot of a code editor showing a project and instructions for building a design in code',
+        caption: 'You don’t need to become a developer. You need to speak their language.' },
+
+      { type: 'h2', text: 'Takeaway: Move Fast, Go Deeper, Explore' },
+      { type: 'p', text: 'If I had to sum it up in three notes to my younger self: move fast, learn more and go deeper, and explore related areas. Go from graphic design to UX and UI sooner, go deeper into strategy and the basic concepts, and don’t be afraid of the neighbors of design: code, business and languages. Everything I learned outside design made me a better designer, and the person I am today.' },
+      { type: 'image', src: 'assets/breakdown-03-takeaway.jpg', w: 1200, h: 630,
+        alt: 'Three sticky notes under the title Takeaway: Move fast; Learn more, and go deeper; Explore related areas',
+        caption: 'The takeaway board from the video.' },
+      { type: 'p', text: 'And what about you? What would you do differently in your career? Tell me in the comments. See you in the next one.' },
+    ],
+  },
 
   'breakdown-02-globo-homepage': {
     slug: 'breakdown-02-globo-homepage',
@@ -27,7 +97,7 @@ const NOTES = {
     coverAlt: 'Breakdown #02, Users should be in control, a UX breakdown of the Globo homepage by Felix Benito',
     excerpt: 'Globo.com, one of Brazil’s best-known portals, broken down: menu, grid, color palette, highlights, big numbers, and the autoplay video that takes control away.',
     metaDescription: 'A design & brand lead breaks down Globo’s homepage: navigation, grid, color coding, highlights and big numbers, and why autoplay video breaks user control.',
-    related: ['breakdown-01-amazon-homepage', 'alignment-happens-before-the-file-opens'],
+    related: ['breakdown-03-younger-self', 'breakdown-01-amazon-homepage'],
     body: [
       { type: 'video', src: 'assets/breakdown-02-globo-homepage.mp4', poster: 'assets/breakdown-02-globo-homepage-poster.jpg', w: 1600, h: 852,
         label: 'Breakdown #02 video with captions: Felix Benito walks through the Globo homepage in Figma, marking the menu, grid, color palette, highlights, big numbers and autoplay videos',
@@ -83,7 +153,7 @@ const NOTES = {
       { type: 'image', src: 'assets/breakdown-02-globo-takeaway.jpg', w: 1200, h: 630,
         alt: 'Three sticky notes: A clear grid, color palette and structure make the message easier to understand; Users should be in control, don’t make decisions for them, like autoplaying videos; What would you change?',
         caption: 'The takeaway board from the video.' },
-      { type: 'p', text: 'What would you change on Globo’s homepage? And which website should I break down next? Let me know in the comments. If you missed the first episode, [Breakdown #01 on Amazon’s homepage](breakdown-01-amazon-homepage.html) is about the opposite problem: what happens when everything asks for attention.' },
+      { type: 'p', text: 'What would you change on Globo’s homepage? And which website should I break down next? Let me know in the comments. If you missed the first episode, [Breakdown #01 on Amazon’s homepage](breakdown-01-amazon-homepage.html) is about the opposite problem: what happens when everything asks for attention. And in [Breakdown #03](breakdown-03-younger-self.html) I turn the analysis to my own career.' },
       { type: 'note', text: 'Independent analysis. I have no affiliation with Globo. Screenshots are used for commentary and education.' },
     ],
   },
@@ -161,7 +231,7 @@ const NOTES = {
     coverAlt: 'Where Creativity Comes From, a Design Notes creativity post by Felix Benito',
     excerpt: 'Ideas rarely show up on demand. Six habits, almost none of them in front of a screen, that keep my creative mind rested, curious and open.',
     metaDescription: 'A design & brand lead’s 6 unconventional habits for daily creativity: travel, sketching, talking with strangers, campaign mapping, music and the classics.',
-    related: ['breakdown-02-globo-homepage', 'alignment-happens-before-the-file-opens'],
+    related: ['breakdown-03-younger-self', 'alignment-happens-before-the-file-opens'],
     body: [
       { type: 'p', text: 'After years of working in design and marketing, with the daily challenge of creating something new, I’ve learned that ideas rarely show up on demand. They show up when the mind is rested, curious, and open enough to catch them.' },
       { type: 'p', text: 'Over time, I developed a few habits that keep my mind refreshed and ready to receive small daily insights, which I then turn into part of my work. Almost none of them happen in front of a screen. Today I want to share some of these unconventional techniques, the ones that keep my creativity going every day, even on cloudy days.' },
@@ -233,7 +303,7 @@ const NOTES = {
     coverAlt: 'Alignment Happens Before the File Opens, a Design Notes strategy post by Felix Benito',
     excerpt: 'Opening Figma before alignment feels proactive. It usually isn’t. A 5-step framework for research and stakeholder alignment before any screen gets built.',
     metaDescription: 'A UX and brand strategist’s 5-step framework for stakeholder alignment and research before any screen gets designed, from executor to strategist.',
-    related: ['breakdown-02-globo-homepage', 'where-creativity-comes-from'],
+    related: ['breakdown-03-younger-self', 'where-creativity-comes-from'],
     body: [
       { type: 'p', text: 'In a world of packed agendas, endless to-do lists, gym sessions, social commitments, family duties, and constant pressure to perform and lead, it’s easy to fall into a trap: opening Figma before the real alignment with managers and stakeholders has happened.' },
       { type: 'p', text: 'It feels productive. It feels proactive. But it can quietly become the opposite of what you intended, and instead of showing initiative, it can show that you’re an executor, not a strategist.' },
