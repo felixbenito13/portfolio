@@ -69,3 +69,14 @@ html.motion .fx.in:hover img, html.motion .fx.in:hover video { transform: scale(
 
 /* Display face on the home page: titles use Bricolage Grotesque at 700, natural spacing */
 h1, h2, h3, h4 { font-family: 'Bricolage Grotesque', 'Inter Tight', system-ui, sans-serif !important; font-weight: 700 !important; letter-spacing: 0 !important; }
+
+/* ── Hero: portrait 1 part, text 2 parts on desktop; stacked below 1024 px ─── */
+[data-r="hero"] { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) !important; gap: 56px !important; align-items: start !important; }
+[data-r="hero-photo"] { aspect-ratio: 4 / 5; overflow: hidden; border-radius: 0; }
+[data-r="hero-photo"] img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+#top h1 { font-size: clamp(44px, 4.6vw, 76px) !important; line-height: 1.05 !important; }
+[data-r="hero-cta"] a { min-height: 44px; }
+@media (max-width: 1023px) {
+  [data-r="hero"] { grid-template-columns: minmax(0, 1fr) !important; gap: 32px !important; }
+  [data-r="hero-photo"] { width: 100%; max-height: 70vh; }
+}
