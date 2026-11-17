@@ -1464,3 +1464,9 @@ h1, h2, h3, h4, h5 { margin: 0; font-weight: 700; letter-spacing: 0; text-wrap: 
 
 /* Display face: Bricolage Grotesque for titles and highlights, Inter Tight for everything else */
 h1, h2, h3, h4, .case-kpi-value { font-family: 'Bricolage Grotesque', 'Inter Tight', system-ui, sans-serif !important; font-weight: 700 !important; letter-spacing: 0 !important; }
+
+/* Buttons: one hover language across the site.
+   Primary turns white with dark text; secondary fills with the brand red and white text. */
+.btn:hover, .footer .btn:hover, .hero .btn:hover { background: #8B1A1F; border-color: #8B1A1F; color: #FFFFFF; }
+.btn.primary:hover { background: #FFFFFF; border-color: #0A0A0A; color: #0A0A0A; }
+.footer .btn.primary:hover, .hero .btn.primary:hover { background: #F2F0EC; border-color: #F2F0EC; color: #0A0A0A; }

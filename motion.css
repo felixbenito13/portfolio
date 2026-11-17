@@ -23,7 +23,8 @@ html.motion .mh.in .mw > span { transform: none; }
 .btn-fill { position: relative; overflow: hidden; isolation: isolate; transition: color .35s ease, border-color .35s ease; }
 .btn-fill::before { content: ""; position: absolute; inset: 0; z-index: -1; background: #8B1A1F; transform: scaleY(0); transform-origin: bottom; transition: transform .45s var(--ease-out); }
 .btn-fill:hover::before, .btn-fill:focus-visible::before { transform: scaleY(1); }
-.btn-fill:hover, .btn-fill:focus-visible { color: #F2F0EC !important; border-color: #8B1A1F !important; }
+.btn-fill:hover, .btn-fill:focus-visible { color: #FFFFFF !important; border-color: #8B1A1F !important; }
+.btn-fill:hover *, .btn-fill:focus-visible * { color: inherit !important; }
 .btn-fill.btn-primary::before { background: #F2F0EC; }
 .btn-fill.btn-primary:hover, .btn-fill.btn-primary:focus-visible { background: #8B1A1F !important; color: #0A0A0A !important; border-color: #F2F0EC !important; }
 

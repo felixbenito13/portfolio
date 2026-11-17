@@ -68,7 +68,7 @@ a:focus-visible, button:focus-visible { border-radius: 2px; }
   font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
   cursor: pointer; transition: background .25s ease, color .25s ease, border-color .25s ease;
 }
-.vid-toggle:hover { background: #0E0E0E; color: #F2F0EC; border-color: #0E0E0E; }
+.vid-toggle:hover { background: #8B1A1F; color: #FFFFFF; border-color: #8B1A1F; }
 .vid-toggle-row { display: flex; justify-content: flex-end; margin: -12px 0 28px; }
 
 /* ── Comfortable targets for small links (WCAG 2.5.8 AA, aiming for 44px) ── */
