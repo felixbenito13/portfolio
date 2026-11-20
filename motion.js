@@ -126,7 +126,7 @@
       cur = best;
       cards.forEach(function (c, i) { c.classList.toggle('cur', i === best); });
       bg.forEach(function (b, i) { b.classList.toggle('on', i === best); });
-      if (count) count.textContent = pad(best + 1) + ' / ' + pad(cards.length);
+      if (count) count.textContent = pad(best + 1) + ' of ' + pad(cards.length);
       if (prev) prev.disabled = best === 0;
       if (next) next.disabled = best === cards.length - 1;
     }

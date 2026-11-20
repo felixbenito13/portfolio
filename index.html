@@ -34,11 +34,11 @@
 </script>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
-<link rel="stylesheet" href="motion.css?v=5" />
+<link rel="stylesheet" href="motion.css?v=6" />
 <link rel="stylesheet" href="a11y.css?v=2" />
 <script>try{window.__videosPaused=matchMedia("(prefers-reduced-motion: reduce)").matches;if(!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("motion");setTimeout(function(){if(!window.__motionReady)document.documentElement.classList.remove("motion")},6000)}}catch(e){}</script>
 <script src="./support.js" defer></script>
-<script src="motion.js?v=2" defer></script>
+<script src="motion.js?v=3" defer></script>
 <script src="a11y.js?v=2" defer></script>
 <script src="latest-note.js?v=1" defer></script>
   <script src="/tab-title.js?v=1" defer></script>
@@ -524,7 +524,7 @@
               <h3 style="font-size: clamp(34px, 4.2vw, 60px); line-height: 1.02; letter-spacing: -0.025em; font-weight: 600; margin-top: 12px">{{ p.title }}</h3>
               <p style="font-size: 16px; line-height: 1.55; color: #1F1F1E; margin-top: 18px; max-width: 44ch">{{ p.summary }}</p>
               <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 22px">
-                <sc-for list="{{ p.tags }}" as="t" hint-placeholder-count="3">
+                <sc-for list="{{ p.tags }}" as="t" hint-placeholder-count="5">
                   <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: #6B6A66; padding: 5px 10px; border: 1px solid rgba(0,0,0,0.12); border-radius: 999px">{{ t }}</span>
                 </sc-for>
               </div>
@@ -560,9 +560,9 @@
     <div data-r="process-pin">
     <div data-r="process" style="display: grid; grid-template-columns: 0.72fr 1.28fr; gap: 40px; align-items: start">
       <div style="display: flex; flex-direction: column; gap: 14px">
-        <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(242,240,236,0.5)">06 steps &middot; click to explore</span>
+        <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(242,240,236,0.5)">04 steps &middot; click to explore</span>
         <div data-r="process-tabs" style="display: flex; flex-direction: column; border-top: 1px solid rgba(255,255,255,0.12)">
-          <sc-for list="{{ leadership }}" as="l" hint-placeholder-count="5">
+          <sc-for list="{{ leadership }}" as="l" hint-placeholder-count="4">
             <button type="button" onClick="{{ l.onSelect }}" style="appearance: none; -webkit-appearance: none; cursor: pointer; text-align: left; font: inherit; display: flex; align-items: center; gap: 14px; width: 100%; padding: 20px 18px; border: 0; border-bottom: 1px solid rgba(255,255,255,0.12); border-left: 2px solid {{ l.activeBar }}; background: {{ l.activeBg }}; color: {{ l.activeColor }}; transition: background 160ms ease, color 160ms ease" style-hover="background: rgba(255,255,255,0.06); color: #F2F0EC">
               <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; color: {{ l.activeNum }}">{{ l.n }}</span>
               <span style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase">{{ l.tag }}</span>
@@ -636,10 +636,10 @@
     </div>
     <div data-r="quotes-wrap" style="position: relative">
       <div data-r="quotes-bg" aria-hidden="true">
-        <sc-for list="{{ testimonials }}" as="q" hint-placeholder-count="3"><span>{{ q.org }}</span></sc-for>
+        <sc-for list="{{ testimonials }}" as="q" hint-placeholder-count="5"><span>{{ q.org }}</span></sc-for>
       </div>
       <div data-r="quotes" tabindex="0" role="region" aria-label="Recommendations, scroll sideways or use the arrows below" style="position: relative; display: flex; gap: 56px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 8px">
-        <sc-for list="{{ testimonials }}" as="q" hint-placeholder-count="3">
+        <sc-for list="{{ testimonials }}" as="q" hint-placeholder-count="5">
         <div data-r="quote" style="flex: 0 0 min(720px, 84vw); scroll-snap-align: start; display: flex; flex-direction: column; gap: 22px; padding-right: 8px">
           <div style="font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 32px; color: #8B1A1F; line-height: 0; margin-top: 16px">“</div>
           <p style="font-size: clamp(17px, 1.5vw, 21px); line-height: 1.55; color: #1F1F1E">{{ q.text }}</p>
@@ -655,7 +655,7 @@
       </div>
       <div data-r="quotes-nav">
         <button type="button" data-dir="-1" aria-label="Previous recommendation">←</button>
-        <span data-r="quotes-count">01 / 03</span>
+        <span data-r="quotes-count">01 of 05</span>
         <button type="button" data-dir="1" aria-label="Next recommendation">→</button>
       </div>
     </div>
@@ -976,12 +976,10 @@ class Component extends DCLogic {
     }));
 
     const leadershipRaw = [
-      { n: '01', tag: 'Research to shipped', title: 'Paper to hi-fi, fast.', body: 'Surveys, discovery interviews, personas and business rules first. Then prototypes, handoff and QA, with AI speeding up the early research without replacing the judgment behind it.', highlight: 'AI drafts the map, I choose the route. On Audi’s Onboarding flow, AI clustered patterns from dozens of interviews in hours. Usability testing then surfaced the gaps. I sketched the prototype by hand, then refined it with ideas from AI.' },
-      { n: '02', tag: 'Product and go to market', title: 'One voice, every surface.', body: 'Product UI, brand and campaign under the same voice, with data closing the loop on what to fix next.', highlight: 'At PharosGraph I led the landing page, email marketing, social posts and reporting behind our lead generation. One in five leads converted.' },
-      { n: '03', tag: 'Cross functional alignment', title: 'Alignment before the file opens.', body: 'Stakeholder reviews, roadmaps and OKRs tied to what the business already measures, so the hard craft happens before a single pixel.', highlight: 'Twenty six stakeholders, five countries, one design. At Coca-Cola, plant visits and stakeholder reviews turned agreement into a formality by the time the screens shipped.' },
-      { n: '04', tag: 'Leadership', title: 'Leading projects, growing people.', body: 'Beyond running projects end to end, I lead through mentorship, weekly one on ones, portfolio reviews, and growth plans built around what someone is actually shipping, not their seniority.', highlight: 'Ten young designers mentored across the world. Every mentee gets direct feedback and real stakes, not a template.' },
-      { n: '05', tag: 'Design systems and ops', title: 'One language that survives turnover.', body: 'Component libraries, tokens and governance, built so a design system keeps teams aligned long after the people who built it move on.', highlight: 'Design systems for Coca-Cola, RHI Magnesita and Kraft Heinz. At PharosGraph I wrote the system as markdown so Claude Code could build from it directly, cutting content production from 18 hours to 75 minutes. The contract between a model’s suggestion and a person’s decision is the design.' },
-      { n: '06', tag: 'Handoff to code', title: 'Design system, tokens, code, measurement.', body: 'The work doesn\u2019t stop at launch. I take the design system into tokens developers build from, follow the build through QA until the screen in production matches the decision behind it, then check the numbers to see what to fix next.', highlight: 'At PharosGraph the system lived as semantic OKLCH tokens with light and dark modes in Figma, the website shipped on a code-based stack (Astro, TypeScript), and a product-analytics audit caught an event-tracking gap that was undermining retention data.' },
+      { n: '01', tag: 'Align', title: 'Alignment before the file opens.', body: 'Stakeholder reviews, roadmaps and OKRs tied to what the business already measures. I lead people the same way: weekly one on ones, honest feedback and growth plans built around what someone ships.', highlight: 'Twenty six stakeholders, five countries, one design. At Coca-Cola, plant visits and reviews made agreement a formality by the time screens shipped. Along the way, ten designers mentored across the world.' },
+      { n: '02', tag: 'Discover', title: 'Paper to hi-fi, fast.', body: 'Surveys, interviews, personas and business rules first, then prototypes and usability tests. AI speeds up the research without replacing the judgment behind it.', highlight: 'AI drafts the map, I choose the route. On Audi\u2019s onboarding flow, AI clustered patterns from dozens of interviews in hours, usability testing surfaced the gaps, and I sketched the prototype by hand before refining it.' },
+      { n: '03', tag: 'Build', title: 'One system, from Figma to code.', body: 'Components, tokens and governance that keep teams aligned after the people who built them move on, handed off as code and followed through QA until production matches the decision.', highlight: 'Design systems for Coca-Cola, RHI Magnesita, Kraft Heinz and PharosGraph. At PharosGraph the system lived as semantic tokens and markdown that Claude Code built from directly, cutting content production from 18 hours to 75 minutes.' },
+      { n: '04', tag: 'Measure', title: 'Launch is where the data starts.', body: 'Product, brand and go to market under one voice, with analytics closing the loop on what to fix next.', highlight: 'At Audi, maintenance scheduling engagement went from 4.8% to 11.2%. At PharosGraph, one in five leads converted, and an analytics audit caught a tracking gap that was hiding retention data.' },
     ];
 
     const step = Math.min(this.state.step, leadershipRaw.length - 1);
@@ -1006,9 +1004,11 @@ class Component extends DCLogic {
     ];
 
     const testimonials = [
+      { text: 'I had the opportunity to work closely with Felix at PharosGraph where he lead our design activities. Felix brings a real depth of experience and a keen attention to details. He clearly has the end-user in mind and he was quick to adapt to our AI driven approach to working and collaborating. Felix is always super open to feedback and seeking it actively. Highly recommended!', name: 'Mathieu Trepanier', at: 'CEO & Founder at PharosGraph', img: 'assets/testimonial-mathieu-trepanier.jpg' },
       { text: 'Felix embarked on the challenge of developing the marketing, design system, reformulating the visual communication of educational portals and developing new products. He is efficient and demanding professional with the quality of deliveries, contributed positively for delivery of this project.', name: 'Lucas Lamonato', at: 'Head of IT at Necta', img: 'assets/testimonial-lucas-lamonato.jpg' },
-      { text: 'Felix has a high sensitivity to understand the wishes / needs of his client and transform all this into advertising material of excellence. Always concerned about his self-development, Felix is a professional who has a wide range of skills: Designer, Illustrator, Marketing and business.', name: 'Everton Campos', at: 'CMO at Bugre', img: 'assets/testimonial-everton-campos.jpg' },
+      { text: 'Felix has a high sensitivity to understand the wishes and needs of his client and transform all this into advertising material of excellence. Always concerned about his self-development, Felix is a professional who has a wide range of skills: Designer, Illustrator, Marketing and business.', name: 'Everton Campos', at: 'CMO at Bugre', img: 'assets/testimonial-everton-campos.jpg' },
       { text: 'Felix is a highly talented professional. Of his diverse abilities, I see a high concentration and focus on perfection, as he is able to translate ideas and concepts into messages that bring results in a way that the content promotes communication without a single word. This generates attraction for the target audience and traction for the business.', name: 'Lucas Ávila', at: 'Director · Lucree', img: 'assets/testimonial-lucas-avila.jpg' },
+      { text: 'Felix’s communication skills were exceptional, keeping me informed every step of the way and ensuring the project stayed on track and within budget. His professionalism and dedication to quality were evident in every aspect of his work.', name: 'Minal Pala', at: 'UX Designer at Nirakaar', img: 'assets/testimonial-minal-pala.jpg' },
     ].map((q) => ({ ...q, alt: 'Portrait of ' + q.name, org: q.at.split(/ at | · /).pop() }));
 
 

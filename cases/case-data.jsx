@@ -367,7 +367,7 @@ const CASES = {
       },
       { type: 'testimonial',
         text: 'I had the opportunity to work closely with Felix at PharosGraph where he lead our design activities. Felix brings a real depth of experience and a keen attention to details. He clearly has the end-user in mind and he was quick to adapt to our AI driven approach to working and collaborating. Felix is always super open to feedback and seeking it actively. Highly recommended!',
-        name: 'Mathieu Trepanier', at: 'CEO & Founder at PharosGraph', img: 'assets/testimonial-mathieu-trepanier.jpg',
+        name: 'Mathieu Trepanier', at: 'CEO & Founder at PharosGraph', img: '../assets/testimonial-mathieu-trepanier.jpg',
       },
     ],
     next: 'ladle-slag-model',
