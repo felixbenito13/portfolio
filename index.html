@@ -34,7 +34,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
-<link rel="stylesheet" href="motion.css?v=4" />
+<link rel="stylesheet" href="motion.css?v=5" />
 <link rel="stylesheet" href="a11y.css?v=2" />
 <script>try{window.__videosPaused=matchMedia("(prefers-reduced-motion: reduce)").matches;if(!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("motion");setTimeout(function(){if(!window.__motionReady)document.documentElement.classList.remove("motion")},6000)}}catch(e){}</script>
 <script src="./support.js" defer></script>
@@ -177,7 +177,6 @@
       [data-r="stats"] { grid-template-columns: 1fr !important; }
       [data-r="three"] { grid-template-columns: 1fr !important; gap: 32px !important; }
       [data-r="edu3"] { grid-template-columns: 1fr !important; }
-      [data-r="clients"] { grid-template-columns: 1fr !important; }
       [data-r="footer"] { grid-template-columns: 1fr !important; }
       [data-r="process"] { grid-template-columns: 1fr !important; }
       [data-r="process-content"] { grid-template-columns: 1fr !important; }
@@ -207,7 +206,6 @@
       [data-r="three"] { grid-template-columns: repeat(2, 1fr) !important; gap: 28px !important; }
       [data-r="edu3"] { grid-template-columns: repeat(2, 1fr) !important; }
       [data-r="stats"] { grid-template-columns: repeat(2, 1fr) !important; }
-      [data-r="clients"] { grid-template-columns: repeat(2, 1fr) !important; }
       [data-r="footer"] { grid-template-columns: repeat(2, 1fr) !important; }
       [data-r="footer"] > div:first-child { grid-column: 1 / -1; }
     }
@@ -356,7 +354,7 @@
     if (window.__revealRan) return;
     window.__revealRan = true;
 
-    var SEL = 'section > div > *, [data-r="case"], [data-r="three"] > *, [data-r="edu3"] figure, [data-r="clients"] > *, [data-r="cv-row"], [data-r="stats"] > *';
+    var SEL = 'section > div > *, [data-r="case"], [data-r="three"] > *, [data-r="edu3"] figure, [data-r="cv-row"], [data-r="stats"] > *';
     var root = document.documentElement;
     var io = null, dead = false;
 
@@ -672,14 +670,51 @@
       </div>
       <p style="color: rgba(242,240,236,0.72); font-size: 17px; max-width: 42ch; line-height: 1.5">Selected global, regional and startup clients across automotive, FMCG, agriculture, retail and biotech.</p>
     </div>
-    <div data-r="clients" style="display: grid; grid-template-columns: repeat(4, 1fr); max-width: 980px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.12); border-left: 1px solid rgba(255,255,255,0.12)">
-      <sc-for list="{{ clients }}" as="client" hint-placeholder-count="8">
-        <div style="background: #0A0A0A; display: grid; place-items: center; aspect-ratio: 3 / 2; padding: 22px; border-right: 1px solid rgba(255,255,255,0.12); border-bottom: 1px solid rgba(255,255,255,0.12)">
-          <img src="{{ client.src }}" alt="{{ client.alt }}" loading="lazy" decoding="async" style="width: auto; height: auto; max-width: {{ client.maxW }}; max-height: {{ client.maxH }}; object-fit: contain; opacity: 0.85; mix-blend-mode: screen; filter: grayscale(1) invert(1) brightness(1.4)" />
-        </div>
-      </sc-for>
-    </div>
   </div>
+  <!-- logo-marquee:start -->
+    <div class="logo-marquee" data-r="logo-marquee">
+      <div class="lm-row lm-left">
+        <ul class="lm-track" role="list">
+          <li class="lm-card"><img src="assets/client-logo-audi.svg" alt="Audi" width="1000" height="353" loading="lazy" decoding="async" style="--w: 44.6%" /></li>
+          <li class="lm-card"><img src="assets/client-logo-coca-cola.png" alt="Coca-Cola" width="960" height="302" loading="lazy" decoding="async" style="--w: 47.3%" /></li>
+          <li class="lm-card"><img src="assets/client-logo-saraiva.png" alt="Saraiva" width="1200" height="159" loading="lazy" decoding="async" style="--w: 55.0%" /></li>
+          <li class="lm-card"><img src="assets/client-logo-algar.png" alt="Algar" width="793" height="288" loading="lazy" decoding="async" style="--w: 44.0%" /></li>
+          <li class="lm-card" aria-hidden="true" data-dup><img src="assets/client-logo-audi.svg" alt="" width="1000" height="353" loading="lazy" decoding="async" style="--w: 44.6%" /></li>
+          <li class="lm-card" aria-hidden="true" data-dup><img src="assets/client-logo-coca-cola.png" alt="" width="960" height="302" loading="lazy" decoding="async" style="--w: 47.3%" /></li>
+          <li class="lm-card" aria-hidden="true" data-dup><img src="assets/client-logo-saraiva.png" alt="" width="1200" height="159" loading="lazy" decoding="async" style="--w: 55.0%" /></li>
+          <li class="lm-card" aria-hidden="true" data-dup><img src="assets/client-logo-algar.png" alt="" width="793" height="288" loading="lazy" decoding="async" style="--w: 44.0%" /></li>
+          <li class="lm-card" aria-hidden="true" data-dup><img src="assets/client-logo-audi.svg" alt="" width="1000" height="353" loading="lazy" decoding="async" style="--w: 44.6%" /></li>
+          <li class="lm-card" aria-hidden="true" data-dup><img src="assets/client-logo-coca-cola.png" alt="" width="960" height="302" loading="lazy" decoding="async" style="--w: 47.3%" /></li>
+          <li class="lm-card" aria-hidden="true" data-dup><img src="assets/client-logo-saraiva.png" alt="" width="1200" height="159" loading="lazy" decoding="async" style="--w: 55.0%" /></li>
+          <li class="lm-card" aria-hidden="true" data-dup><img src="assets/client-logo-algar.png" alt="" width="793" height="288" loading="lazy" decoding="async" style="--w: 44.0%" /></li>
+          <li class="lm-card" aria-hidden="true" data-dup><img src="assets/client-logo-audi.svg" alt="" width="1000" height="353" loading="lazy" decoding="async" style="--w: 44.6%" /></li>
+          <li class="lm-card" aria-hidden="true" data-dup><img src="assets/client-logo-coca-cola.png" alt="" width="960" height="302" loading="lazy" decoding="async" style="--w: 47.3%" /></li>
+          <li class="lm-card" aria-hidden="true" data-dup><img src="assets/client-logo-saraiva.png" alt="" width="1200" height="159" loading="lazy" decoding="async" style="--w: 55.0%" /></li>
+          <li class="lm-card" aria-hidden="true" data-dup><img src="assets/client-logo-algar.png" alt="" width="793" height="288" loading="lazy" decoding="async" style="--w: 44.0%" /></li>
+        </ul>
+      </div>
+      <div class="lm-row lm-right">
+        <ul class="lm-track" role="list">
+          <li class="lm-card"><img src="assets/client-logo-kraft-heinz.png" alt="Kraft Heinz" width="1200" height="204" loading="lazy" decoding="async" style="--w: 55.0%" /></li>
+          <li class="lm-card"><img src="assets/client-logo-rhi-magnesita.png" alt="RHI Magnesita" width="1600" height="949" loading="lazy" decoding="async" style="--w: 33.7%" /></li>
+          <li class="lm-card"><img src="assets/client-logo-ourofino.png" alt="Ourofino" width="429" height="117" loading="lazy" decoding="async" style="--w: 50.8%" /></li>
+          <li class="lm-card"><img src="assets/client-logo-ice-kiss.png" alt="Ice Kiss" width="558" height="329" loading="lazy" decoding="async" style="--w: 33.9%" /></li>
+          <li class="lm-card" aria-hidden="true" data-dup><img src="assets/client-logo-kraft-heinz.png" alt="" width="1200" height="204" loading="lazy" decoding="async" style="--w: 55.0%" /></li>
+          <li class="lm-card" aria-hidden="true" data-dup><img src="assets/client-logo-rhi-magnesita.png" alt="" width="1600" height="949" loading="lazy" decoding="async" style="--w: 33.7%" /></li>
+          <li class="lm-card" aria-hidden="true" data-dup><img src="assets/client-logo-ourofino.png" alt="" width="429" height="117" loading="lazy" decoding="async" style="--w: 50.8%" /></li>
+          <li class="lm-card" aria-hidden="true" data-dup><img src="assets/client-logo-ice-kiss.png" alt="" width="558" height="329" loading="lazy" decoding="async" style="--w: 33.9%" /></li>
+          <li class="lm-card" aria-hidden="true" data-dup><img src="assets/client-logo-kraft-heinz.png" alt="" width="1200" height="204" loading="lazy" decoding="async" style="--w: 55.0%" /></li>
+          <li class="lm-card" aria-hidden="true" data-dup><img src="assets/client-logo-rhi-magnesita.png" alt="" width="1600" height="949" loading="lazy" decoding="async" style="--w: 33.7%" /></li>
+          <li class="lm-card" aria-hidden="true" data-dup><img src="assets/client-logo-ourofino.png" alt="" width="429" height="117" loading="lazy" decoding="async" style="--w: 50.8%" /></li>
+          <li class="lm-card" aria-hidden="true" data-dup><img src="assets/client-logo-ice-kiss.png" alt="" width="558" height="329" loading="lazy" decoding="async" style="--w: 33.9%" /></li>
+          <li class="lm-card" aria-hidden="true" data-dup><img src="assets/client-logo-kraft-heinz.png" alt="" width="1200" height="204" loading="lazy" decoding="async" style="--w: 55.0%" /></li>
+          <li class="lm-card" aria-hidden="true" data-dup><img src="assets/client-logo-rhi-magnesita.png" alt="" width="1600" height="949" loading="lazy" decoding="async" style="--w: 33.7%" /></li>
+          <li class="lm-card" aria-hidden="true" data-dup><img src="assets/client-logo-ourofino.png" alt="" width="429" height="117" loading="lazy" decoding="async" style="--w: 50.8%" /></li>
+          <li class="lm-card" aria-hidden="true" data-dup><img src="assets/client-logo-ice-kiss.png" alt="" width="558" height="329" loading="lazy" decoding="async" style="--w: 33.9%" /></li>
+        </ul>
+      </div>
+    </div>
+    <!-- logo-marquee:end -->
 </section>
 
 <section id="me" data-screen-label="Me" data-r="section" style="padding: 96px 0; border-top: 1px solid rgba(0,0,0,0.12)">
@@ -975,21 +1010,6 @@ class Component extends DCLogic {
       { text: 'Felix is a highly talented professional. Of his diverse abilities, I see a high concentration and focus on perfection, as he is able to translate ideas and concepts into messages that bring results in a way that the content promotes communication without a single word. This generates attraction for the target audience and traction for the business.', name: 'Lucas Ávila', at: 'Director · Lucree', img: 'assets/testimonial-lucas-avila.jpg' },
     ].map((q) => ({ ...q, alt: 'Portrait of ' + q.name, org: q.at.split(/ at | · /).pop() }));
 
-    const clients = [
-      { name: 'Audi', src: 'assets/client-logo-audi.svg' },
-      { name: 'Coca-Cola', src: 'assets/client-logo-coca-cola.png' },
-      { name: 'Kraft Heinz', src: 'assets/client-logo-kraft-heinz.png' },
-      { name: 'RHI Magnesita', src: 'assets/client-logo-rhi-magnesita.jpg', h: 84 },
-      { name: 'Algar', src: 'assets/client-logo-algar.jpg' },
-      { name: 'Ourofino', src: 'assets/client-logo-ourofino.jpg' },
-      { name: 'Ice Kiss', src: 'assets/client-logo-ice-kiss.jpg', h: 78 },
-      { name: 'Saraiva', src: 'assets/client-logo-saraiva.png' },
-    ].map((c) => ({
-      ...c,
-      alt: c.name + ' logo, client of Felix Benito',
-      maxW: c.h ? '60%' : '80%',
-      maxH: c.h ? c.h + 'px' : '51px',
-    }));
 
     const navItems = [
       { id: 'work', label: 'Cases' },
@@ -1005,7 +1025,7 @@ class Component extends DCLogic {
 
     return { projects, leadership, active, navItems, cv,
       menuOpenAttr: this.state.menuOpen ? 'true' : 'false',
-      toggleMenu: this.toggleMenu, closeMenu: this.closeMenu, testimonials, clients, videoRef: this.videoRef, imgRef: this.imgRef, year: new Date().getFullYear() };
+      toggleMenu: this.toggleMenu, closeMenu: this.closeMenu, testimonials, videoRef: this.videoRef, imgRef: this.imgRef, year: new Date().getFullYear() };
   }
 }
 </script>

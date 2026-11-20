@@ -80,3 +80,36 @@ h1, h2, h3, h4 { font-family: 'Bricolage Grotesque', 'Inter Tight', system-ui, s
   [data-r="hero"] { grid-template-columns: minmax(0, 1fr) !important; gap: 32px !important; }
   [data-r="hero-photo"] { width: 100%; max-height: 70vh; }
 }
+
+/* ── Worked with: double logo carousel ────────────────────────────────────── */
+.logo-marquee { --card-w: 320px; --card-h: 176px; --gap: 16px; display: flex; flex-direction: column; gap: 16px;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 80px, #000 calc(100% - 80px), transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 80px, #000 calc(100% - 80px), transparent 100%); }
+.lm-row { overflow: hidden; }
+.lm-track { display: flex; gap: var(--gap); width: max-content; margin: 0; padding: 0; list-style: none; will-change: transform;
+  animation: lm-left 55s linear infinite; }
+.lm-right .lm-track { animation-name: lm-right; margin-left: calc(var(--card-w) / -2); }
+.lm-row:hover .lm-track { animation-play-state: paused; }
+/* the track holds two identical halves: moving by one half plus one gap lands on an identical frame */
+@keyframes lm-left { from { transform: translateX(0); } to { transform: translateX(calc(-50% - var(--gap) / 2)); } }
+@keyframes lm-right { from { transform: translateX(calc(-50% - var(--gap) / 2)); } to { transform: translateX(0); } }
+.lm-card { flex: none; width: var(--card-w); height: var(--card-h); display: grid; place-items: center; background: #0A0A0A;
+  border: 1px solid rgba(255, 255, 255, .14); border-radius: 16px; transition: border-color .35s ease; }
+.lm-card img { display: block; width: var(--w); max-width: 55%; height: auto; max-height: calc(var(--card-h) * .364); object-fit: contain;
+  filter: brightness(0) invert(1); opacity: .7; transition: opacity .35s ease; }
+.lm-card:hover { border-color: rgba(255, 255, 255, .32); }
+.lm-card:hover img { opacity: 1; }
+@media (max-width: 1023px) { .logo-marquee { --card-w: 240px; --card-h: 132px; } }
+@media (max-width: 640px) { .logo-marquee { --card-w: 180px; --card-h: 100px; --gap: 12px; gap: 12px; } }
+@media (prefers-reduced-motion: reduce) {
+  /* one static grid, originals only */
+  .logo-marquee { -webkit-mask-image: none; mask-image: none; max-width: 1440px; margin: 0 auto; padding: 0 28px;
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap); }
+  .lm-row, .lm-track { display: contents; }
+  .lm-track, .lm-right .lm-track { animation: none; }
+  .lm-card { width: auto; }
+  .lm-card[data-dup] { display: none; }
+  .lm-card, .lm-card img { transition: none; }
+}
+@media (max-width: 1023px) and (prefers-reduced-motion: reduce) { .logo-marquee { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 640px) and (prefers-reduced-motion: reduce) { .logo-marquee { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0 20px; } }
