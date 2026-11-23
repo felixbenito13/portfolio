@@ -123,7 +123,7 @@ const CASES = {
       { type: 'imageRow', n: '11', title: 'Flow improved: from login to booked, all online in 4 steps',
         body: 'Users sign in once, see the maintenance recommended for their vehicle and book with their dealer from a single, clear call to action. The whole journey now happens online, designed in Audi\u2019s new Alpha design system.',
         images: [
-          { src: 'assets/audi-onboarding-hifi-proposal-alpha-system-v2.jpg', w: 1064, h: 805, caption: 'Step 1, one login, straight to your vehicle', maxWidth: '85%' },
+          { src: 'assets/audi-onboarding-hifi-proposal-alpha-system-v2.jpg', highlight: true, w: 1064, h: 805, caption: 'Step 1, one login, straight to your vehicle', maxWidth: '85%' },
           { src: 'assets/audi-onboarding-hifi-proposal-maintenance-schedule.jpg', w: 1238, h: 1448, caption: 'Step 2, recommended maintenance and suggested dealer', maxWidth: '85%' },
           { src: 'assets/audi-onboarding-scheduling-book-in-same-flow.jpg', w: 1064, h: 732, caption: 'Step 3, book with your dealer in the same flow', maxWidth: '85%' },
           { src: 'assets/audi-onboarding-scheduling-confirmation-closing-the-loop.jpg', w: 1064, h: 728, caption: 'Step 4, confirmed online', maxWidth: '85%' },
@@ -258,7 +258,7 @@ const CASES = {
       },
       { type: 'imageRow',
         images: [
-          { src: 'assets/pharosgraph-govscape-dashboard.png', w: 1093, h: 662, caption: 'GovScape, Lobbying Explorer, rebuilt in Figma', flush: true },
+          { src: 'assets/pharosgraph-govscape-dashboard.png', highlight: true, w: 1093, h: 662, caption: 'GovScape, Lobbying Explorer, rebuilt in Figma', flush: true },
         ],
       },
       { type: 'text',
@@ -505,7 +505,7 @@ const CASES = {
           'Single layer background to cut visual noise',
         ],
         images: [
-          { src: 'assets/coca-cola-ko-boss-new-version-mobile.jpg', w: 1800, h: 1433, alt: 'Annotated redesign of the Coca-Cola KO Boss mobile suggested-products screen, with visible search, location-aware suggestions, clear button hierarchy and sticky bottom navigation', caption: 'New version (mobile)', wide: true },
+          { src: 'assets/coca-cola-ko-boss-new-version-mobile.jpg', highlight: true, w: 1800, h: 1433, alt: 'Annotated redesign of the Coca-Cola KO Boss mobile suggested-products screen, with visible search, location-aware suggestions, clear button hierarchy and sticky bottom navigation', caption: 'New version (mobile)', wide: true },
           { src: 'assets/coca-cola-ko-boss-new-version-desktop.jpg', w: 1800, h: 1659, alt: 'Annotated redesign of the Coca-Cola KO Boss desktop suggested-products page, with unified navigation, profile, notification center and consistent product cards', caption: 'New version (desktop)', wide: true },
         ],
       },
@@ -613,7 +613,7 @@ const CASES = {
         body: 'Critical usability gaps mapped from the heuristic evaluation, translated into a design proposal that streamlines the metallurgical workflow.',
         images: [
           { src: 'assets/rhi-magnesita-old-version.png', w: 1000, h: 603, caption: 'Old version', note: 'Dated style, low contrast, no clear branding, redundant boxes, inconsistent patterns, required fields unflagged, no responsive mode.' },
-          { src: 'assets/rhi-magnesita-new-version.png', w: 1000, h: 603, caption: 'New version', note: 'Modern visual language, WCAG-compliant contrast, branding and logotype, clean boxes only when needed, design system across pages, flagged required fields, responsive + collapsed menu.' },
+          { src: 'assets/rhi-magnesita-new-version.png', highlight: true, w: 1000, h: 603, caption: 'New version', note: 'Modern visual language, WCAG-compliant contrast, branding and logotype, clean boxes only when needed, design system across pages, flagged required fields, responsive + collapsed menu.' },
         ],
       },
       { type: 'callout', kind: 'leadership', noTag: true, title: 'On-site at the meltshop',
@@ -816,7 +816,7 @@ const CASES = {
       { type: 'imageRow', n: '11', title: 'Run Rate',
         body: 'Sales managers struggled to identify performance trends quickly. The dashboard compares the current month against multiple time windows to reveal both short-term momentum and long-term trends, multi-timeframe comparison, percentage changes over raw numbers, category-level breakdown.',
         images: [
-          { src: 'assets/kraft-heinz-dashboard-run-rate.jpg', w: 858, h: 498, caption: 'Run Rate dashboard' },
+          { src: 'assets/kraft-heinz-dashboard-run-rate.jpg', highlight: true, w: 858, h: 498, caption: 'Run Rate dashboard' },
         ],
       },
       { type: 'imageRow', n: '12', title: 'Joint Value Plan',

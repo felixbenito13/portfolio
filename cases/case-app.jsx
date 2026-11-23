@@ -27,23 +27,64 @@ function SplitWords({ text }) {
   ));
 }
 
-/* images open from the edges as they scroll in; headlines rise when visible */
+/* image entrances: a short rise for most images, a centre-out reveal for the few highlights
+   (data-highlight, hero gallery, cover). Galleries enter as one block. Headlines rise when visible. */
+const ENTER_SEL = '.case-image-frame, .case-hero-gallery-cell, .case-cover, .cg';
 function useCaseMotion() {
   React.useEffect(() => {
     if (!MOTION_OK || !('IntersectionObserver' in window)) {
-      document.querySelectorAll('.case-image-frame, .mh').forEach((el) => el.classList.add('in'));
+      document.querySelectorAll(ENTER_SEL + ', .mh').forEach((el) => el.classList.add('in'));
       return;
     }
+    /* when the reader is flying past, skip the movement and just fade in */
+    let lastY = window.pageYOffset, lastT = performance.now(), speed = 0;
+    const onScroll = () => {
+      const y = window.pageYOffset, t = performance.now(), dt = t - lastT;
+      speed = (Math.abs(y - lastY) / Math.max(dt, 16)) * 1000;
+      lastY = y; lastT = t;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    const show = (el) => {
+      const idle = performance.now() - lastT > 150;
+      /* px per second above which the effect could not finish before the image reaches mid screen */
+      const limit = el.classList.contains('clip-hero') ? 900 : 1800;
+      if (!idle && speed > limit && !el.classList.contains('clip-quick')) el.classList.add(speed > 2500 ? 'instant' : 'fast');
+      el.classList.add('in');
+    };
     const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      entries.forEach((e) => {
+        if (e.isIntersecting && (e.intersectionRatio >= 0.05 || e.intersectionRect.height >= 60)) { show(e.target); io.unobserve(e.target); }
+        /* skipped past in one jump: show it so it is never blank on the way back up */
+        else if (!e.isIntersecting && e.boundingClientRect.bottom < 0) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: [0, 0.05], rootMargin: '0px 0px -8% 0px' });
+    const ioHead = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { show(e.target); ioHead.unobserve(e.target); } });
     }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
-    const bind = () => document.querySelectorAll('.case-image-frame:not(.clip), .mh:not(.bound)').forEach((el) => {
-      el.classList.add(el.classList.contains('mh') ? 'bound' : 'clip');
-      io.observe(el);
-    });
+    let first = true;
+    const bind = () => {
+      document.querySelectorAll('.mh:not(.bound)').forEach((el) => { el.classList.add('bound'); ioHead.observe(el); });
+      document.querySelectorAll(ENTER_SEL).forEach((el) => {
+        if (el.hasAttribute('data-enter')) return;
+        if (el.classList.contains('case-image-frame') && el.closest('.cg')) { el.setAttribute('data-enter', 'gallery'); return; }
+        const r = el.getBoundingClientRect();
+        if (first && r.top < window.innerHeight && r.bottom > 0) {
+          /* already on screen at load: a 200 ms fade at most */
+          el.setAttribute('data-enter', 'quick');
+          el.classList.add('clip-quick');
+          requestAnimationFrame(() => requestAnimationFrame(() => show(el)));
+          return;
+        }
+        const hero = el.hasAttribute('data-highlight') || el.classList.contains('case-hero-gallery-cell') || el.classList.contains('case-cover');
+        el.setAttribute('data-enter', hero ? 'hero' : 'rise');
+        el.classList.add(hero ? 'clip-hero' : 'clip');
+        io.observe(el);
+      });
+      first = false;
+    };
     bind();
     const t = setTimeout(bind, 800);
-    return () => { clearTimeout(t); io.disconnect(); };
+    return () => { clearTimeout(t); io.disconnect(); ioHead.disconnect(); window.removeEventListener('scroll', onScroll); };
   }, []);
 }
 
@@ -222,7 +263,7 @@ function CaseHero({ c }) {
       </div>
       <div className="shell case-cover-wrap">
         {c.heroGallery ? (
-          <div className="case-hero-gallery reveal">
+          <div className="case-hero-gallery">
             {c.heroGallery.map((src, i) => (
               <div key={i} className="case-hero-gallery-cell">
                 <img src={src} alt={c.heroGalleryAlt && c.heroGalleryAlt[i] ? c.heroGalleryAlt[i] : ''} width="800" height="600" loading="eager" />
@@ -230,7 +271,7 @@ function CaseHero({ c }) {
             ))}
           </div>
         ) : c.cover ? (
-          <div className="case-cover reveal" style={c.coverBg ? { background: c.coverBg } : undefined}>
+          <div className="case-cover" style={c.coverBg ? { background: c.coverBg } : undefined}>
             <img src={c.cover} alt={c.coverAlt || c.title} width="1600" height="900" fetchpriority="high" />
           </div>
         ) : null}
@@ -411,17 +452,7 @@ function CaseGallery({ s }) {
       const row = tabsRef.current;
       if (t && row.scrollWidth > row.clientWidth) row.scrollTo({ left: t.offsetLeft - row.clientWidth / 2 + t.offsetWidth / 2, behavior: MOTION_OK ? 'smooth' : 'auto' });
     }
-    if (!st || from == null || !MOTION_OK) return;
-    const to = st.offsetHeight;
-    if (Math.abs(to - from) < 2) return;
-    st.style.height = from + 'px';
-    st.getBoundingClientRect();
-    st.classList.add('is-sizing');
-    st.style.height = to + 'px';
-    const done = () => { st.classList.remove('is-sizing'); st.style.height = ''; st.removeEventListener('transitionend', done); };
-    st.addEventListener('transitionend', done);
-    const t = setTimeout(done, 600);
-    return () => clearTimeout(t);
+    /* switching images is a plain 200 ms fade, no height animation */
   }, [i]);
 
   React.useEffect(() => { preloadImg(imgs[(i + 1) % N].src); }, [i]);
@@ -505,10 +536,10 @@ function ImageRowSection({ s }) {
       <section className="case-section">
         <div className="shell">
           <SectionHeader n={s.n} title={s.title} />
-          <div className="case-section-body reveal">
-            {s.body && <p className="case-p case-lede">{s.body}</p>}
+          <div className="case-section-body">
+            {s.body && <p className="case-p case-lede reveal">{s.body}</p>}
             {s.bullets && (
-              <ul className="case-bullets">
+              <ul className="case-bullets reveal">
                 {s.bullets.map((b, i) => <li key={i}>{b}</li>)}
               </ul>
             )}
@@ -522,10 +553,10 @@ function ImageRowSection({ s }) {
     <section className="case-section">
       <div className="shell">
         <SectionHeader n={s.n} title={s.title} />
-        <div className="case-section-body reveal">
-          {s.body && <p className="case-p case-lede">{s.body}</p>}
+        <div className="case-section-body">
+          {s.body && <p className="case-p case-lede reveal">{s.body}</p>}
           {s.bullets && (
-            <ul className="case-bullets">
+            <ul className="case-bullets reveal">
               {s.bullets.map((b, i) => <li key={i}>{b}</li>)}
             </ul>
           )}
@@ -536,7 +567,7 @@ function ImageRowSection({ s }) {
                 <figure key={i} className={'case-image' + (img.wide ? ' wide' : '') + (img.narrow ? ' narrow' : '') + (img.flush ? ' flush' : '')}
                         style={img.maxWidth ? { maxWidth: img.maxWidth, marginLeft: 'auto', marginRight: 'auto' } : undefined}>
                   {img.caption && <figcaption>{img.caption}</figcaption>}
-                  <div className="case-image-frame">
+                  <div className="case-image-frame" data-highlight={img.highlight ? '' : undefined}>
                     <img src={img.src} alt={imgAltFor(s.title, img)} width={img.w} height={img.h} loading="lazy" decoding="async" />
                   </div>
                   {img.note && <p className="case-image-note">{img.note}</p>}
@@ -555,8 +586,8 @@ function KpisSection({ s }) {
     <section className="case-section">
       <div className="shell">
         <SectionHeader n={s.n} title={s.title} />
-        <div className="case-section-body reveal">
-          {s.body && <p className="case-p case-lede">{s.body}</p>}
+        <div className="case-section-body">
+          {s.body && <p className="case-p case-lede reveal">{s.body}</p>}
           <div className="case-kpis">
             {s.kpis.map((k, i) => (
               <div key={i} className="case-kpi reveal" style={{ '--rd': `${i * 60}ms` }}>
@@ -566,7 +597,7 @@ function KpisSection({ s }) {
               </div>
             ))}
           </div>
-          {s.closing && <p className="case-p case-closing">{s.closing}</p>}
+          {s.closing && <p className="case-p case-closing reveal">{s.closing}</p>}
           {s.image && (
             <figure className="case-image case-image-wide" style={{ marginTop: 40, ...(s.image.maxWidth ? { maxWidth: s.image.maxWidth, marginLeft: 'auto', marginRight: 'auto' } : {}) }}>
               {s.image.caption && <figcaption>{s.image.caption}</figcaption>}

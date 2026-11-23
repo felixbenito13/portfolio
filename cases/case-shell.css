@@ -655,12 +655,30 @@ input, textarea, select, [contenteditable="true"] { cursor: auto !important; }
 html.motion .mh .mw > span { transform: translateY(108%); transition: transform 1.05s cubic-bezier(.77,0,.18,1); transition-delay: calc(var(--i, 0) * 55ms + 150ms); }
 html.motion .mh.in .mw > span { transform: none; }
 
-/* images open from the edges as they arrive */
-html.motion .case-image-frame.clip { clip-path: inset(10% 7% 10% 7%); opacity: 0; transition: clip-path 1.4s cubic-bezier(.77,0,.18,1), opacity .8s ease; }
-html.motion .case-image-frame.clip.in { clip-path: inset(0 0 0 0); opacity: 1; }
-html.motion .case-image-frame.clip img { transform: scale(1.06); transition: transform 1.8s cubic-bezier(.22,.61,.36,1); }
-html.motion .case-image-frame.clip.in img { transform: none; }
-html.motion .case-image:hover .case-image-frame.clip.in img { transform: scale(1.02); }
+/* image entrances (set by useCaseMotion, run once per image) */
+/* default: a short rise */
+html.motion .clip { opacity: 0; transform: translateY(12px); transition: opacity 450ms cubic-bezier(.22,.61,.36,1), transform 450ms cubic-bezier(.22,.61,.36,1); }
+html.motion .clip.in { opacity: 1; transform: none; }
+/* highlight: centre-out reveal, only on the top image and the first final-redesign image */
+html.motion .clip-hero { clip-path: inset(6% 4%); opacity: 0; transition: clip-path 800ms cubic-bezier(.77,0,.18,1), opacity 500ms ease; }
+html.motion .clip-hero.in { clip-path: inset(0); opacity: 1; }
+html.motion .clip-hero img { transform: scale(1.03); transition: transform 1s cubic-bezier(.22,.61,.36,1); }
+html.motion .clip-hero.in img { transform: none; }
+html.motion .case-image:hover .case-image-frame.clip-hero.in img { transform: scale(1.02); }
+html.motion .case-image.flush:hover .case-image-frame.clip-hero.in img { transform: none; }
+html.motion .case-hero-gallery-cell.clip-hero.in:hover img { transform: scale(1.04); }
+/* reader scrolling very fast: plain 200 ms fade, no clip, rise or scale */
+html.motion .clip.fast, html.motion .clip-hero.fast { transform: none; clip-path: none; transition: opacity 200ms ease; }
+html.motion .clip-hero.fast img { transform: none; transition: none; }
+html.motion .clip.instant, html.motion .clip-hero.instant { transform: none; clip-path: none; transition: none; }
+html.motion .clip-hero.instant img { transform: none; transition: none; }
+/* already on screen when the page loads */
+html.motion .clip-quick { opacity: 0; transition: opacity 200ms ease; }
+html.motion .clip-quick.in { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .clip, .clip-hero, .clip-quick { opacity: 1 !important; transform: none !important; clip-path: none !important; transition: none !important; }
+  .clip-hero img { transform: none !important; }
+}
 
 /* reading bar under the nav */
 .case-progress { position: fixed; left: 0; right: 0; top: 64px; z-index: 40; height: 40px; background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); transform: translateY(-100%); opacity: 0; pointer-events: none; transition: transform .45s cubic-bezier(.22,.61,.36,1), opacity .3s ease; }
@@ -691,8 +709,8 @@ html.motion .case-image:hover .case-image-frame.clip.in img { transform: scale(1
 
 .cg-stage { position: relative; touch-action: pan-y; }
 .cg-stage.is-sizing { overflow: hidden; transition: height .4s cubic-bezier(.22,.61,.36,1); }
-.cg-panel { position: absolute; top: 0; left: 0; right: 0; opacity: 0; visibility: hidden; transition: opacity .35s ease, visibility 0s linear .35s; }
-.cg-panel.is-on { position: relative; opacity: 1; visibility: visible; transition: opacity .35s ease .05s, visibility 0s; }
+.cg-panel { position: absolute; top: 0; left: 0; right: 0; opacity: 0; visibility: hidden; transition: opacity 200ms ease, visibility 0s linear 200ms; }
+.cg-panel.is-on { position: relative; opacity: 1; visibility: visible; transition: opacity 200ms ease, visibility 0s; }
 .cg-panel .case-image { gap: 14px; }
 .cg-open { display: block; width: 100%; padding: 0; margin: 0; border: 0; background: transparent; color: inherit; cursor: zoom-in; }
 .cg-open img { display: block; width: 100%; height: auto; margin: 0 auto; }
