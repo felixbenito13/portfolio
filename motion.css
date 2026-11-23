@@ -120,3 +120,16 @@ h1, h2, h3, h4 { font-family: 'Bricolage Grotesque', 'Inter Tight', system-ui, s
   [data-r="process-content"] > div:last-child { padding: 22px 24px !important; align-self: start; }
   [data-r="process-content"] > div:last-child p { font-size: 14.5px !important; line-height: 1.5 !important; }
 }
+
+/* ── Hero portrait: four stacked expressions, one visible at a time ───────── */
+.portrait .pf { position: absolute; inset: 0; display: block; opacity: 0; z-index: 0;
+  transition: opacity 400ms cubic-bezier(.4, 0, .2, 1); }
+.portrait .pf img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.portrait .pf.is-on { opacity: 1; z-index: 2; }
+/* the outgoing face stays opaque underneath, so the cross-fade never dips to the background */
+.portrait .pf.is-prev { opacity: 1; z-index: 1; transition: none; }
+@media (prefers-reduced-motion: reduce) {
+  .portrait .pf { transition: none; }
+  .portrait .pf:not([data-face="main"]) { display: none; }
+  .portrait .pf[data-face="main"] { opacity: 1; }
+}

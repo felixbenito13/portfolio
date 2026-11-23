@@ -34,12 +34,13 @@
 </script>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
-<link rel="stylesheet" href="motion.css?v=6" />
+<link rel="stylesheet" href="motion.css?v=7" />
 <link rel="stylesheet" href="a11y.css?v=2" />
 <script>try{window.__videosPaused=matchMedia("(prefers-reduced-motion: reduce)").matches;if(!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("motion");setTimeout(function(){if(!window.__motionReady)document.documentElement.classList.remove("motion")},6000)}}catch(e){}</script>
 <script src="./support.js" defer></script>
 <script src="motion.js?v=3" defer></script>
 <script src="a11y.js?v=2" defer></script>
+<script src="portrait.js?v=1" defer></script>
 <script src="latest-note.js?v=1" defer></script>
   <script src="/tab-title.js?v=1" defer></script>
 </head>
@@ -444,10 +445,22 @@
 <section id="top" data-screen-label="Hero" style="padding: 65px 0 53px; background: #0A0A0A; color: #F2F0EC; border-bottom: 1px solid rgba(255,255,255,0.10)">
   <div data-r="shell" style="max-width: 1440px; margin: 0 auto; padding: 0 28px">
     <div data-r="hero" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 56px; align-items: start; margin-top: 28px">
-      <div data-r="hero-photo" style="position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #1a1a1a">
-        <picture style="display: block; width: 100%; height: 100%">
+      <div data-r="hero-photo" class="portrait" style="position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #1a1a1a">
+        <picture class="pf is-on" data-face="main">
           <source srcset="assets/felix-benito-portrait.webp" type="image/webp" />
-          <img src="assets/felix-benito-portrait.jpg" alt="Portrait of Felix Benito, design lead" width="848" height="1060" fetchpriority="high" decoding="async" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top" />
+          <img src="assets/felix-benito-portrait.jpg" alt="Portrait of Felix Benito, design lead" width="848" height="1060" fetchpriority="high" decoding="async" />
+        </picture>
+        <picture class="pf" data-face="smile" aria-hidden="true">
+          <source srcset="assets/felix-benito-portrait-smile.webp" type="image/webp" />
+          <img src="assets/felix-benito-portrait-smile.jpg" alt="" width="848" height="1060" loading="lazy" decoding="async" />
+        </picture>
+        <picture class="pf" data-face="side" aria-hidden="true">
+          <source srcset="assets/felix-benito-portrait-side.webp" type="image/webp" />
+          <img src="assets/felix-benito-portrait-side.jpg" alt="" width="848" height="1060" loading="lazy" decoding="async" />
+        </picture>
+        <picture class="pf" data-face="closed" aria-hidden="true">
+          <source srcset="assets/felix-benito-portrait-closed.webp" type="image/webp" />
+          <img src="assets/felix-benito-portrait-closed.jpg" alt="" width="848" height="1060" loading="lazy" decoding="async" />
         </picture>
       </div>
       <div style="display: flex; flex-direction: column; justify-content: flex-start; min-width: 0; gap: 36px">
