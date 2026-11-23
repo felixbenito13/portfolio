@@ -788,3 +788,8 @@ html.motion .clip-quick.in { opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) { .case-impact-link { transition: none; } }
 #results { scroll-margin-top: 112px; }
+
+/* WebP wrappers behave like the image they hold */
+.case-image-frame picture, .cg-open picture { display: block; }
+/* persona illustrations: small source files, shown at most at their own width */
+.case-principle-img { display: block; width: 100%; max-width: 262px; height: auto; border-radius: 2px; }

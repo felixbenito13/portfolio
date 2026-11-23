@@ -500,8 +500,8 @@ function CaseGallery({ s }) {
                 <div className="case-image-frame">
                   <button type="button" className="cg-open" ref={(el) => (openRefs.current[k] = el)}
                           tabIndex={k === i ? 0 : -1} onClick={() => setLb(true)}>
-                    <img src={m.src} alt={imgAltFor(s.title, m)} width={m.w} height={m.h}
-                         loading={k === 0 ? undefined : 'lazy'} decoding="async" style={imgStyle} />
+                    {withWebp(m, <img src={m.src} alt={imgAltFor(s.title, m)} width={m.w} height={m.h}
+                         loading={k === 0 ? undefined : 'lazy'} decoding="async" style={imgStyle} />)}
                     <span className="sr-only">, open full screen</span>
                   </button>
                 </div>
@@ -531,7 +531,7 @@ function CaseGallery({ s }) {
 }
 
 function ImageRowSection({ s }) {
-  if (s.gallery && s.images && s.images.length > 2) {
+  if (s.gallery && s.images && s.images.length > 1) {
     return (
       <section className="case-section">
         <div className="shell">
@@ -568,7 +568,7 @@ function ImageRowSection({ s }) {
                         style={img.maxWidth ? { maxWidth: img.maxWidth, marginLeft: 'auto', marginRight: 'auto' } : undefined}>
                   {img.caption && <figcaption>{img.caption}</figcaption>}
                   <div className="case-image-frame" data-highlight={img.highlight ? '' : undefined}>
-                    <img src={img.src} alt={imgAltFor(s.title, img)} width={img.w} height={img.h} loading="lazy" decoding="async" />
+                    {withWebp(img, <img src={img.src} alt={imgAltFor(s.title, img)} width={img.w} height={img.h} loading="lazy" decoding="async" />)}
                   </div>
                   {img.note && <p className="case-image-note">{img.note}</p>}
                 </figure>
@@ -621,6 +621,7 @@ function PrinciplesSection({ s }) {
           <div className="case-principles">
             {s.items.map((it, i) => (
               <div key={i} className="case-principle reveal" style={{ '--rd': `${i * 60}ms` }}>
+                {it.img && withWebp({ src: it.img, webp: true }, <img className="case-principle-img" src={it.img} alt={it.imgAlt || ''} width="262" height="168" loading="lazy" decoding="async" />)}
                 <span className="case-principle-n">{String(i + 1).padStart(2, '0')}</span>
                 <h3>{it.k}</h3>
                 <p>{it.v}</p>
@@ -673,6 +674,17 @@ function TestimonialSection({ s }) {
 
 // Build a descriptive, unique alt from case + section context (keeps caption visible separately)
 let __caseLabel = '';
+/* WebP first when the image has one, the original file as fallback */
+function withWebp(img, el) {
+  if (!img || !img.webp) return el;
+  return (
+    <picture>
+      <source srcSet={img.src.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
+      {el}
+    </picture>
+  );
+}
+
 function imgAltFor(sectionTitle, img) {
   if (!img) return '';
   if (img.alt) return img.alt;
