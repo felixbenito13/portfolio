@@ -160,6 +160,48 @@ function Nav() {
 }
 
 // ─── Hero ──────────────────────────────────────────────────────────────────
+/* Headline results in the first fold, linking down to the full results section */
+function CaseImpact({ impact }) {
+  React.useEffect(() => {
+    const head = [].slice.call(document.querySelectorAll('.case-section-head')).find((h) => h.getAttribute('data-title') === impact.to);
+    const sec = head && head.closest('section');
+    if (sec && !document.getElementById('results')) sec.id = 'results';
+  }, []);
+  const go = (e) => {
+    const t = document.getElementById('results');
+    if (!t) return;
+    e.preventDefault();
+    t.scrollIntoView({ behavior: MOTION_OK ? 'smooth' : 'auto', block: 'start' });
+    /* lazy images above can load during the jump and push the section down: correct until it settles */
+    let stop = false;
+    const cancel = () => { stop = true; };
+    window.addEventListener('wheel', cancel, { once: true, passive: true });
+    window.addEventListener('touchstart', cancel, { once: true, passive: true });
+    const margin = parseFloat(getComputedStyle(t).scrollMarginTop) || 0;
+    [700, 1200, 1800, 2600].forEach((ms) => setTimeout(() => {
+      if (stop) return;
+      if (Math.abs(t.getBoundingClientRect().top - margin) > 8) t.scrollIntoView({ behavior: 'auto', block: 'start' });
+    }, ms));
+    const h = t.querySelector('h2');
+    if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
+    if (history.replaceState) history.replaceState(null, '', '#results');
+  };
+  return (
+    <div className="case-impact reveal" style={{ '--rd': '120ms' }}>
+      <h2 className="sr-only">Impact at a glance</h2>
+      <ul className="case-impact-list" role="list">
+        {impact.items.map((k, i) => (
+          <li key={i} className="case-impact-item">
+            <span className="case-impact-value">{k.value}</span>
+            <span className="case-impact-label">{k.label}</span>
+          </li>
+        ))}
+      </ul>
+      <a className="case-impact-link" href="#results" onClick={go}>See all results <span aria-hidden="true">↓</span></a>
+    </div>
+  );
+}
+
 function CaseHero({ c }) {
   return (
     <header className="case-hero">
@@ -176,6 +218,7 @@ function CaseHero({ c }) {
           <h1 className="case-title mh"><SplitWords text={c.title} /></h1>
           <p className="case-sub">{c.subtitle}</p>
         </div>
+        {c.impact && <CaseImpact impact={c.impact} />}
       </div>
       <div className="shell case-cover-wrap">
         {c.heroGallery ? (

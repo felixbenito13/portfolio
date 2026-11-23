@@ -12,6 +12,7 @@ const CASES = {
     year: '2025',
     title: 'Onboarding maintenance into the Audi service flow',
     subtitle: 'Lifting maintenance scheduling engagement from 4.8% to 11.2% across the North American myAudi app, through user research, AI-assisted prototyping and cross-functional alignment.',
+    impact: { to: 'Impact and outcomes', items: [{ value: '$4.2M', label: 'Estimated annual revenue impact' }, { value: '15% → 68%', label: 'Service booking completion' }, { value: '−71%', label: 'Time to book a service' }] },
     cover: '',
     meta: [
       { label: 'Role',     value: 'Senior Product Designer · led a design team of 2, from discovery to AI-assisted prototyping' },
@@ -163,6 +164,7 @@ const CASES = {
     year: '2026',
     title: 'Narrative intelligence, block by block',
     subtitle: 'Joining a political intelligence platform as Design Lead: from a fragmented starting point to one design language that runs from the dashboard to the press release.',
+    impact: { to: 'One language, from data to press release', items: [{ value: '7 → 1', label: 'Workstreams under one design system' }, { value: 'End to end', label: 'From research to go-to-market' }] },
     cover: '',
     meta: [
       { label: 'Role',     value: 'Design Lead' },
@@ -383,6 +385,7 @@ const CASES = {
     year: '2024',
     title: 'A B2B buying tool for Coca-Cola bottlers',
     subtitle: 'Redesigning the bottler buying experience across five LATAM countries, design system, branding, and migrating Equipment Maintenance out of a WhatsApp bot into the app.',
+    impact: { to: 'Results', items: [{ value: '+6%', label: 'Conversion lift after launch' }, { value: '65 → 85', label: 'Usability score (SUS), poor to excellent' }, { value: '23', label: 'New features shipped' }] },
     cover: '',
     meta: [
       { label: 'Role',     value: 'Senior Product Designer · led a design team of 2 across 5 LATAM countries' },
@@ -551,6 +554,7 @@ const CASES = {
     year: '2024',
     title: 'Ladle Slag Model, digitizing metallurgical expertise',
     subtitle: 'Leading the end-to-end design of an industrial SaaS for steel-plant operators across Austria and Brazil, from stakeholder research and business logic to UI, branding, design system and go-to-market.',
+    impact: { to: 'Key contributions & impact', items: [{ value: '17+', label: 'Technical modules designed and shipped' }, { value: '1 system', label: 'Brand and design system built from zero' }, { value: '2 countries', label: 'Plants in Austria and Brazil' }] },
     cover: 'assets/rhi-magnesita-ladle-slag-model-cover.jpg',
     coverBg: '#333333',
     heroGallery: [
@@ -693,6 +697,7 @@ const CASES = {
     year: '2023',
     title: 'A sales-tech ecosystem for Kraft Heinz',
     subtitle: 'Leading the design of the Sales Tech Ecosystem for Kraft Heinz, a key initiative in the company\u2019s digital transformation. Sell-In, Execution and Sell-Out unified into one source of truth, across France and Brazil.',
+    impact: { to: 'Results', items: [{ value: '20h → 2s', label: 'Time to insight, 36,000× faster' }, { value: '9', label: 'Dashboards shipped' }, { value: '2 markets', label: 'Live in France and Brazil' }] },
     cover: '',
     meta: [
       { label: 'Role',     value: 'Senior Product Designer · led a design team of 3, France & Brazil' },

@@ -744,3 +744,29 @@ html.motion .case-image:hover .case-image-frame.clip.in img { transform: scale(1
 }
 /* keeps the image reveal scale from adding a sliver of sideways scroll */
 .case-main { overflow-x: clip; }
+
+/* ─── Impact at a glance (first fold) ────────────────────────────────────── */
+.case-impact { margin-top: 40px; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 20px 40px; }
+.case-impact-list { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 300px); }
+.case-impact-item { display: flex; flex-direction: column; gap: 10px; padding: 0 32px; border-left: 1px solid rgba(255, 255, 255, 0.14); min-width: 0; }
+.case-impact-item:first-child { padding-left: 0; border-left: 0; }
+.case-impact-value { font-size: clamp(30px, 3vw, 46px); line-height: 1; letter-spacing: -0.025em; font-weight: 600; color: #F2F0EC; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.case-impact-label { font-family: var(--mono); font-size: var(--t-label); letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.5; color: rgba(242, 240, 236, 0.66); }
+.case-impact-label::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #E5484D; margin-right: 10px; vertical-align: middle; position: relative; top: -1px; }
+.case-impact-link { justify-self: end; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-family: var(--mono); font-size: var(--t-label); letter-spacing: 0.08em; text-transform: uppercase; color: #F2F0EC; text-decoration: underline; text-decoration-color: #E5484D; text-decoration-thickness: 1.5px; text-underline-offset: 4px; transition: color .25s ease; }
+.case-impact-link:hover { color: #E5484D; }
+@media (max-width: 1023px) {
+  .case-impact { grid-template-columns: minmax(0, 1fr); }
+  .case-impact-list { grid-auto-columns: minmax(0, 1fr); }
+  .case-impact-item { padding: 0 20px; }
+  .case-impact-link { justify-self: start; }
+}
+@media (max-width: 720px) {
+  .case-impact { margin-top: 28px; gap: 8px; }
+  .case-impact-list { grid-auto-flow: row; border-top: 1px solid rgba(255, 255, 255, 0.14); }
+  .case-impact-item, .case-impact-item:first-child { flex-direction: row; align-items: baseline; gap: 14px; padding: 12px 0; border-left: 0; border-bottom: 1px solid rgba(255, 255, 255, 0.14); }
+  .case-impact-value { font-size: 26px; flex: none; min-width: 7.2ch; }
+  .case-impact-label::before { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .case-impact-link { transition: none; } }
+#results { scroll-margin-top: 112px; }
