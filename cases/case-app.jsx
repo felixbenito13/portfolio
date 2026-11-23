@@ -234,7 +234,247 @@ function TextSection({ s }) {
   );
 }
 
+/* ─── Gallery: tabs, one image at a time, full screen with zoom ─────────── */
+const ICON_PREV = <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path d="M12.5 4.5 7 10l5.5 5.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+const ICON_NEXT = <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path d="M7.5 4.5 13 10l-5.5 5.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+const ICON_CLOSE = <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path d="M5 5l10 10M15 5 5 15" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>;
+const ICON_ZOOM_IN = <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" strokeWidth="1.7" /><path d="M12.6 12.6 17 17M6 8.5h5M8.5 6v5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" /></svg>;
+const ICON_ZOOM_OUT = <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" strokeWidth="1.7" /><path d="M12.6 12.6 17 17M6 8.5h5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" /></svg>;
+
+function useSwipe(onSwipe, enabled = true) {
+  const st = React.useRef(null);
+  return {
+    onPointerDown: (e) => { if (!enabled || e.pointerType === 'mouse') return; st.current = { x: e.clientX, y: e.clientY }; },
+    onPointerUp: (e) => {
+      const s0 = st.current; st.current = null;
+      if (!s0 || !enabled) return;
+      const dx = e.clientX - s0.x, dy = e.clientY - s0.y;
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.3) onSwipe(dx < 0 ? 1 : -1);
+    },
+    onPointerCancel: () => { st.current = null; },
+  };
+}
+
+function preloadImg(src) { if (src) { const im = new Image(); im.decoding = 'async'; im.src = src; } }
+
+function GalleryLightbox({ imgs, index, label, onIndex, onClose }) {
+  const ref = React.useRef(null);
+  const viewRef = React.useRef(null);
+  const [zoom, setZoom] = React.useState(false);
+  const [zoomW, setZoomW] = React.useState(0);
+  const focal = React.useRef(null);
+  const drag = React.useRef(null);
+  const img = imgs[index];
+  const N = imgs.length;
+
+  React.useEffect(() => {
+    const d = ref.current;
+    if (d && !d.open) { try { d.showModal(); } catch (e) { d.setAttribute('open', ''); } }
+    const prev = document.documentElement.style.overflow;
+    document.documentElement.style.overflow = 'hidden';
+    return () => { document.documentElement.style.overflow = prev; };
+  }, []);
+  React.useEffect(() => { setZoom(false); preloadImg(imgs[(index + 1) % N].src); preloadImg(imgs[(index - 1 + N) % N].src); }, [index]);
+
+  /* keep the point under the cursor in place when zooming in */
+  React.useLayoutEffect(() => {
+    const v = viewRef.current;
+    if (!v) return;
+    if (zoom && focal.current) {
+      const im = v.querySelector('img');
+      const f = focal.current;
+      v.scrollLeft = Math.max(0, f.px * im.offsetWidth - f.vx);
+      v.scrollTop = Math.max(0, f.py * im.offsetHeight - f.vy);
+    } else { v.scrollLeft = 0; v.scrollTop = 0; }
+  }, [zoom, index]);
+
+  const go = (d) => onIndex((index + d + N) % N);
+  const toggleZoom = (e) => {
+    const v = viewRef.current, im = v && v.querySelector('img');
+    if (!im) return;
+    if (!zoom) {
+      const r = im.getBoundingClientRect(), vr = v.getBoundingClientRect();
+      const cx = e && e.clientX != null && e.detail ? e.clientX : r.left + r.width / 2;
+      const cy = e && e.clientY != null && e.detail ? e.clientY : r.top + r.height / 2;
+      focal.current = { px: (cx - r.left) / r.width, py: (cy - r.top) / r.height, vx: cx - vr.left, vy: cy - vr.top };
+      /* at least twice the fitted size, and never less than the file's own width */
+      const tall = r.height >= vr.height - 4;   /* fitted by height: zoom to the file's width */
+      setZoomW(Math.round(tall ? Math.max(img.w, r.width * 2.5) : Math.max(img.w, r.width * 2, vr.width * 1.2)));
+    }
+    setZoom(!zoom);
+  };
+  const onKey = (e) => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
+    else if (e.key === '+' || e.key === '=') { if (!zoom) toggleZoom(); }
+    else if (e.key === '-') { if (zoom) setZoom(false); }
+  };
+  const swipe = useSwipe(go, !zoom);
+  /* drag to pan with the mouse while zoomed */
+  const onDown = (e) => { swipe.onPointerDown(e); if (zoom && e.pointerType === 'mouse') { drag.current = { x: e.clientX, y: e.clientY, l: viewRef.current.scrollLeft, t: viewRef.current.scrollTop, moved: false }; } };
+  const onMove = (e) => { const d = drag.current; if (!d) return; const dx = e.clientX - d.x, dy = e.clientY - d.y; if (Math.abs(dx) + Math.abs(dy) > 4) d.moved = true; viewRef.current.scrollLeft = d.l - dx; viewRef.current.scrollTop = d.t - dy; };
+  const onUp = (e) => { swipe.onPointerUp(e); setTimeout(() => { drag.current = null; }, 0); };
+  const onImgClick = (e) => { if (drag.current && drag.current.moved) return; toggleZoom(e); };
+
+  const caption = img.caption || img.alt;
+  return (
+    <dialog ref={ref} className={'cg-lb' + (zoom ? ' is-zoomed' : '')} aria-label={label + ', full screen'}
+            onCancel={(e) => { e.preventDefault(); onClose(); }} onKeyDown={onKey}>
+      <div className="cg-lb-bar">
+        <p className="cg-lb-count">{index + 1} of {N}</p>
+        <div className="cg-lb-tools">
+          <button type="button" className="cg-lb-btn" onClick={() => toggleZoom()} aria-pressed={zoom} aria-label={zoom ? 'Zoom out' : 'Zoom in'}>{zoom ? ICON_ZOOM_OUT : ICON_ZOOM_IN}</button>
+          <button type="button" className="cg-lb-btn" onClick={onClose} aria-label="Close full screen">{ICON_CLOSE}</button>
+        </div>
+      </div>
+      <div className="cg-lb-view" ref={viewRef} onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp} onPointerCancel={onUp}>
+        <img key={img.src} src={img.src} alt={img.alt || caption} width={img.w} height={img.h} draggable="false"
+             onClick={onImgClick} style={zoom ? { width: zoomW + 'px' } : undefined} />
+      </div>
+      <button type="button" className="cg-lb-btn cg-lb-prev" onClick={() => go(-1)} aria-label="Previous image">{ICON_PREV}</button>
+      <button type="button" className="cg-lb-btn cg-lb-next" onClick={() => go(1)} aria-label="Next image">{ICON_NEXT}</button>
+      <p className="cg-lb-caption">{caption}</p>
+    </dialog>
+  );
+}
+
+function CaseGallery({ s }) {
+  const imgs = s.images;
+  const N = imgs.length;
+  const uid = 'g' + React.useId().replace(/[^a-zA-Z0-9]/g, '');
+  const label = s.title || s.galleryLabel || 'Gallery';
+  const [i, setI] = React.useState(0);
+  const [lb, setLb] = React.useState(false);
+  const stageRef = React.useRef(null);
+  const tabsRef = React.useRef(null);
+  const openRefs = React.useRef([]);
+  const prevH = React.useRef(null);
+
+  const select = (k, focusTab) => {
+    k = (k + N) % N;
+    if (k === i) return;
+    if (stageRef.current) prevH.current = stageRef.current.offsetHeight;
+    setI(k);
+    if (focusTab && tabsRef.current) { const t = tabsRef.current.querySelectorAll('[role="tab"]')[k]; if (t) t.focus(); }
+  };
+
+  /* smooth height change between images of different proportions */
+  React.useLayoutEffect(() => {
+    const st = stageRef.current;
+    const from = prevH.current;
+    prevH.current = null;
+    if (st && tabsRef.current) {
+      const t = tabsRef.current.querySelectorAll('[role="tab"]')[i];
+      const row = tabsRef.current;
+      if (t && row.scrollWidth > row.clientWidth) row.scrollTo({ left: t.offsetLeft - row.clientWidth / 2 + t.offsetWidth / 2, behavior: MOTION_OK ? 'smooth' : 'auto' });
+    }
+    if (!st || from == null || !MOTION_OK) return;
+    const to = st.offsetHeight;
+    if (Math.abs(to - from) < 2) return;
+    st.style.height = from + 'px';
+    st.getBoundingClientRect();
+    st.classList.add('is-sizing');
+    st.style.height = to + 'px';
+    const done = () => { st.classList.remove('is-sizing'); st.style.height = ''; st.removeEventListener('transitionend', done); };
+    st.addEventListener('transitionend', done);
+    const t = setTimeout(done, 600);
+    return () => clearTimeout(t);
+  }, [i]);
+
+  React.useEffect(() => { preloadImg(imgs[(i + 1) % N].src); }, [i]);
+
+  /* the side arrows cover the image only, not the caption under it */
+  const arrowsRef = React.useRef(null);
+  React.useLayoutEffect(() => {
+    const st = stageRef.current, ar = arrowsRef.current;
+    if (!st || !ar) return;
+    const fit = () => { const f = st.querySelector('.cg-panel.is-on .case-image-frame'); if (f) { ar.style.height = f.offsetHeight + 'px'; ar.classList.toggle('is-tall', f.offsetHeight > window.innerHeight * 0.9); } };
+    fit();
+    if (!('ResizeObserver' in window)) return;
+    const ro = new ResizeObserver(fit);
+    ro.observe(st);
+    return () => ro.disconnect();
+  }, [i]);
+
+  const onKeyDown = (e) => {
+    if (lb) return;
+    const map = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: N - 1 };
+    if (!(e.key in map)) return;
+    e.preventDefault();
+    select(map[e.key], e.target.getAttribute('role') === 'tab');
+  };
+  const swipe = useSwipe((d) => select(i + d));
+  const img = imgs[i];
+
+  return (
+    <div className="cg" onKeyDown={onKeyDown}>
+      <div className="cg-tabs" role="tablist" aria-label={label} ref={tabsRef}>
+        {imgs.map((m, k) => (
+          <button key={k} type="button" role="tab" id={uid + '-t' + k} aria-controls={uid + '-p' + k}
+                  aria-selected={k === i} tabIndex={k === i ? 0 : -1} className="cg-tab"
+                  onClick={() => select(k)}>{m.tab}</button>
+        ))}
+      </div>
+      <div className="cg-stage" ref={stageRef} {...swipe}>
+        {imgs.map((m, k) => {
+          const cap = m.caption || m.alt;
+          const imgStyle = { maxWidth: m.maxWidth && /px$/.test(m.maxWidth) ? m.maxWidth : Math.min(m.w, 1800) + 'px' };
+          return (
+            <div key={k} role="tabpanel" id={uid + '-p' + k} aria-labelledby={uid + '-t' + k}
+                 className={'cg-panel' + (k === i ? ' is-on' : '')} aria-hidden={k === i ? undefined : 'true'}>
+              <figure className={'case-image' + (m.flush ? ' flush' : '')}>
+                <div className="case-image-frame">
+                  <button type="button" className="cg-open" ref={(el) => (openRefs.current[k] = el)}
+                          tabIndex={k === i ? 0 : -1} onClick={() => setLb(true)}>
+                    <img src={m.src} alt={imgAltFor(s.title, m)} width={m.w} height={m.h}
+                         loading={k === 0 ? undefined : 'lazy'} decoding="async" style={imgStyle} />
+                    <span className="sr-only">, open full screen</span>
+                  </button>
+                </div>
+                <figcaption className="cg-foot">
+                  <span className="cg-caption">{cap}</span>
+                  <span className="cg-count">{k + 1} of {N}</span>
+                </figcaption>
+                {m.note && <p className="case-image-note">{m.note}</p>}
+              </figure>
+            </div>
+          );
+        })}
+        <div className="cg-arrows" ref={arrowsRef}>
+          <div className="cg-arrows-in">
+            <button type="button" className="cg-arrow" onClick={() => select(i - 1)} aria-label="Previous image" aria-controls={uid + '-p' + ((i - 1 + N) % N)}>{ICON_PREV}</button>
+            <button type="button" className="cg-arrow" onClick={() => select(i + 1)} aria-label="Next image" aria-controls={uid + '-p' + ((i + 1) % N)}>{ICON_NEXT}</button>
+          </div>
+        </div>
+      </div>
+      {lb && (
+        <GalleryLightbox imgs={imgs} index={i} label={label}
+                         onIndex={(k) => setI(k)}
+                         onClose={() => { setLb(false); setTimeout(() => { const b = openRefs.current[i]; if (b) b.focus(); }, 0); }} />
+      )}
+    </div>
+  );
+}
+
 function ImageRowSection({ s }) {
+  if (s.gallery && s.images && s.images.length > 2) {
+    return (
+      <section className="case-section">
+        <div className="shell">
+          <SectionHeader n={s.n} title={s.title} />
+          <div className="case-section-body reveal">
+            {s.body && <p className="case-p case-lede">{s.body}</p>}
+            {s.bullets && (
+              <ul className="case-bullets">
+                {s.bullets.map((b, i) => <li key={i}>{b}</li>)}
+              </ul>
+            )}
+            <CaseGallery s={s} />
+          </div>
+        </div>
+      </section>
+    );
+  }
   return (
     <section className="case-section">
       <div className="shell">
@@ -443,7 +683,7 @@ function Footer() {
           </div>
         </div>
         <div className="footer-base">
-          <span>© 2007 / {new Date().getFullYear()} Felix Benito</span>
+          <span>© 2007–{new Date().getFullYear()} Felix Benito</span>
           <span className="footer-credits">
           <span className="footer-coffee">
             <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center' }}>

@@ -176,7 +176,7 @@ function Footer() {
           </div>
         </div>
         <div className="footer-base">
-          <span>© 2007 / {new Date().getFullYear()} Felix Benito</span>
+          <span>© 2007–{new Date().getFullYear()} Felix Benito</span>
           <span className="footer-credits">
           <span className="footer-coffee">
             <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center' }}>
