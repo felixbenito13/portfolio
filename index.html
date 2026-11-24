@@ -43,8 +43,81 @@
 <script src="portrait.js?v=1" defer></script>
 <script src="latest-note.js?v=2" defer></script>
   <script src="/tab-title.js?v=1" defer></script>
+  <style>
+    /* ── Curtain loader (script right below, markup at the top of the body) ── */
+    #curtain { display: none; }
+    html.curtain, html.curtain body { overflow: hidden; }
+    html.curtain #curtain { position: fixed; inset: 0; z-index: 10000; background: #0A0A0A; display: flex; align-items: center; justify-content: center; padding: 0 24px; pointer-events: none;
+      animation: curtainUp 700ms cubic-bezier(0.77, 0, 0.18, 1) 1400ms both; will-change: transform; }
+    @keyframes curtainUp { from { transform: translateY(0); } to { transform: translateY(-100%); } }
+    #curtain .cw { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+    #curtain .cs { width: 31px; height: 28px; background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAABUCAYAAAALSYAIAAANsElEQVR42u1da2yk51V+nvf77L3Um0sL7G7YeBOJUAIoVRAgBAUJ1FZCFFQhFSGB+FMhJFCFqJLmgtDGqkCwSxJVCCEKSCBRkFouldKgVpFaoTRRolya0mySVZJd767X9thzsz3jy8x7zsOP7/u841l71/bY69ndeSVr/cMz883znvc55zznnHf5wr0/+jP08FGQQwEQBmvHluf/BgApoBUoKbXifNla30gTDx8FwwkC+weo7+xKmRlyFFBxU8VjWoVfWg7hbOrkUALsD+S+AfC9rQI/5j8rEuZlKltkzU0GMErDoCwNgEi4MOCZHsGWAEDCkoS6R5XdOO+GNiACGiIZgCWPbKb5i8kBhtsCvbBul7AooeoRFTc03BgBBgAJMusGCcmbHlhPB/Bt38oDgCipIUPVXBWPXJLTkVlyAl7xQoLlYKgNgN+OhUtoA1pwU9mNNY9YlkLB7+Hq/HEp2WdzqUgvXjBYGy9mwGtZjjk3lC1i3p2tzP6Zoc6rvZ4OwaV3Pz8xsZwGoSXAcuQ12IMr6cQhLbpQ86iKGxbcQgRAEmFzcIkABTUdPA1AqQgNwpn1LdwlzclR8YiqGxbd6bldhy2EI8odrAnn9gFvI0uoBqsTbABoSWq4oeyGnL9XI7/QW/z3WpxevnDLA99JJ5KwDGjODVWLqsu4IhGrlLL9jwkAI7QIx/8+jFJTANNbPcMUhEVJNYuqumHenW0o7IB1r6EZCafp9jwAPHGrAl/wd1OOihsqHtHcJn9vwqnCBHPy2ebsxFkAHAM8vdUyzChpwQ3V/GdRvlP8vZG106G3EcN/jwFefFZ6qwhWrQxwzXpk3Q0rmbKyK4B3nay2Af9+78y5052RfnpTJzwCluWqe0TZHfNubGenf9fA7th4JQCdfMFN//ZbgOXWrpsS+IxTpSU5qu6oesSCGyy3NuZRyvUA3aQShL95rHR+vBP0mwL4NYIVoEaW7KhixiU5LbfucB0fqaCYAP1jOn3h2fXEhPRmEKwioNoGglWyB4J3psvga6GNv/1jYOWy1HODAt8ZnQgZf897VuGZ6xCsrgedbLA8AMFcz5vbFx4uT0x1U8wNBbzWpPRS0x11d5U9csE9RGgrgtWuPWYAgkuvyfTYo7MT398I9L4HvqvCo4aUC1a7lvD0JAsY9DocD31+9sILuArofQ18AXg7T3gqbqi5YWkXE57t2gYBmus7Tn/8kdLF53UN0PsK+M7oBJJWIMxl4aCqbmxLVO+C1Y6GjAGgJHfpmZDYiYcvXfoeNgF6XwB/hWDlUt1NZY+cd0fMBSuS/VKhUSEFmDRP4Z+X0Xrqzy5Nn18veulb4JlXeJruqLqhYoamjNY/dHKFlefC19uSf/GALX/5odnZhjZp6XsGvAo66RCsam6quHFRTm2uYHzdASfABKRLTYeedeqLj05dfLGjPUZbec90bwQr14K7Zt1YzxIeok8tHAASkAaXOd4g9A8xtL/y+ORkpfha3EYvWCqnB7p2s8adv7OW3VHP9e+5rOBwXQSrbVo4kvzRDRqH8B9Q/JeHShNvdlm5ttdXKV8B6cy7W7kLBYeiw6qaVeivq2C1xYMpACEBqOzZJxz4H8q+3JieeGkMaG2XWnaVaro6rNCQq+amikUuFoJVn9JJxuGgATD5OBG+IddXm6H90tj01GIn4L2Cvgp8rzxzWbAC2pAabiqbsaZMsFIOdtJfVLJq3QQR5Stt6S0C32TAMwuTen0MF5YB4AQQxnYI8J4tvluwWskFq1kzzrmtEaz6wcI7wGYAGEBGSCYvkXhZ1DcDwrdfnjr/7lcB62zmHbs8Y4A9A15dDrPphnoWDmLenREiib0WrFYTnYJGAsBA0iW4qyzqLUDPw/Gtg/vw3T+8cLHW2VuaG5V26+HSbTpMNOTKEp6IpvZesNJaKggs+hnzipSAGQmnIX/ZhRfVsjcerV6a6PxqHad413vr0q10WLUlLSgDOxOsOjqsrtG0udM+XF3PV1g0BUQIDs1DukTwtKBX6HjVor+zWLk43UkdhX/LneZ1W+k1BStAK/JVwarmxtb1EazUNW1RbOvqRjP3MAbA5XUTJym8B+hNSN9LgNPt2LzwSKWy0PnGJ4DwRH5CuEeDMOmGglU2UqJ63iE719FhtUOClbpHWbo4lqHQXEWCgmexn0tadLIM94sE3xP9jBDeSSyeba2EicfmLtTW+bDCsjEG+NgeO6C080uHnCubebNPxQyNLsGK6MlE1qgHq0kUCBJkHlVbXiwGsOjCPORVEFNCGCf9bBDOoq1xk6buGI71P5jK4uxuvu4MAthnI14pkLU3GYQFt8xheuSiREFgR+O8pC0XMjpPRwZv5pwluZPLkJqA5iHUQFQozEg+Rcekh3TSGaeGTNOtVqi8Pjc+X4R63R93Isd4LH9U9v0oZmBoS6ivVnjElOQdDFuybpfg+d87FF1qGlA3eU1gFUA1AGXBq3CWBa+IrBKo0X0uRdJY5FBzWAuLjVJp6SqxM7WODjR2gw0tpg5HwsA7mOD2kJDbzGKlDCnPz4cgm7D28ky0Zgick6tGogJpFuSMkFTgVk1S1RMbWlix+cVWpbL0p0C8Ck8RyLptn7hs1boxh4+dHgI0zADrRSTjml/Tebc7G64PgvgwATAwV6GCILQCtCyGprvmlFg9JCOVkaMfmHkSmDLHFAInYZhOodLcylz1rbm5BV6mGY11RSn5hvQdl28I10uj938GgU8n5CHLBf9eQxWX9H5sYcraCOvIj1zjB7gaJ2anRpDUEtgktSBXheSkoAtwPweGc0lb4y359FLSqo/NzjY2OhmdVNR3Fr8b7RiF5r7RJhaKYEFLVFc+RA4nwDAZ7kTAKKAHHYSSkM2B7WMlRZgYUXru1JHRMwLOiHg/+MpEo1Qqs8s/KKMmjvWgn/c18Myz25JFtCSGaxAT1yWqDCvLj0BX8hRIjhAYIXkcxC+YBGRF5xK4f/zQkXtOn5L+D7Q39wc/W56crOUboe54fi83Id3hWqpqbqq5kb1JCJ2v7PxdKk5KvimZ++BtIfA2CvcZ9HGAi45kdtmTMyNHRl8/CbwaYvL9haHlCXbE/Hu5CelOUsySO6aszQhxl8SydU+KANnlJIMEDqbgcQYed/knHFjQkL03gn3fPXV09EVZ8koy3H6XExNL68kIN4xzLZ70UmzpXGxlKf/eavDqKrCvZiVRWAJ8HOArEL/lsf3i++Uj41/Ca+1u0ayvLb6w9qabZizCs6O/59Eau5x5REZNgTgQEO4XcL8Bnw5p8s59R2e/fVLHnwuN1qtsTJW7NCP1LdW4hFkzNeShT1P1VWVTmePOfQMOkMmDgh4U9TsaGX755MHRrw+Rz/1J6fw4OxzyTm9A2suxKqx9Qe4z3qb6sFXjKjISBMizkwCCh5OA37DAj0XhjVN33fM1ruiZhyrnzxROXDtIQalDTLaZMxXzRiXLmpLCjXfd0OoTe+YXROBgIH/e5D+rIfz2qaOjX/F2+l+PlM++y7WXKvXW3kEmw4CHyzrk1pOlskfe6Nd+8HKjRHYKyDQE/pTLHwhp/NTJu0b/FW3+J2fPT+8E/aQMCtLWYhCtJkuuGWurJYVw81yutWrRJoFgmgT+nAkfYapfPXXX3X/fGArP8fz55Q5b2/IGhF4CtqqZam7hJr3gplBqZXk0lJC/RiVfGmnhC0/+4LEf6eg+464DX3zKMqRpj2z3Vxverm1AFpJCJI6Q+Jyl4Z/+6vDoJ09kAYq22hQWthm8K7saym520K/YAM/oPaQMvxQC/+7Q4dHPPX378Tu4RfDDdiKZhgylPFnirXfzR95BDCXkMSQ8EQ/iL08dOXJ8K+CHrcoCglB2U1POANzKtzkxk1h4kODvMww/derI6I9zk5y/ZewW3L1kWbJ0q18TWnB/VssJvwnw6ZM/9MMPdA2+9A68SZq2yGVpcDPrOgppCPwEQvrXTx2++yfy5g32BPyaypLFzMsMoL9ChhCgJPDjxvDnTx8+fs/VaGfTFt+WY9oiWlD/DD6iL6fRRfLXI/H4iWPHPrhRqBk2a+0VN9XdBpBvplBDBJC/e9DDZ05soABfE/iQ35JRsois930A/bXAd0AJcSAR/+gDR+/+lfXCzLCZVo3ZIlkagLqlUDOQx4nw2ad+YPRoN/jhmpUlOYrK0sDat3xZkAh+TEP4dAfovKbFu4SZbOIDYQD69joviP0if+8vPnT8w+yoBQe5+1UqSypbhAY3bPdwTwMA4YF9w/hUZ8oZgtAiYFw3WWpjCTdkZalvsFem6QyB+OSpI/eMFuFl0Nqu58LaVXND1QYOdaesXsBHAvwX1zjXgkr88q2kKBXJ0sDadyS8TMERB375SRw7wOz6lSsbGKueTfUNIN9xRf+n413p6KrFF942b8PTtEUYBkLYTtMNgXuHIn5sTThZzDiVLWLBLXOoA+h30skC5KEY9JNrgA8AGnLMeNz5wf3Byq5IzMrn9z157NiBVedqAMoWNUiWdvcOTQB320pye3CIAdC8G2Z9kCztPt/rQ57gzjSAilkbnpYuT2AM1s472GLgaAQeb0/TJHDa2mndLb9aJAz+n8vdoRoGAlA4mCY6lM6142LJ25NLstsIuskGVLMrwFMOpQBm5bS0Yu3vLEKflWNIidYfWB+snlfImpGDEi4RK2/+P/ES98C+43D1AAAAAElFTkSuQmCC") center / contain no-repeat; }
+    #curtain .ct { margin: 0; font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 15px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: #F2F0EC; text-align: center; line-height: 1.6; white-space: nowrap; }
+    #curtain .ct i { font-style: normal; opacity: 0; }
+    #curtain.go .ct i { opacity: 1; transition: opacity 1ms linear var(--d); }
+    #curtain .cb { display: block; width: 120px; height: 1px; background: rgba(201, 33, 43, .22); overflow: hidden; }
+    #curtain .cb b { display: block; height: 100%; width: 100%; background: #C9212B; transform: scaleX(0); transform-origin: left center; }
+    #curtain.go .cb b { transform: scaleX(.85); transition: transform 1200ms cubic-bezier(.2, .7, .3, 1); }
+    #curtain.full .cb b { transform: scaleX(1); transition: transform 180ms ease-out; }
+    @media (max-width: 600px) {
+      #curtain .ct .cl { display: block; }
+      #curtain .ct .sp { display: none; }
+    }
+  </style>
+  <script>
+  /* Curtain loader: home only, first visit of the session, never with reduced motion.
+     The markup sits at the top of <body> and stays hidden unless this adds html.curtain,
+     so if anything fails the page shows normally. The exit runs as a CSS animation
+     (1.4 s at the latest) and is brought forward once the page has loaded and 0.9 s passed. */
+  (function () {
+    var show = false;
+    try {
+      var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var home = /^\/(index\.html)?$/.test(location.pathname);
+      if (home && !rm && !sessionStorage.getItem('fb_curtain_seen')) {
+        sessionStorage.setItem('fb_curtain_seen', '1');
+        show = true;
+      }
+    } catch (e) { show = false; }
+    if (!show) return;
+    var root = document.documentElement, MIN = 900, MAX = 1400, EXIT = 700;
+    root.classList.add('curtain');
+    var el = null, t0 = 0, loaded = false, early = false, gone = false;
+    function now() { return window.performance && performance.now ? performance.now() : Date.now(); }
+    function done() {
+      if (gone) return; gone = true;
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+      root.classList.remove('curtain');
+    }
+    function exitNow() {
+      if (early || !el) return;
+      var t = now() - t0;
+      if (t >= MAX - 30) return;        /* the CSS exit is already about to start */
+      early = true;
+      el.classList.add('full');
+      el.style.animationDelay = Math.round(t) + 'ms';   /* start the exit animation from this moment */
+      setTimeout(done, EXIT + 80);
+    }
+    function maybe() { if (loaded && now() - t0 >= MIN) exitNow(); else if (loaded) setTimeout(maybe, MIN - (now() - t0)); }
+    window.__curtainStart = function () {
+      el = document.getElementById('curtain');
+      if (!el) { done(); return; }
+      t0 = now();
+      requestAnimationFrame(function () { el.classList.add('go'); });
+      el.addEventListener('animationend', done);
+      setTimeout(done, MAX + EXIT + 400);   /* safety net */
+      maybe();
+    };
+    window.addEventListener('load', function () { loaded = true; if (el) maybe(); });
+    setTimeout(done, 4000);
+  })();
+  </script>
 </head>
 <body>
+<!-- Curtain loader: hidden unless the head script adds html.curtain (home, first visit of the session) -->
+<div id="curtain" aria-hidden="true"><div class="cw"><span class="cs"></span><p class="ct"><span class="cl"><i style="--d:0ms">P</i><i style="--d:15ms">u</i><i style="--d:29ms">l</i><i style="--d:44ms">l</i><i style="--d:59ms">i</i><i style="--d:73ms">n</i><i style="--d:88ms">g</i><i style="--d:102ms">&nbsp;</i><i style="--d:117ms">t</i><i style="--d:132ms">h</i><i style="--d:146ms">e</i><i style="--d:161ms">&nbsp;</i><i style="--d:176ms">e</i><i style="--d:190ms">s</i><i style="--d:205ms">p</i><i style="--d:220ms">r</i><i style="--d:234ms">e</i><i style="--d:249ms">s</i><i style="--d:263ms">s</i><i style="--d:278ms">o</i><i style="--d:293ms">.</i><i class="sp" style="--d:307ms">&nbsp;</i></span><span class="cl"><i style="--d:322ms">L</i><i style="--d:337ms">o</i><i style="--d:351ms">a</i><i style="--d:366ms">d</i><i style="--d:380ms">i</i><i style="--d:395ms">n</i><i style="--d:410ms">g</i><i style="--d:424ms">&nbsp;</i><i style="--d:439ms">t</i><i style="--d:454ms">h</i><i style="--d:468ms">e</i><i style="--d:483ms">&nbsp;</i><i style="--d:498ms">p</i><i style="--d:512ms">i</i><i style="--d:527ms">x</i><i style="--d:541ms">e</i><i style="--d:556ms">l</i><i style="--d:571ms">s</i><i style="--d:585ms">.</i></span></p><span class="cb"><b></b></span></div></div>
+<script>window.__curtainStart && window.__curtainStart();</script>
+
 <a class="skip-link" href="#main">Skip to content</a>
 <x-dc>
 <helmet>
@@ -109,68 +182,10 @@
     a, a *, button, button *, [role="button"], [role="button"] *, summary, label, video, [onclick], [onclick] * { cursor: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2226%22%20height%3D%2226%22%20viewBox%3D%220%200%2026%2026%22%3E%3Cpath%20d%3D%22M4.5%202.6%2019%2013.4h-7.1l-2.6%206.6z%22%20fill%3D%22%238B1A1F%22%20stroke%3D%22%238B1A1F%22%20stroke-width%3D%221.6%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E") 3 2, default !important; }
     input, textarea, select, [contenteditable="true"] { cursor: auto !important; }
 
-    #intro { position: fixed; top: 0; left: 0; right: 0; height: 100vh; height: 100svh; z-index: 9999; pointer-events: none; }
-    #intro .bg { position: absolute; inset: 0; background: #FFFFFF; transition: opacity .5s ease; }
-    #intro.fly .bg { opacity: 0; }
-    #intro.gone { opacity: 0; visibility: hidden; transition: opacity .3s ease; }
-    #intro .slot { position: absolute; left: 50%; top: 50%; width: min(150px, 36vw); height: min(150px, 36vw); transform: translate(-50%, -50%); }
-    #intro .slot img, #intro .slot svg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; color: #8B1A1F; opacity: 0; transform: scale(.82); filter: blur(6px); animation-play-state: paused; }
-    #intro .logo { animation-play-state: paused; }
-    #intro.ready .slot img, #intro.ready .slot svg, #intro.ready .logo { animation-play-state: running; }
-    #intro .slot .o1 { animation: introMorph .6s cubic-bezier(.16,1,.3,1) .1s both; }
-    #intro .slot .o2 { animation: introMorphSoft .6s cubic-bezier(.16,1,.3,1) .5s both; padding: 4%; box-sizing: border-box; }
-    #intro .slot .o3 { animation: introMorphSoft .6s cubic-bezier(.16,1,.3,1) .9s both; padding: 8%; box-sizing: border-box; }
-    #intro .slot .o4 { animation: introMorph .6s cubic-bezier(.16,1,.3,1) 1.3s both; padding: 5%; box-sizing: border-box; }
-    #intro .logo { position: absolute; left: 50%; top: 50%; width: min(300px, 62vw); height: auto; display: block; opacity: 1; transform: translate(-50%, -50%); animation: introLogoIn .45s cubic-bezier(.16,1,.3,1) 1.7s both; }
-    #intro.fly .logo { animation: none; opacity: 1; filter: none; transition: transform 1.5s cubic-bezier(.5,0,.15,1); transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(var(--s)); }
-    @keyframes introMorph {
-      0% { opacity: 0; transform: scale(.82); filter: blur(6px); }
-      22% { opacity: 1; transform: scale(1); filter: blur(0); }
-      72% { opacity: 1; transform: scale(1); filter: blur(0); }
-      100% { opacity: 0; transform: scale(1.06); filter: blur(5px); }
-    }
-    @keyframes introMorphSoft {
-      0% { opacity: 0; transform: scale(.9); filter: blur(5px); }
-      22% { opacity: 1; transform: scale(1); filter: blur(0); }
-      72% { opacity: 1; transform: scale(1); filter: blur(0); }
-      100% { opacity: 0; transform: scale(1.04); filter: blur(4px); }
-    }
-    @keyframes introLogoIn {
-      0% { opacity: 0; transform: translate(-50%, -50%) scale(.9); filter: blur(6px); }
-      100% { opacity: 1; transform: translate(-50%, -50%) scale(1); filter: blur(0); }
-    }
-    body.intro-hide-logo nav img { opacity: 0; }
-    body.intro-hold section, body.intro-hold nav { opacity: 0; }
-    body.intro-cascade nav { animation: introWipe .8s cubic-bezier(.16,1,.3,1) both; }
-    body.intro-cascade section { opacity: 0; animation: introWipe 1.1s cubic-bezier(.16,1,.3,1) both; }
-    body.intro-cascade section:nth-of-type(1) { animation-delay: 0s; }
-    body.intro-cascade section:nth-of-type(2) { animation-delay: .1s; }
-    body.intro-cascade section:nth-of-type(3) { animation-delay: .2s; }
-    body.intro-cascade section:nth-of-type(4) { animation-delay: .3s; }
-    body.intro-cascade section:nth-of-type(5) { animation-delay: .4s; }
-    body.intro-cascade section:nth-of-type(6) { animation-delay: .5s; }
-    body.intro-cascade section:nth-of-type(7) { animation-delay: .6s; }
-    body.intro-cascade section:nth-of-type(8) { animation-delay: .7s; }
-    body.intro-cascade section:nth-of-type(9) { animation-delay: .8s; }
     html.reveal-on [data-reveal="out"] { opacity: 0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
     html.reveal-on [data-reveal="in"] { opacity: 1; transform: none; transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
-    body.intro-hold [data-reveal], body.intro-cascade [data-reveal] { opacity: 1; transform: none; transition: none; }
     @media (prefers-reduced-motion: reduce) {
       [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
-    }
-    @keyframes introWipe {
-      from { opacity: 0; clip-path: inset(0 100% 0 0); transform: translateY(28px); }
-      to { opacity: 1; clip-path: inset(0 0 0 0); transform: translateY(0); }
-    }
-    @media (max-width: 640px) {
-      #intro .slot { width: min(120px, 32vw); height: min(120px, 32vw); }
-      #intro .logo { width: min(240px, 66vw); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      #intro .slot img, #intro .slot svg { animation: none !important; }
-      #intro .logo { opacity: 1; filter: none; transform: translate(-50%, -50%); }
-      body.intro-cascade section, body.intro-cascade nav { opacity: 1; transform: none; clip-path: none; animation: none; }
-      body.intro-hold section, body.intro-hold nav { opacity: 1; }
     }
 
     @media (max-width: 799px) {
@@ -254,103 +269,9 @@
       [data-r="process-content"] { grid-template-columns: 1fr !important; }
       [data-r="case-meta"] { flex-direction: column !important; align-items: flex-start !important; gap: 10px !important; }
     }
+
   </style>
-  <script>
-  (function () {
-    if (window.__introRan) return;
-    window.__introRan = true;
-    var HOLD = 2100, t0 = null, done = false;
-
-    function build() {
-      if (document.getElementById('intro')) return document.getElementById('intro');
-      var el = document.createElement('div');
-      el.id = 'intro';
-      el.setAttribute('aria-hidden', 'true');
-      el.innerHTML = '<div class="bg"></div><div class="slot">' +
-        '<svg class="o1" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d="M9 17h24v13a9 9 0 0 1-9 9h-6a9 9 0 0 1-9-9V17Z"/><path d="M33 20h4.5a5 5 0 0 1 0 10H33"/><path d="M16 5c-1.6 2.2-1.6 4.2 0 6.4M24 5c-1.6 2.2-1.6 4.2 0 6.4M32 5c-1.6 2.2-1.6 4.2 0 6.4"/></svg>' +
-        '<svg class="o2" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x="8" y="11" width="32" height="21" rx="2.5"/><path d="M4 37h40"/><path d="M20 37h8"/></svg>' +
-        '<svg class="o3" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d="M17 16 8 24l9 8"/><path d="M31 16l9 8-9 8"/><path d="M27 10 21 38"/></svg>' +
-        '<svg class="o4" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d="M24 6c-9.9 0-18 7.2-18 16 0 6 4.6 9.4 9.6 9.4 3 0 4.6 1.6 4.6 3.8 0 1.2-.6 2.2-.6 3.4 0 1.9 1.5 3.4 4.4 3.4 9.9 0 18-8.1 18-18C42 13.7 33.9 6 24 6Z"/><circle cx="15.5" cy="19.5" r="2"/><circle cx="24" cy="14.5" r="2"/><circle cx="32.5" cy="19.5" r="2"/><circle cx="33" cy="28.5" r="2"/></svg>' +
-        '</div><img class="logo" src="assets/felix-benito-logo.png?v=2" alt="" fetchpriority="high" />';
-      document.body.appendChild(el);
-      document.body.classList.add('intro-hide-logo', 'intro-hold');
-      return el;
-    }
-
-    function navLogo() { return document.querySelector('nav img'); }
-
-    function finish(intro) {
-      if (done) return; done = true;
-      var logo = intro.querySelector('.logo'), target = navLogo();
-      if (!logo || !target) {
-        intro.classList.add('gone');
-        document.body.classList.remove('intro-hide-logo', 'intro-hold');
-        setTimeout(function () { if (intro.parentNode) intro.remove(); }, 400);
-        return;
-      }
-      if (logo && target) {
-        var t = target.getBoundingClientRect(), l = logo.getBoundingClientRect();
-        logo.style.setProperty('--dx', ((t.left + t.width / 2) - (l.left + l.width / 2)) + 'px');
-        logo.style.setProperty('--dy', ((t.top + t.height / 2) - (l.top + l.height / 2)) + 'px');
-        logo.style.setProperty('--s', t.width / l.width);
-        intro.classList.add('fly');
-      }
-      setTimeout(function () {
-        document.body.classList.remove('intro-hold');
-        document.body.classList.add('intro-cascade');
-      }, 80);
-      setTimeout(function () {
-        document.body.classList.remove('intro-hide-logo');
-      }, 1120);
-      setTimeout(function () { intro.classList.add('gone'); }, 1180);
-      setTimeout(function () {
-        if (intro.parentNode) intro.remove();
-        document.body.classList.remove('intro-cascade');
-      }, 3400);
-    }
-
-    function run() {
-      var intro = build();
-      var imgs = [].slice.call(intro.querySelectorAll('img'));
-      function start() {
-        if (t0) return;
-        t0 = Date.now();
-        intro.classList.add('ready');
-        setTimeout(tick, HOLD);
-        setTimeout(function () { finish(intro); }, 8000);
-      }
-      function tick() {
-        if (done) return;
-        if (navLogo() || Date.now() - t0 > 6000) return finish(intro);
-        setTimeout(tick, 120);
-      }
-      document.addEventListener('visibilitychange', function () {
-        if (document.hidden && t0) finish(intro);
-      });
-      Promise.all(imgs.map(function (im) {
-        if (im.decode) return im.decode().catch(function () {});
-        return im.complete ? Promise.resolve() : new Promise(function (r) { im.onload = im.onerror = r; });
-      })).then(start);
-      setTimeout(start, 1200);
-    }
-
-    var seenIntro = false;
-    try { seenIntro = !!sessionStorage.getItem('fb_intro_seen'); } catch (e) {}
-    if (!seenIntro) {
-      try { sessionStorage.setItem('fb_intro_seen', '1'); } catch (e) {}
-      if (document.body) run();
-      else document.addEventListener('DOMContentLoaded', run);
-    }
-
-    setTimeout(function () {
-      var el = document.getElementById('intro');
-      if (el) el.remove();
-      document.body.classList.remove('intro-hide-logo');
-      document.body.classList.remove('intro-hold');
-      document.body.classList.remove('intro-cascade');
-    }, 12000);
-  })();
-  </script>
+  
   <script>
   (function () {
     if (window.__revealRan) return;
@@ -395,7 +316,7 @@
       for (var i = 0; i < nodes.length; i++) {
         var el = nodes[i];
         if (el.getAttribute('data-reveal') === 'in') continue;
-        if (el.closest('nav') || el.id === 'intro') continue;
+        if (el.closest('nav') || el.id === 'curtain') continue;
         if (inView(el)) { show(el); continue; }
         if (el.getAttribute('data-reveal') !== 'out') {
           el.setAttribute('data-reveal', 'out');
