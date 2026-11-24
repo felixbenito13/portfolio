@@ -8,7 +8,7 @@
     var a = document.querySelector('[data-r="latest-note"] a');
     if (!a) return false;
     if (latest) {
-      var href = 'design-notes/' + latest.slug + '.html';
+      var href = '/design-notes/' + latest.slug + '.html';
       if (a.getAttribute('href') !== href) a.setAttribute('href', href);
       if (a.textContent !== latest.title) a.textContent = latest.title;
     }
@@ -23,7 +23,7 @@
 
   function unescape(s) { return s.replace(/\\(['"\\])/g, '$1'); }
 
-  fetch('design-notes/design-notes-data.jsx', { cache: 'no-cache' })
+  fetch('/design-notes/design-notes-data.jsx', { cache: 'no-cache' })
     .then(function (r) { return r.ok ? r.text() : ''; })
     .then(function (src) {
       var order = src.match(/const NOTE_ORDER\s*=\s*\[\s*'([^']+)'/);

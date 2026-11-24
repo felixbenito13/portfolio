@@ -33,7 +33,7 @@ const NOTES = {
 
       { type: 'h2', text: 'Getting Back to Your Thoughts' },
       { type: 'p', text: 'As humans, our brain naturally looks for the easiest, most comfortable solution, but most of the time it isn’t the best one. It’s the one that doesn’t bring out the full potential you could achieve.' },
-      { type: 'p', text: 'So, from my perspective, the best way to expand your options is to think first about [what you want to achieve](alignment-happens-before-the-file-opens.html), and then about the possible solutions.' },
+      { type: 'p', text: 'So, from my perspective, the best way to expand your options is to think first about [what you want to achieve](/design-notes/alignment-happens-before-the-file-opens.html), and then about the possible solutions.' },
       { type: 'p', text: 'A good way to explore ideas is by creating a mind map. You put your problem in the center and start creating solutions by drawing arrows out from it, like the example below.' },
       { type: 'image', src: 'assets/turn-off-the-ai-mind-map.jpg', w: 1200, h: 630,
         alt: 'Mind map for an Italian coffee machine: handwritten mind map in a notebook with “Italian Coffee Machine” in the center and arrows to ideas like an app, an e-commerce, coffee blends, social media trends and digital influencers',
@@ -42,7 +42,7 @@ const NOTES = {
 
       { type: 'h2', text: 'Getting Back to Paper' },
       { type: 'p', text: 'Some people, like me, need to put their ideas on paper to visualize them and not forget anything. These Design Notes are written on paper. My design projects start on paper. My logo sketches, too. It’s a really powerful, and cheap, tool.' },
-      { type: 'p', text: 'When you use paper, you’re not afraid of making mistakes. You can just draw another line, or jump to another page and another idea, so your creativity doesn’t get blocked. I also [love drawing](where-creativity-comes-from.html), so I get to combine both. But you don’t need to be an artist to start putting words, blocks and lines on paper. And the most important part: it’s really fun.' },
+      { type: 'p', text: 'When you use paper, you’re not afraid of making mistakes. You can just draw another line, or jump to another page and another idea, so your creativity doesn’t get blocked. I also [love drawing](/design-notes/where-creativity-comes-from.html), so I get to combine both. But you don’t need to be an artist to start putting words, blocks and lines on paper. And the most important part: it’s really fun.' },
       { type: 'image', src: 'assets/turn-off-the-ai-paper-sketches.jpg', w: 1200, h: 630,
         alt: 'Retro Café logo sketches: notebook with a pixel-art Retro Café logo drawn on grid paper, coffee cup sketches and markers, with the digital version of the logo on a laptop screen behind it',
         caption: 'The Retro Café logo: sketched on grid paper first, then built on the computer.' },
@@ -82,7 +82,7 @@ const NOTES = {
         label: 'Breakdown #03 video with captions: Felix Benito shares six lessons he would tell his younger self as a designer, over a board with photos of him at age 4 and age 36',
         caption: 'Breakdown #03 in video: six lessons in under three minutes.' },
 
-      { type: 'p', text: 'The third episode of Design Notes: Breakdown is a little different. In [Breakdown #01](breakdown-01-amazon-homepage.html) and [Breakdown #02](breakdown-02-globo-homepage.html) I took apart the homepages of Amazon and Globo. This time the platform under analysis is my own career.' },
+      { type: 'p', text: 'The third episode of Design Notes: Breakdown is a little different. In [Breakdown #01](/design-notes/breakdown-01-amazon-homepage.html) and [Breakdown #02](/design-notes/breakdown-02-globo-homepage.html) I took apart the homepages of Amazon and Globo. This time the platform under analysis is my own career.' },
       { type: 'p', text: 'I started very young, painting and drawing the things I wanted to make. Today, at 36, with 18 years of experience in design, I’m proud of the path. But if I had the chance to talk to my younger self, there are six things I would do differently, or simply earlier.' },
       { type: 'image', src: 'assets/breakdown-03-intro.jpg', w: 1200, h: 630,
         alt: 'Two photos side by side: Felix at 4 years old, playing designer and illustrator, and Felix at 36, design and brand lead, with an arrow labeled 18 years in design',
@@ -107,19 +107,19 @@ const NOTES = {
         caption: 'Short, focused courses beat long programs when the goal is a specific skill.' },
 
       { type: 'h2', text: '4. Read the Classic Books' },
-      { type: 'p', text: 'When I was studying, I didn’t have time to go deep into the books. I really recommend to my younger self, and to anyone starting now, to read the classics of design, business and strategy. A good place to start is [The Design of Everyday Things](https://en.wikipedia.org/wiki/The_Design_of_Everyday_Things) by Don Norman, the book that gave the industry words like affordance and user-centered design. The classics are also one of the habits I describe in [Where Creativity Comes From](where-creativity-comes-from.html).' },
+      { type: 'p', text: 'When I was studying, I didn’t have time to go deep into the books. I really recommend to my younger self, and to anyone starting now, to read the classics of design, business and strategy. A good place to start is [The Design of Everyday Things](https://en.wikipedia.org/wiki/The_Design_of_Everyday_Things) by Don Norman, the book that gave the industry words like affordance and user-centered design. The classics are also one of the habits I describe in [Where Creativity Comes From](/design-notes/where-creativity-comes-from.html).' },
       { type: 'image', src: 'assets/breakdown-03-books.jpg', w: 1200, h: 630,
         alt: 'Board section titled 4, Classic books, with the Amazon page of The Design of Everyday Things by Don Norman',
         caption: 'The Design of Everyday Things: still the best first book on usability.' },
 
       { type: 'h2', text: '5. Learn Business and Negotiation' },
-      { type: 'p', text: 'Design itself is an amazing thing to learn, but the goal is to solve problems. To do that well, you need to understand the business behind them. Learning business and negotiation earlier would have helped me close deals, defend design decisions and think not just in pixels, but also in money: revenue, costs and return on investment. It’s the shift I describe in [Alignment Happens Before the File Opens](alignment-happens-before-the-file-opens.html), from executor to strategist.' },
+      { type: 'p', text: 'Design itself is an amazing thing to learn, but the goal is to solve problems. To do that well, you need to understand the business behind them. Learning business and negotiation earlier would have helped me close deals, defend design decisions and think not just in pixels, but also in money: revenue, costs and return on investment. It’s the shift I describe in [Alignment Happens Before the File Opens](/design-notes/alignment-happens-before-the-file-opens.html), from executor to strategist.' },
       { type: 'image', src: 'assets/breakdown-03-business.jpg', w: 1200, h: 630,
         alt: 'Board section titled 5, Business and negotiation, with a photo of two people reviewing printed charts next to laptops',
         caption: 'Design solves problems. Business tells you which problems are worth solving.' },
 
       { type: 'h2', text: '6. Learn a Bit of Code' },
-      { type: 'p', text: 'The last one is to learn more about code. Understanding how things are built helps you understand the real problems you need to solve, talk better with developers, and create better roadmaps and plans for your work. Today design-to-code handoff is part of [how I work](../index.html#practice), and with AI tools the line between designing and building is getting thinner every month.' },
+      { type: 'p', text: 'The last one is to learn more about code. Understanding how things are built helps you understand the real problems you need to solve, talk better with developers, and create better roadmaps and plans for your work. Today design-to-code handoff is part of [how I work](/#practice), and with AI tools the line between designing and building is getting thinner every month.' },
       { type: 'image', src: 'assets/breakdown-03-code.jpg', w: 1200, h: 630,
         alt: 'Board section titled 6, Code, with a screenshot of a code editor showing a project and instructions for building a design in code',
         caption: 'You don’t need to become a developer. You need to speak their language.' },
@@ -152,7 +152,7 @@ const NOTES = {
         label: 'Breakdown #02 video with captions: Felix Benito walks through the Globo homepage in Figma, marking the menu, grid, color palette, highlights, big numbers and autoplay videos',
         caption: 'Breakdown #02 in video: the whole Globo homepage, top to bottom, in about three minutes.' },
 
-      { type: 'p', text: 'Welcome to the second episode of Design Notes: Breakdown, the series where I take a platform everyone knows and look at the design decisions behind it. In [Breakdown #01](breakdown-01-amazon-homepage.html) it was Amazon Brazil and its sea of deals. This time it’s a different kind of homepage: [Globo.com](https://www.globo.com/), one of the most famous portals in Brazil, where news, sports and entertainment live side by side.' },
+      { type: 'p', text: 'Welcome to the second episode of Design Notes: Breakdown, the series where I take a platform everyone knows and look at the design decisions behind it. In [Breakdown #01](/design-notes/breakdown-01-amazon-homepage.html) it was Amazon Brazil and its sea of deals. This time it’s a different kind of homepage: [Globo.com](https://www.globo.com/), one of the most famous portals in Brazil, where news, sports and entertainment live side by side.' },
       { type: 'p', text: 'A news portal is a content strategy problem before it’s a visual one. Hundreds of stories a day, from very different areas, all competing for the same screen. So I scrolled from top to bottom and stopped at six points: menu, grid, color palette, highlights, big numbers, and the videos at the end of the page.' },
 
       { type: 'h2', text: '1. Menu: Sections You Can Read by Color' },
@@ -202,7 +202,7 @@ const NOTES = {
       { type: 'image', src: 'assets/breakdown-02-globo-takeaway.jpg', w: 1200, h: 630,
         alt: 'Three sticky notes: A clear grid, color palette and structure make the message easier to understand; Users should be in control, don’t make decisions for them, like autoplaying videos; What would you change?',
         caption: 'The takeaway board from the video.' },
-      { type: 'p', text: 'What would you change on Globo’s homepage? And which website should I break down next? Let me know in the comments. If you missed the first episode, [Breakdown #01 on Amazon’s homepage](breakdown-01-amazon-homepage.html) is about the opposite problem: what happens when everything asks for attention. And in [Breakdown #03](breakdown-03-younger-self.html) I turn the analysis to my own career.' },
+      { type: 'p', text: 'What would you change on Globo’s homepage? And which website should I break down next? Let me know in the comments. If you missed the first episode, [Breakdown #01 on Amazon’s homepage](/design-notes/breakdown-01-amazon-homepage.html) is about the opposite problem: what happens when everything asks for attention. And in [Breakdown #03](/design-notes/breakdown-03-younger-self.html) I turn the analysis to my own career.' },
       { type: 'note', text: 'Independent analysis. I have no affiliation with Globo. Screenshots are used for commentary and education.' },
     ],
   },
@@ -240,7 +240,7 @@ const NOTES = {
       { type: 'h2', text: '2. Grid: Four Columns, Different Rules' },
       { type: 'p', text: 'The homepage runs on a four-column grid, but the grid changes from section to section. Some cards show a two-by-two product block, some show a single image, some mix both, and in some rows the cards stop following the columns altogether.' },
       { type: 'p', text: 'That flexibility makes sense for a company where many teams plug their own campaigns into the same page. The cost is rhythm: every new row asks your eye to learn a new layout.' },
-      { type: 'p', text: 'I would create consistency through patterns: a small set of card templates, shared across sections, so the page feels like one system while you scroll. That’s exactly what a design system is for, and it’s how I approached the [Coca-Cola KO Boss redesign](../cases/coke-ko-boss.html): reusable components first, screens after.' },
+      { type: 'p', text: 'I would create consistency through patterns: a small set of card templates, shared across sections, so the page feels like one system while you scroll. That’s exactly what a design system is for, and it’s how I approached the [Coca-Cola KO Boss redesign](/cases/coke-ko-boss.html): reusable components first, screens after.' },
       { type: 'image', src: 'assets/breakdown-01-amazon-grid.jpg', w: 1200, h: 630,
         alt: 'Amazon Brazil homepage product sections outlined in red, showing four columns whose card layouts change from row to row, marked as point 2, Grid',
         caption: 'The grid marked in red: four columns, but each section plays by its own rules.' },
@@ -262,7 +262,7 @@ const NOTES = {
 
       { type: 'h2', text: 'Takeaway: Hierarchy Needs Contrast' },
       { type: 'p', text: 'Hierarchy needs contrast, and contrast needs restraint. When everything on the page calls for your attention, nothing gets highlighted. Focus on fewer things, and the highlights you keep become much stronger.' },
-      { type: 'p', text: 'What would you change on Amazon’s homepage? Let me know in the comments. The series continues in [Breakdown #02](breakdown-02-globo-homepage.html), where I look at Globo’s homepage: a page with just as much content, held together by a clear grid and a color palette with meaning.' },
+      { type: 'p', text: 'What would you change on Amazon’s homepage? Let me know in the comments. The series continues in [Breakdown #02](/design-notes/breakdown-02-globo-homepage.html), where I look at Globo’s homepage: a page with just as much content, held together by a clear grid and a color palette with meaning.' },
       { type: 'note', text: 'Independent analysis. I have no affiliation with Amazon. Screenshots are used for commentary and education.' },
     ],
   },
@@ -314,7 +314,7 @@ const NOTES = {
 
       { type: 'h3', text: '4. Map the Most Engaging Campaigns on Social Media' },
       { type: 'p', text: 'I enjoy following big tech companies, and small ones too, that do a great job engaging their audience. So I started mapping them: a doc where I log each post, the data behind it, and what I find creative about it.' },
-      { type: 'p', text: 'It has become my personal library of inspiration. Every once in a while, I go back and revisit the collection. The same curiosity is behind my Breakdown series, where I take apart the homepages of platforms everyone knows, like [Amazon](breakdown-01-amazon-homepage.html) and [Globo](breakdown-02-globo-homepage.html).' },
+      { type: 'p', text: 'It has become my personal library of inspiration. Every once in a while, I go back and revisit the collection. The same curiosity is behind my Breakdown series, where I take apart the homepages of platforms everyone knows, like [Amazon](/design-notes/breakdown-01-amazon-homepage.html) and [Globo](/design-notes/breakdown-02-globo-homepage.html).' },
       { type: 'image', src: 'assets/creativity-campaign-library.jpg', w: 1200, h: 630,
         alt: 'Social media analysis document logging an Instagram carousel post with its content type, post format and a creativity score',
         caption: 'My campaign library: each post logged by content type, format, and a score for creativity and execution.' },
@@ -335,7 +335,7 @@ const NOTES = {
 
       { type: 'h2', text: 'Creativity Is a Daily Practice' },
       { type: 'p', text: 'These are some of the unconventional habits that help me be more creative in my daily routine. None of them happen in front of a screen, but all of them end up there eventually.' },
-      { type: 'p', text: 'What about you? I’d love to hear the techniques that keep your creativity fresh. And if you want to see where those ideas go once the work starts, read how I [align with stakeholders before opening the file](alignment-happens-before-the-file-opens.html).' },
+      { type: 'p', text: 'What about you? I’d love to hear the techniques that keep your creativity fresh. And if you want to see where those ideas go once the work starts, read how I [align with stakeholders before opening the file](/design-notes/alignment-happens-before-the-file-opens.html).' },
     ],
   },
 
@@ -361,7 +361,7 @@ const NOTES = {
       { type: 'h2', text: 'The Mistake I Made: Skipping Stakeholder Alignment' },
       { type: 'p', text: 'A few years ago, when I stepped into a senior position, I wanted to bring results as fast as possible. So instead of aligning objectives with the team first, I jumped straight to solutions based on my own point of view.' },
       { type: 'p', text: 'The problem was that my perspective wasn’t ready yet. I didn’t have the context to understand what was really happening behind the scenes, the details that could have improved my results or even changed my whole approach.' },
-      { type: 'p', text: 'Onboarding alone is rarely enough to grasp the layers of a business, a market, and its customers. It takes more: additional rounds of meetings, research, interviews, competitive analysis (the kind of exercise I share publicly in my [Breakdown series](breakdown-02-globo-homepage.html)), and a close read of digital marketing trends. All of that is what actually clarifies how a product should be built or evolved.' },
+      { type: 'p', text: 'Onboarding alone is rarely enough to grasp the layers of a business, a market, and its customers. It takes more: additional rounds of meetings, research, interviews, competitive analysis (the kind of exercise I share publicly in my [Breakdown series](/design-notes/breakdown-02-globo-homepage.html)), and a close read of digital marketing trends. All of that is what actually clarifies how a product should be built or evolved.' },
       { type: 'p', text: 'Driven by the fear of not showing results quickly enough, I started building screens, drafting a design system, and adjusting the brand. When I presented the work to the team, the developers pushed back, citing technical restrictions I hadn’t accounted for. The manager liked the design system idea, but for later, not now. The brand adjustments met the same fate. What actually mattered at that moment were bugs in the checkout flow.' },
 
       { type: 'image', src: 'assets/alignment-design-system-definitions.jpg', w: 1200, h: 630,
@@ -392,7 +392,7 @@ const NOTES = {
       { type: 'p', text: 'I need clarity on business objectives and priorities as early as possible, ideally during onboarding itself. I like to map out what I’ll learn, when it will happen, and when the actual work begins.' },
 
       { type: 'h3', text: '4. Stakeholder Alignment' },
-      { type: 'p', text: 'In larger companies, different areas often have their own goals, and those goals don’t always line up with the broader business objectives. Sometimes a legal or operational constraint from another sector can block what you’re building entirely. Talking to a wide range of stakeholders early on helps you avoid building something that can’t actually be used. In the [Coca-Cola KO Boss case](../cases/coke-ko-boss.html), mapping the stakeholders was the first step after the audit, before a single screen was redesigned.' },
+      { type: 'p', text: 'In larger companies, different areas often have their own goals, and those goals don’t always line up with the broader business objectives. Sometimes a legal or operational constraint from another sector can block what you’re building entirely. Talking to a wide range of stakeholders early on helps you avoid building something that can’t actually be used. In the [Coca-Cola KO Boss case](/cases/coke-ko-boss.html), mapping the stakeholders was the first step after the audit, before a single screen was redesigned.' },
 
       { type: 'image', src: 'assets/alignment-personas.jpg', w: 1200, h: 630,
         alt: 'User persona profile showing background, goals, pain points and personality traits for UX research',

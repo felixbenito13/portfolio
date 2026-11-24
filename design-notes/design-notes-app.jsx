@@ -123,16 +123,16 @@ function Nav() {
   return (
     <nav className={open ? 'nav nav-open' : 'nav'}>
       <div className="shell nav-inner">
-        <a href="../index.html" className="nav-brand">
+        <a href="/" className="nav-brand">
           <img src="../assets/felix-benito-logo.png?v=2" alt="Felix Benito, design and brand lead, home" className="nav-logo" />
         </a>
         <div className="nav-links">
-          <a href="../index.html#work" onClick={() => setOpen(false)}>Cases</a>
-          <a href="../index.html#practice" onClick={() => setOpen(false)}>How I work</a>
-          <a href="../index.html#cv" onClick={() => setOpen(false)}>CV</a>
-          <a href="../index.html#me" onClick={() => setOpen(false)}>Me</a>
-          <a href="index.html" className="active" onClick={() => setOpen(false)}>Design Notes</a>
-          <a href="../index.html#contact" onClick={() => setOpen(false)}>Contact</a>
+          <a href="/#work" onClick={() => setOpen(false)}>Cases</a>
+          <a href="/#practice" onClick={() => setOpen(false)}>How I work</a>
+          <a href="/#cv" onClick={() => setOpen(false)}>CV</a>
+          <a href="/#me" onClick={() => setOpen(false)}>Me</a>
+          <a href="/design-notes/" className="active" onClick={() => setOpen(false)}>Design Notes</a>
+          <a href="/#contact" onClick={() => setOpen(false)}>Contact</a>
         </div>
         <button className="nav-toggle" type="button" aria-label="Menu" aria-expanded={open} onClick={() => setOpen(v => !v)}>
           <svg width="26" height="26" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -161,7 +161,7 @@ function Footer() {
             <div className="col-h">Elsewhere</div>
             <ul>
               <li><a href="https://www.linkedin.com/in/felix-benito/" target="_blank" rel="noreferrer">LinkedIn ↗</a></li>
-              <li><a href="index.html">Design Notes ↗</a></li>
+              <li><a href="/design-notes/">Design Notes ↗</a></li>
               <li><a href="../assets/Felix_Benito_Design_Lead_CV.pdf" target="_blank" rel="noreferrer">CV (PDF) ↗</a></li>
             </ul>
           </div>
@@ -220,7 +220,7 @@ function NoteFilters({ active, onChange }) {
 // ─── Note card ─────────────────────────────────────────────────────────────
 function NoteCard({ note, i }) {
   return (
-    <a href={note.slug + '.html'} className="note-card reveal" style={{ '--rd': `${i * 60}ms` }}>
+    <a href={'/design-notes/' + note.slug + '.html'} className="note-card reveal" style={{ '--rd': `${i * 60}ms` }}>
       <div className="note-card-img">
         <img src={note.cover} alt={note.coverAlt} width="1200" height="630" loading="lazy" />
       </div>
@@ -349,7 +349,7 @@ function NoteArticle({ note }) {
       <header className="notes-hero note-hero">
         <div className="shell">
           <div className="notes-hero-top">
-            <a href="index.html" className="back-link">
+            <a href="/design-notes/" className="back-link">
               <span>←</span> Back to Design Notes
             </a>
             <span className="note-tag">{note.categoryLabel}</span>

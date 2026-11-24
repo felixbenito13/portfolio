@@ -179,16 +179,16 @@ function Nav() {
   return (
     <nav className={open ? 'nav nav-open' : 'nav'}>
       <div className="shell nav-inner">
-        <a href="../index.html" className="nav-brand">
+        <a href="/" className="nav-brand">
           <img src="../assets/felix-benito-logo.png?v=2" alt="Felix Benito, design and brand lead, home" className="nav-logo" />
         </a>
         <div className="nav-links">
-          <a href="../index.html#work" className="active" onClick={() => setOpen(false)}>Cases</a>
-          <a href="../index.html#practice" onClick={() => setOpen(false)}>How I work</a>
-          <a href="../index.html#cv" onClick={() => setOpen(false)}>CV</a>
-          <a href="../index.html#me" onClick={() => setOpen(false)}>Me</a>
-          <a href="../design-notes/index.html" onClick={() => setOpen(false)}>Design Notes</a>
-          <a href="../index.html#contact" onClick={() => setOpen(false)}>Contact</a>
+          <a href="/#work" className="active" onClick={() => setOpen(false)}>Cases</a>
+          <a href="/#practice" onClick={() => setOpen(false)}>How I work</a>
+          <a href="/#cv" onClick={() => setOpen(false)}>CV</a>
+          <a href="/#me" onClick={() => setOpen(false)}>Me</a>
+          <a href="/design-notes/" onClick={() => setOpen(false)}>Design Notes</a>
+          <a href="/#contact" onClick={() => setOpen(false)}>Contact</a>
         </div>
         <button className="nav-toggle" type="button" aria-label="Menu" aria-expanded={open} onClick={() => setOpen(v => !v)}>
           <svg width="26" height="26" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -248,7 +248,7 @@ function CaseHero({ c }) {
     <header className="case-hero">
       <div className="shell">
         <div className="case-hero-top">
-          <a href="../index.html#work" className="back-link">
+          <a href="/#work" className="back-link">
             <span>←</span> Back to work
           </a>
           <span className="eyebrow no-dot">
@@ -724,7 +724,7 @@ function CaseNav({ c }) {
 
 function CaseNavCard({ c, dir }) {
   return (
-    <a href={c.slug + '.html'} className={'case-next-card reveal ' + dir}>
+    <a href={'/cases/' + c.slug + '.html'} className={'case-next-card reveal ' + dir}>
       <div className="case-next-img" style={c.cardBg ? { background: c.cardBg } : undefined}>
         <img src={c.card || c.cover} alt={c.coverAlt || c.title} width="1200" height="800" loading="lazy" />
       </div>
@@ -754,7 +754,7 @@ function Footer() {
             <div className="col-h">Elsewhere</div>
             <ul>
               <li><a href="https://www.linkedin.com/in/felix-benito/" target="_blank" rel="noreferrer">LinkedIn ↗</a></li>
-              <li><a href="../design-notes/index.html">Design Notes ↗</a></li>
+              <li><a href="/design-notes/">Design Notes ↗</a></li>
               <li><a href="../assets/Felix_Benito_Design_Lead_CV.pdf" target="_blank" rel="noreferrer">CV (PDF) ↗</a></li>
             </ul>
           </div>
