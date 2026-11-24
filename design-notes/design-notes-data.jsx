@@ -10,9 +10,58 @@ const NOTE_CATEGORIES = [
   { id: 'breakdown',  label: 'Breakdown' },
 ];
 
-const NOTE_ORDER = ['breakdown-03-younger-self', 'breakdown-02-globo-homepage', 'breakdown-01-amazon-homepage', 'where-creativity-comes-from', 'alignment-happens-before-the-file-opens'];
+const NOTE_ORDER = ['turn-off-the-ai', 'breakdown-03-younger-self', 'breakdown-02-globo-homepage', 'breakdown-01-amazon-homepage', 'where-creativity-comes-from', 'alignment-happens-before-the-file-opens'];
 
 const NOTES = {
+
+  'turn-off-the-ai': {
+    slug: 'turn-off-the-ai',
+    category: 'ai',
+    categoryLabel: 'AI',
+    title: 'Turn Off the AI to Get Better Results',
+    subtitle: 'Why I start every project with my own ideas, and only then bring AI into the process.',
+    date: '2026-11-24',
+    dateLabel: 'Nov 2026',
+    readTime: '3 min read',
+    cover: 'assets/turn-off-the-ai-cover.jpg',
+    coverAlt: 'Turn Off the AI to Get Better Results, a Design Notes AI post by Felix Benito',
+    excerpt: 'AI tends to deliver results in one focused direction. Why I start every project on paper, with mind maps and my own ideas, before bringing AI in.',
+    metaDescription: 'Why a design and brand lead starts every project with paper, mind maps and his own ideas, and only then brings AI in to research, test and refine.',
+    related: ['where-creativity-comes-from', 'alignment-happens-before-the-file-opens'],
+    body: [
+      { type: 'p', text: 'It’s impressive how much AI has evolved in recent months. You barely see strange fingers in AI-generated images anymore. But AI tends to deliver results in one focused direction, and when we start looking for a solution to a problem, we want to explore different paths. That’s why I suggest not using AI, at least at the beginning of your process, so you can explore ideas that AI wouldn’t cover at first.' },
+
+      { type: 'h2', text: 'Getting Back to Your Thoughts' },
+      { type: 'p', text: 'As humans, our brain naturally looks for the easiest, most comfortable solution, but most of the time it isn’t the best one. It’s the one that doesn’t bring out the full potential you could achieve.' },
+      { type: 'p', text: 'So, from my perspective, the best way to expand your options is to think first about [what you want to achieve](alignment-happens-before-the-file-opens.html), and then about the possible solutions.' },
+      { type: 'p', text: 'A good way to explore ideas is by creating a mind map. You put your problem in the center and start creating solutions by drawing arrows out from it, like the example below.' },
+      { type: 'image', src: 'assets/turn-off-the-ai-mind-map.jpg', w: 1200, h: 630,
+        alt: 'Mind map for an Italian coffee machine: handwritten mind map in a notebook with “Italian Coffee Machine” in the center and arrows to ideas like an app, an e-commerce, coffee blends, social media trends and digital influencers',
+        caption: 'A mind map from my notebook: one problem in the center, many paths around it.' },
+      { type: 'p', text: 'It might look a bit messy to you, the reader, but when you do it yourself, it’s really easy to follow, and good ideas will definitely show up.' },
+
+      { type: 'h2', text: 'Getting Back to Paper' },
+      { type: 'p', text: 'Some people, like me, need to put their ideas on paper to visualize them and not forget anything. These Design Notes are written on paper. My design projects start on paper. My logo sketches, too. It’s a really powerful, and cheap, tool.' },
+      { type: 'p', text: 'When you use paper, you’re not afraid of making mistakes. You can just draw another line, or jump to another page and another idea, so your creativity doesn’t get blocked. I also [love drawing](where-creativity-comes-from.html), so I get to combine both. But you don’t need to be an artist to start putting words, blocks and lines on paper. And the most important part: it’s really fun.' },
+      { type: 'image', src: 'assets/turn-off-the-ai-paper-sketches.jpg', w: 1200, h: 630,
+        alt: 'Retro Café logo sketches: notebook with a pixel-art Retro Café logo drawn on grid paper, coffee cup sketches and markers, with the digital version of the logo on a laptop screen behind it',
+        caption: 'The Retro Café logo: sketched on grid paper first, then built on the computer.' },
+
+      { type: 'h2', text: 'Reviewing Your Ideas' },
+      { type: 'p', text: 'Once you have a good number of solutions, a nice way to pick the best ones is to wait a while before choosing. Go do something unrelated to work, like taking a walk, drawing or playing a song. When you shift your focus and come back later, your mind is refreshed and you can make a better choice.' },
+
+      { type: 'h2', text: 'When the AI Comes In' },
+      { type: 'p', text: 'Once you’ve selected the best ideas, it’s time to evaluate them with AI. You can ask it to search the internet for similar solutions, point out the weak spots in your project and suggest ways to fix them. You can also ask it to explore more paths, compare them with your own ideas, and refine everything later.' },
+      { type: 'image', src: 'assets/turn-off-the-ai-assistant.jpg', w: 1200, h: 630,
+        alt: 'Opening an AI assistant: laptop screen showing an AI assistant welcome screen, photographed at an angle',
+        caption: 'AI comes in after the thinking, not before it.' },
+      { type: 'p', text: 'My point is to make you think first and decide where you want to go before handing it over to technology. We are humans creating solutions for humans, and this ability to think is what keeps us in the process. At least for now.' },
+
+      { type: 'h2', text: 'Think First, Prompt Later' },
+      { type: 'p', text: 'So challenge yourself to leave the computer out at the beginning of the process and start by creating your own solutions. Then compare them with what AI brings. The point is to keep iterating on your process and find the best path to create impactful, different solutions.' },
+      { type: 'p', text: 'How do you use AI in your creative process? I’d love to hear from you.' },
+    ],
+  },
 
   'breakdown-03-younger-self': {
     slug: 'breakdown-03-younger-self',
@@ -231,7 +280,7 @@ const NOTES = {
     coverAlt: 'Where Creativity Comes From, a Design Notes creativity post by Felix Benito',
     excerpt: 'Ideas rarely show up on demand. Six habits, almost none of them in front of a screen, that keep my creative mind rested, curious and open.',
     metaDescription: 'A design & brand lead’s 6 unconventional habits for daily creativity: travel, sketching, talking with strangers, campaign mapping, music and the classics.',
-    related: ['breakdown-03-younger-self', 'alignment-happens-before-the-file-opens'],
+    related: ['turn-off-the-ai', 'alignment-happens-before-the-file-opens'],
     body: [
       { type: 'p', text: 'After years of working in design and marketing, with the daily challenge of creating something new, I’ve learned that ideas rarely show up on demand. They show up when the mind is rested, curious, and open enough to catch them.' },
       { type: 'p', text: 'Over time, I developed a few habits that keep my mind refreshed and ready to receive small daily insights, which I then turn into part of my work. Almost none of them happen in front of a screen. Today I want to share some of these unconventional techniques, the ones that keep my creativity going every day, even on cloudy days.' },
