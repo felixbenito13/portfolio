@@ -4,7 +4,16 @@
 (function () {
   var RM = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function track(name) { try { if (window.gtag) window.gtag('event', name); } catch (e) {} }
+  function track(name, params) { try { if (window.gtag) window.gtag('event', name, params || {}); } catch (e) {} }
+
+  /* links marked data-track send their own event (e.g. the portfolio download on the home) */
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('[data-track]') : null;
+    if (!a) return;
+    var p = {};
+    if (a.getAttribute('data-track-location')) p.location = a.getAttribute('data-track-location');
+    track(a.getAttribute('data-track'), p);
+  }, true);
 
   /* ── 1 · back to top ─────────────────────────────────────────────────── */
   function backToTop() {
