@@ -162,7 +162,7 @@ function Footer() {
             <ul>
               <li><a href="https://www.linkedin.com/in/felix-benito/" target="_blank" rel="noreferrer">LinkedIn ↗</a></li>
               <li><a href="/design-notes/">Design Notes ↗</a></li>
-              <li><a href="../assets/Felix_Benito_Design_Lead_CV.pdf" target="_blank" rel="noreferrer">CV (PDF) ↗</a></li>
+              <li><a href="../assets/Felix_Benito_Design_Lead_CV.pdf?v=2" target="_blank" rel="noreferrer">CV (PDF) ↗</a></li>
             </ul>
           </div>
           <div className="reveal" style={{ '--rd': '180ms' }}>
